@@ -15,7 +15,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.audit import audit
 from app.config import get_settings
 from app.db import aware, utcnow
-from app.models import Booking, ConsentRequest, SearchOption, User
+from app.models import Booking, ConsentRequest, SearchOption, User, Vendor
 
 OPTION_TTL = timedelta(minutes=45)
 PREFIX = {"flight": "FL", "train": "TR", "hotel": "HT"}
@@ -59,12 +59,41 @@ async def store_options(db: AsyncSession, user_id: str, kind: str, items: list[d
     return out
 
 
+def vendor_for(kind: str, d: dict) -> tuple[str, str, str]:
+    """(key, name, kind) of the business that is paid for this option (Model B: pay the vendor directly)."""
+    if kind == "flight":
+        return f"airline-{_slug(d['airline'])}", d["airline"], "airline"
+    if kind == "train":
+        return "indian-railways", "Indian Railways", "railway"
+    return f"hotel-{_slug(d['hotel'])}", d["hotel"], "hotel"
+
+
+def _slug(text: str) -> str:
+    return "-".join("".join(ch if ch.isalnum() else " " for ch in text.lower()).split())[:60]
+
+
+async def ensure_vendors(db: AsyncSession, items: list[dict]) -> dict[str, Vendor]:
+    """Get the vendors for these items, creating synthetic sandbox vendors on first use."""
+    keys = {i["vendor_key"]: i for i in items}
+    rows = (await db.scalars(select(Vendor).where(Vendor.key.in_(keys)))).all()
+    vendors = {v.key: v for v in rows}
+    for key, item in keys.items():
+        if key not in vendors:
+            # "@sandbox" is not a real UPI handle, so a demo QR can never send money to anyone.
+            v = Vendor(key=key, name=item["vendor_name"], kind=item["vendor_kind"],
+                       upi_id=f"{key.replace('-', '.')[:60]}@sandbox", synthetic=True)
+            db.add(v)
+            vendors[key] = v
+    await db.flush()
+    return vendors
+
+
 def consent_card(c: ConsentRequest) -> dict:
     return {
         "type": "consent", "consent_id": c.id, "title": c.title, "status": c.status, "total_inr": c.total_inr,
         "hold_expires_at": aware(c.hold_expires_at).isoformat(),
-        "items": [{"kind": i["kind"], "title": i["title"], "price_inr": i["price_inr"], "terms": i["terms"]}
-                  for i in c.items],
+        "items": [{"kind": i["kind"], "title": i["title"], "price_inr": i["price_inr"], "terms": i["terms"],
+                   "vendor": i.get("vendor_name")} for i in c.items],
     }
 
 
@@ -96,8 +125,12 @@ async def create_consent(db: AsyncSession, user: User, option_ids: list[str], ti
     if expired:
         raise BookingError(f"Option(s) {', '.join(expired)} expired. Search again for current prices.")
 
-    items = [{"option_id": r.id, "kind": r.kind, "title": r.title, "price_inr": r.price_inr,
-              "terms": _terms(r.kind, r.data), "data": r.data} for r in (found[i] for i in ids)]
+    items = []
+    for r in (found[i] for i in ids):
+        vkey, vname, vkind = vendor_for(r.kind, r.data)
+        items.append({"option_id": r.id, "kind": r.kind, "title": r.title, "price_inr": r.price_inr,
+                      "terms": _terms(r.kind, r.data), "data": r.data,
+                      "vendor_key": vkey, "vendor_name": vname, "vendor_kind": vkind})
     total = sum(i["price_inr"] for i in items)
     if total > user.spend_cap_inr:
         raise BookingError(f"Total ₹{total:,} is above your spending limit of ₹{user.spend_cap_inr:,}. "
@@ -119,14 +152,18 @@ def _reference(kind: str) -> str:
     return f"HTL-{_code(8)}"
 
 
-def create_bookings(db: AsyncSession, consent: ConsentRequest) -> list[Booking]:
+def create_bookings(db: AsyncSession, consent: ConsentRequest, vendor_key: str | None = None) -> list[Booking]:
+    """Create bookings for the consent's items — only the given vendor's items when vendor_key is set."""
     bookings = []
     for item in consent.items:
+        if vendor_key and item.get("vendor_key") != vendor_key:
+            continue
         status = "confirmed"
         if item["kind"] == "train" and str(item["data"].get("availability", "")).startswith("WL"):
             status = "waitlisted"
+        details = {**item["data"], "vendor": item.get("vendor_name")}
         b = Booking(user_id=consent.user_id, consent_id=consent.id, kind=item["kind"], title=item["title"],
-                    details=item["data"], amount_inr=item["price_inr"], reference=_reference(item["kind"]), status=status)
+                    details=details, amount_inr=item["price_inr"], reference=_reference(item["kind"]), status=status)
         db.add(b)
         bookings.append(b)
     return bookings

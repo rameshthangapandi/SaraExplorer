@@ -2,7 +2,7 @@ import { CheckCircle2, Clock, Hotel, Loader2, Lock, Plane, Timer, TrainFront, XC
 import { useCallback, useEffect, useState, type ReactElement } from "react";
 import { api, type Card } from "../../lib/api";
 import { inr } from "../../lib/format";
-import PaymentModal, { type Order } from "../PaymentModal";
+import PaymentModal, { type Order, type VendorPay } from "../PaymentModal";
 import { BookingRow } from "./Cards";
 
 const KIND_ICON: Record<string, ReactElement> = {
@@ -23,7 +23,7 @@ function useCountdown(iso: string) {
 const HEADER: Record<string, { label: string; tone: string }> = {
   pending: { label: "Approval needed", tone: "bg-mustard-500" },
   awaiting_payment: { label: "Approved · payment pending", tone: "bg-mustard-500" },
-  payment_submitted: { label: "Payment submitted · verifying", tone: "bg-mustard-200" },
+  payment_submitted: { label: "Paid · waiting for vendor confirmation", tone: "bg-mustard-200" },
   paid: { label: "Paid & booked", tone: "bg-emerald-300" },
   payment_rejected: { label: "Payment not received", tone: "bg-red-200" },
   rejected: { label: "Cancelled", tone: "bg-ink-200" },
@@ -35,6 +35,7 @@ export default function ConsentCard({ card: initial, onChange }: { card: Card; o
   const [card, setCardState] = useState(initial);
   const [order, setOrder] = useState<Order | null>(null);
   const [bookings, setBookings] = useState<Card[] | null>(null);
+  const [payments, setPayments] = useState<VendorPay[]>([]);
   const [busy, setBusy] = useState(false);
   const [confirmReject, setConfirmReject] = useState(false);
   const [error, setError] = useState("");
@@ -49,7 +50,8 @@ export default function ConsentCard({ card: initial, onChange }: { card: Card; o
     const c = await api<Card>(`/api/consents/${initial.consent_id}`).catch(() => null);
     if (!c) return;
     setCard(c);
-    if (c.status === "paid") {
+    if (c.status !== "pending") setPayments(await api<VendorPay[]>(`/api/consents/${c.consent_id}/payments`).catch(() => []));
+    if (["paid", "payment_submitted", "payment_rejected"].includes(c.status)) {
       const all = await api<Card[]>("/api/bookings").catch(() => []);
       setBookings(all.filter((b) => b.consent_id === c.consent_id));
     }
@@ -106,8 +108,15 @@ export default function ConsentCard({ card: initial, onChange }: { card: Card; o
   const onSubmitted = useCallback((c: Card) => {
     setOrder(null);
     setCard(c);
-  }, [setCard]);
-  const onClose = useCallback(() => setOrder(null), []);
+    refresh();
+  }, [setCard, refresh]);
+  const onClose = useCallback(() => {
+    setOrder(null);
+    refresh();
+  }, [refresh]);
+  const unpaid = payments.filter((p) => p.status === "created");
+  const resume = () => setOrder({ provider: "upi", amount_paise: card.total_inr * 100, currency: "INR", name: "", description: card.title ?? "",
+    prefill: { name: "", email: "" }, hold_expires_at: card.hold_expires_at, payments });
 
   const mm = String(Math.floor(left / 60000)).padStart(2, "0");
   const ss = String(Math.floor((left % 60000) / 1000)).padStart(2, "0");
@@ -132,7 +141,7 @@ export default function ConsentCard({ card: initial, onChange }: { card: Card; o
             <span className="mt-0.5 grid size-7 shrink-0 place-items-center rounded-full bg-ink-950 text-mustard-400">{KIND_ICON[it.kind]}</span>
             <div className="flex-1">
               <div className="text-sm font-semibold">{it.title}</div>
-              <div className="text-[12px] text-ink-500">{it.terms}</div>
+              <div className="text-[12px] text-ink-500">{it.terms}{it.vendor && <> · paid to <b className="font-semibold text-ink-700">{it.vendor}</b></>}</div>
             </div>
             <div className="font-semibold">{inr(it.price_inr)}</div>
           </div>
@@ -171,16 +180,34 @@ export default function ConsentCard({ card: initial, onChange }: { card: Card; o
         {status === "paid" && <span className="flex items-center gap-1.5 text-sm font-semibold text-emerald-700"><CheckCircle2 size={16} /> Payment received · booked</span>}
       </div>
 
+      {payments.length > 0 && status !== "rejected" && status !== "expired" && (
+        <div className="space-y-2 border-t border-ink-100 px-5 py-4">
+          <div className="text-[11px] font-semibold uppercase tracking-wider text-ink-500">Payments to vendors</div>
+          {payments.map((p) => (
+            <div key={p.order_id} className="flex flex-wrap items-center gap-2 text-sm">
+              <span className="flex-1 font-medium">{p.vendor?.name ?? "Vendor"}{p.vendor?.demo && <span className="ml-1.5 rounded bg-red-100 px-1.5 py-0.5 text-[10px] font-bold uppercase text-red-700">demo</span>}</span>
+              <span className="font-semibold">{inr(p.amount_inr)}</span>
+              <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-bold ${
+                p.status === "paid" ? "bg-emerald-50 text-emerald-700" : p.status === "submitted" ? "bg-mustard-100 text-mustard-800" : p.status === "rejected" ? "bg-red-50 text-red-700" : "bg-ink-100 text-ink-600"}`}>
+                {p.status === "paid" ? "Received · booked" : p.status === "submitted" ? "Waiting for vendor" : p.status === "rejected" ? "Not received" : "To pay"}
+              </span>
+            </div>
+          ))}
+          {status === "payment_submitted" && unpaid.length > 0 && (
+            <button className="btn-dark mt-2 w-full" onClick={resume}><Lock size={15} /> Pay remaining {unpaid.length === 1 ? "vendor" : `${unpaid.length} vendors`}</button>
+          )}
+        </div>
+      )}
       {status === "payment_submitted" && (
         <div className="flex gap-3 border-t border-ink-100 bg-mustard-50 px-5 py-4 text-sm text-mustard-800">
           <Clock size={18} className="mt-0.5 shrink-0" />
-          <div><b>Not booked yet.</b> We're confirming your UPI payment. Your trip will be booked as soon as the money is received — this page updates automatically.</div>
+          <div><b>Not fully booked yet.</b> Each part is booked as soon as its vendor confirms your payment — this page updates automatically.</div>
         </div>
       )}
       {status === "payment_rejected" && (
         <div className="flex gap-3 border-t border-ink-100 bg-red-50 px-5 py-4 text-sm text-red-800">
           <XCircle size={18} className="mt-0.5 shrink-0" />
-          <div>We couldn't confirm this payment, so nothing was booked. If money left your account, contact support with your UTR.</div>
+          <div>A vendor couldn't find your payment, so that part was not booked. If money left your account, contact the vendor with your UTR.</div>
         </div>
       )}
       {error && <p className="mx-5 mb-4 rounded-lg bg-red-50 p-2 text-sm text-red-700">{error}</p>}

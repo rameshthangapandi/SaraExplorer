@@ -80,9 +80,9 @@ DOCS = [
          source="Cyber crime advisories (cybercrime.gov.in)"),
     dict(id="app-booking", title="How booking works in Sara Explorer", tags=["app", "help", "book", "consent", "payment"],
          text="Choose options in Plan & Book or ask Sara. You get an approval card with the total price, cancellation terms and "
-              "a price-hold timer. Press Approve & Pay to see a UPI QR code (or open your UPI app), pay the exact amount, then "
-              "enter the 12-digit UPI reference (UTR). Your trip is booked only after the payment is confirmed as received. "
-              "Track everything under My Trips.",
+              "a price-hold timer. Press Approve & Pay to get one UPI QR code per vendor (airline, railway, hotel): you pay each "
+              "vendor directly, then enter the 12-digit UPI reference (UTR). Each part of your trip is booked once that "
+              "vendor confirms the money arrived. Track everything under My Trips.",
          source="Sara Explorer help"),
     dict(id="app-security", title="Account security in Sara Explorer", tags=["app", "help", "security", "login", "session", "password"],
          text="You stay signed in until your session ends. You can see every signed-in device under Account & Security and "
@@ -90,6 +90,6 @@ DOCS = [
          source="Sara Explorer help"),
     dict(id="app-sandbox", title="Demo mode", tags=["app", "help", "demo", "sandbox", "test", "payment"],
          text="This version is a demo: flights, trains and hotels come from a sandbox, so no real tickets are issued. "
-              "Payments go to the operator's UPI ID and are confirmed manually.",
+              "Vendors are sample vendors with demo QR codes that cannot receive money — do not pay them.",
          source="Sara Explorer help"),
 ]

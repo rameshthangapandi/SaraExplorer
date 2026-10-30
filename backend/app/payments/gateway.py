@@ -1,9 +1,9 @@
 """Payment gateways.
 
 Providers
-- "upi" (default, free): the traveller pays the exact amount to the merchant's UPI ID by QR / UPI app and
-  submits the 12-digit UTR. The booking is created ONLY after an admin confirms the money was received.
-  (Without a paid gateway nothing can detect incoming UPI money automatically, so a human verifies it.)
+- "upi" (default, free) — Model B: the traveller pays each VENDOR directly (one QR per vendor) and submits the
+  12-digit UTR. A vendor's part of the trip is booked ONLY after that vendor confirms the money was received.
+  (Without a paid gateway nothing can detect incoming UPI money automatically, so the vendor verifies it.)
 - "razorpay": automatic confirmation via Razorpay Checkout + HMAC-signed callbacks / webhooks.
 - "mock": instant test payments, for automated tests only. Never enable it for real users.
 
@@ -40,17 +40,11 @@ def _secret() -> str:
     return secret
 
 
-def upi_ready() -> bool:
-    return bool(UPI_ID_RE.match(get_settings().merchant_upi_id or ""))
-
-
 async def create_order(amount_paise: int, receipt: str) -> dict:
     s = get_settings()
     if amount_paise <= 0:
         raise PaymentError("Invalid amount")
     if s.payment_provider == "upi":
-        if not upi_ready():
-            raise PaymentError("UPI payments are not set up yet. The admin must set MERCHANT_UPI_ID.")
         return {"provider": "upi", "order_id": f"SE{secrets.token_hex(6).upper()}", "key_id": None}
     if s.payment_provider == "razorpay":
         try:
@@ -73,12 +67,11 @@ async def create_order(amount_paise: int, receipt: str) -> dict:
     raise PaymentError("Unknown payment provider")
 
 
-def upi_uri(order_id: str, amount_paise: int) -> str:
+def upi_uri(order_id: str, amount_paise: int, payee_upi_id: str, payee_name: str) -> str:
     """Standard UPI deep link (NPCI 'upi://pay'): opens any UPI app with payee and amount pre-filled."""
-    s = get_settings()
     params = {
-        "pa": s.merchant_upi_id,
-        "pn": s.merchant_name,
+        "pa": payee_upi_id,
+        "pn": payee_name[:50],
         "am": f"{amount_paise / 100:.2f}",
         "cu": "INR",
         "tn": f"Sara Explorer {order_id}",

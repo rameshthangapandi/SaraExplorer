@@ -101,11 +101,30 @@ class ConsentRequest(Base):
     decided_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
 
 
+class Vendor(Base):
+    """Who actually receives the traveller's money (Model B: pay the vendor directly).
+
+    Sandbox vendors are synthetic: their UPI ID uses the non-existent "@sandbox" handle, so a demo QR can't
+    move real money. An admin replaces it with the vendor's real UPI ID and marks the vendor live."""
+
+    __tablename__ = "vendors"
+
+    id: Mapped[str] = mapped_column(String(32), primary_key=True, default=uid)
+    key: Mapped[str] = mapped_column(String(80), unique=True, index=True)
+    name: Mapped[str] = mapped_column(String(120))
+    kind: Mapped[str] = mapped_column(String(20))  # airline | railway | hotel | guide | taxi
+    upi_id: Mapped[str] = mapped_column(String(120))
+    synthetic: Mapped[bool] = mapped_column(Boolean, default=True)
+    owner_email: Mapped[str | None] = mapped_column(String(254), nullable=True, index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
 class Payment(Base):
     __tablename__ = "payments"
 
     id: Mapped[str] = mapped_column(String(32), primary_key=True, default=uid)
     consent_id: Mapped[str] = mapped_column(ForeignKey("consent_requests.id"), index=True)
+    vendor_id: Mapped[str | None] = mapped_column(String(32), nullable=True, index=True)
     user_id: Mapped[str] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
     provider: Mapped[str] = mapped_column(String(20))
     order_id: Mapped[str] = mapped_column(String(64), unique=True, index=True)

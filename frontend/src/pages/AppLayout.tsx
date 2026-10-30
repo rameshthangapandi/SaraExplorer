@@ -1,5 +1,6 @@
 import { BadgeIndianRupee, BookOpen, Compass, LogOut, Map, Menu, MessageCircle, Route, ShieldCheck, Ticket, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { api } from "../lib/api";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import Logo from "../components/Logo";
 import SaraAvatar from "../components/SaraAvatar";
@@ -20,7 +21,11 @@ export default function AppLayout() {
   const { user, logout } = useAuth();
   const [open, setOpen] = useState(false);
   const loc = useLocation();
-  const items = user?.is_admin ? [...NAV, { to: "/app/admin", label: "Verify payments", icon: <BadgeIndianRupee size={18} />, end: false }] : NAV;
+  const [isVendor, setIsVendor] = useState(false);
+  useEffect(() => {
+    api<{ is_vendor: boolean }>("/api/vendor-portal/me").then((r) => setIsVendor(r.is_vendor)).catch(() => undefined);
+  }, []);
+  const items = user?.is_admin || isVendor ? [...NAV, { to: "/app/vendor", label: "Vendor portal", icon: <BadgeIndianRupee size={18} />, end: false }] : NAV;
 
   const nav = (
     <nav className="flex flex-1 flex-col gap-1 overflow-y-auto">

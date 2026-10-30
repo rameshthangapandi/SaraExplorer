@@ -56,7 +56,7 @@ export default function App() {
             <Route path="explore" element={<ExploreList />} />
             <Route path="explore/:slug" element={<Destination />} />
             <Route path="guide" element={<Guide />} />
-            <Route path="admin" element={<Admin />} />
+            <Route path="vendor" element={<Admin />} />
             <Route path="strategist" element={<Strategist />} />
             <Route path="trips" element={<Trips />} />
             <Route path="account" element={<Account />} />

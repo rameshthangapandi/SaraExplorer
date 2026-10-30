@@ -2,7 +2,7 @@
 
 **An Indian trip planner agentic AI.** Plan trips across India with simple dropdowns or by chatting with Sara, explore destinations with photos and maps, get Strategist advice on when to book and travel, and book flights, trains and stays — only after you approve and your payment is confirmed.
 
-> Demo build: flights, trains and hotels come from a built-in sandbox, so **no real tickets are issued**. Payments are real UPI payments to the operator's UPI ID. Everything runs at **₹0 cost**.
+> Demo build: flights, trains and hotels come from a built-in sandbox, so **no real tickets are issued**. Travellers pay **vendors directly** by UPI; until real vendor details are added, every vendor has a **demo UPI ID and QR** (`@sandbox`, which cannot receive money). Everything runs at **₹0 cost**.
 
 ## Features
 
@@ -13,8 +13,8 @@
 | **Travel Guide** | Searchable permits, train rules, pilgrimage, safety and app help, with sources |
 | **Ask Sara** | Streaming chat agent (LangGraph + Groq `openai/gpt-oss-120b`) with 10 tools, rich cards, chat history, voice input (Groq `whisper-large-v3`) |
 | **Strategist** | Plug-in strategies: booking timing, departure time, nearby airport, closed days, weather, shoulder season, festivals, fog/monsoon buffers, permits. Best-time calendar and "where to go in month X" for 26 destinations |
-| **Consent-first booking** | Sara or the planner only *propose*. An approval card shows items, terms, total and a 15-minute price hold. **Approve & Pay** shows a UPI QR / "Open UPI app" for the exact amount; the traveller submits the 12-digit UTR; the trip is **booked only after an admin confirms the money was received** |
-| **Admin: Verify payments** | Admins (ADMIN_EMAILS) match the UTR and amount in their UPI/bank app, then confirm (books the trip) or reject (nothing is booked) |
+| **Consent-first booking** | Sara or the planner only *propose*. An approval card shows items, terms, total and a 15-minute price hold. **Approve & Pay** shows **one UPI QR per vendor** (airline, railway, hotel) for the exact amount; the traveller pays each vendor directly and submits the 12-digit UTR; each part is **booked only after that vendor confirms the money arrived** |
+| **Vendor portal** | Vendors (by login email) confirm or reject their payments. Admins (ADMIN_EMAILS) confirm for demo vendors and, under **Vendors**, replace a demo UPI ID with the vendor's real one and switch it live |
 | **Travel knowledge** | Permits (ILP/PAP), IRCTC Tatkal & waitlist rules, Char Dham, Taj closed days, scams, app help — each with source and verified date |
 | **Sandbox inventory** | Deterministic flights / trains / hotels with realistic pricing (lead time, weekday, departure hour, festival peaks) and waitlist confirmation chances |
 | **Accounts** | Register, login, stay signed in until the session ends, device list, sign out one or all devices, spending limit |
@@ -30,7 +30,8 @@
 - CSRF protection on cookie endpoints (custom header + Origin check)
 
 **Payments**
-- Booked only after money is confirmed: UPI payments wait for admin verification; Razorpay (optional) is confirmed by signed callbacks
+- **Model B — pay the vendor directly**: Sara Explorer never holds travellers' money; each vendor confirms their own payments (Razorpay remains an optional alternative)
+- Booked only after money is confirmed, per vendor; demo vendors use `@sandbox` UPI IDs so no real money can be sent to them; a vendor can only go live with a valid real UPI ID
 - UTR format checked and each UTR usable only once; a request can't be cancelled while its payment is being verified
 - The LLM can never set prices: bookable options are stored server-side and referenced by ID; totals are computed on the server
 - Amount locked at approval; spending cap enforced; ownership checked on every consent/order
@@ -56,7 +57,7 @@ Free data sources: Open-Meteo (weather), Wikipedia / Wikimedia (photos, sights),
 ## Quick start (Docker)
 
 ```bash
-cp .env.example .env        # fill in GROQ_API_KEY, MERCHANT_UPI_ID, ADMIN_EMAILS and generate the secrets
+cp .env.example .env        # fill in GROQ_API_KEY, ADMIN_EMAILS and generate the secrets
 docker compose up -d --build
 ```
 
@@ -104,7 +105,7 @@ docs/            Project plan
 |---|---|
 | Sandbox flights / hotels | Duffel / LiteAPI (same tool interface) |
 | Mock railway | Authorised IRCTC partner API |
-| UPI QR + manual verification | `PAYMENT_PROVIDER=razorpay` for automatic confirmation (Razorpay charges a fee per transaction) |
+| Demo vendors with `@sandbox` UPI IDs | Real vendor UPI IDs added in Vendor portal → Vendors (vendors confirm their own payments) |
 | Restaurant links to Google Maps | Google Places / Foursquare for photos and ratings (paid) |
 | Keyword knowledge search | Hybrid search (Postgres FTS + pgvector BGE-M3) + re-ranking |
 

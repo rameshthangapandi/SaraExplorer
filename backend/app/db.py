@@ -19,6 +19,21 @@ async def init_db() -> None:
 
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
+        await conn.run_sync(_add_missing_columns)
+
+
+def _add_missing_columns(conn) -> None:
+    """Tiny forward-only migration: add new nullable columns to existing tables (keeps existing data)."""
+    from sqlalchemy import inspect, text
+
+    from app.models import Base
+
+    insp = inspect(conn)
+    for table in Base.metadata.sorted_tables:
+        existing = {c["name"] for c in insp.get_columns(table.name)}
+        for col in table.columns:
+            if col.name not in existing and col.nullable:
+                conn.execute(text(f'ALTER TABLE {table.name} ADD COLUMN {col.name} {col.type.compile(conn.dialect)}'))
 
 
 def utcnow() -> datetime:

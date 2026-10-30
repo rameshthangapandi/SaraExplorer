@@ -33,10 +33,9 @@ class Settings(BaseSettings):
     groq_reasoning_effort: str = "medium"
 
     # Payments
-    payment_provider: str = "upi"        # upi | razorpay | mock (automated tests only)
-    merchant_upi_id: str = ""            # UPI ID that receives payments (upi provider)
+    payment_provider: str = "upi"        # upi (pay vendors directly) | razorpay | mock (automated tests only)
     merchant_name: str = "Sara Explorer"
-    admin_emails: str = ""               # comma-separated; admins verify UPI payments
+    admin_emails: str = ""               # comma-separated; admins manage vendors and confirm for demo vendors
     razorpay_key_id: str = ""
     razorpay_key_secret: str = ""
     razorpay_webhook_secret: str = ""

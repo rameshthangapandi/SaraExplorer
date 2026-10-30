@@ -33,7 +33,10 @@ class Settings(BaseSettings):
     groq_reasoning_effort: str = "medium"
 
     # Payments
-    payment_provider: str = "mock"       # mock | razorpay
+    payment_provider: str = "upi"        # upi | razorpay | mock (automated tests only)
+    merchant_upi_id: str = ""            # UPI ID that receives payments (upi provider)
+    merchant_name: str = "Sara Explorer"
+    admin_emails: str = ""               # comma-separated; admins verify UPI payments
     razorpay_key_id: str = ""
     razorpay_key_secret: str = ""
     razorpay_webhook_secret: str = ""
@@ -52,6 +55,10 @@ class Settings(BaseSettings):
     @property
     def is_production(self) -> bool:
         return self.app_env == "production"
+
+    @property
+    def admin_email_list(self) -> list[str]:
+        return [e.strip().lower() for e in self.admin_emails.split(",") if e.strip()]
 
     @property
     def cors_origin_list(self) -> list[str]:

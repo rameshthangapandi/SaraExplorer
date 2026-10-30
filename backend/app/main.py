@@ -6,7 +6,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-from app.api import auth, chat, misc, trips
+from app.api import auth, chat, explore, misc, trips
 from app.config import get_settings
 from app.db import init_db
 from app.security.headers import SecurityHeadersMiddleware
@@ -42,7 +42,7 @@ app.add_middleware(
     allow_headers=["Authorization", "Content-Type", "X-Requested-With"],
 )
 
-for r in (auth.router, chat.router, trips.router, misc.router):
+for r in (auth.router, chat.router, trips.router, misc.router, explore.router):
     app.include_router(r)
 
 

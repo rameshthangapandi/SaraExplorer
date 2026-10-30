@@ -40,6 +40,16 @@ async def get_current_user(
     return user
 
 
+def is_admin(user: User) -> bool:
+    return user.email.lower() in get_settings().admin_email_list
+
+
+async def require_admin(user: User = Depends(get_current_user)) -> User:
+    if not is_admin(user):
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Not found")
+    return user
+
+
 def csrf_guard(request: Request) -> None:
     """For endpoints authenticated by the refresh cookie: require a custom header (cannot be sent
     cross-site without a CORS preflight) and, when present, an allowed Origin."""

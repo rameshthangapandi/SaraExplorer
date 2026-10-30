@@ -183,7 +183,7 @@ async def propose_booking(ctx: ToolContext, option_ids: list[str], title: str = 
             return _err(str(exc))
     card = consent_card(consent)
     return ToolResult(json.dumps({"consent_id": consent.id, "total_inr": consent.total_inr,
-                                  "status": "awaiting user approval in the consent card"}), card)
+                                  "status": "waiting for the user to approve and pay; booked only after payment is verified"}), card)
 
 
 async def get_my_bookings(ctx: ToolContext) -> ToolResult:

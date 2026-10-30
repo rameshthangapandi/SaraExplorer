@@ -79,16 +79,17 @@ DOCS = [
               "UPI PINs with anyone claiming to be from a booking company.",
          source="Cyber crime advisories (cybercrime.gov.in)"),
     dict(id="app-booking", title="How booking works in Sara Explorer", tags=["app", "help", "book", "consent", "payment"],
-         text="Sara searches and shortlists options, then shows a consent card with the total price, cancellation terms and a "
-              "price-hold timer. Nothing is booked until you press Approve & Pay and complete payment. You can view and cancel "
-              "bookings under My Trips.",
+         text="Choose options in Plan & Book or ask Sara. You get an approval card with the total price, cancellation terms and "
+              "a price-hold timer. Press Approve & Pay to see a UPI QR code (or open your UPI app), pay the exact amount, then "
+              "enter the 12-digit UPI reference (UTR). Your trip is booked only after the payment is confirmed as received. "
+              "Track everything under My Trips.",
          source="Sara Explorer help"),
     dict(id="app-security", title="Account security in Sara Explorer", tags=["app", "help", "security", "login", "session", "password"],
          text="You stay signed in until your session ends. You can see every signed-in device under Account & Security and "
               "sign them out individually or all at once. Sara Explorer never asks for your password, OTP or UPI PIN in chat.",
          source="Sara Explorer help"),
     dict(id="app-sandbox", title="Demo mode", tags=["app", "help", "demo", "sandbox", "test", "payment"],
-         text="This version runs in demo mode: flights, trains and hotels come from a sandbox and payments use a test gateway, "
-              "so no real money is charged and no real tickets are issued.",
+         text="This version is a demo: flights, trains and hotels come from a sandbox, so no real tickets are issued. "
+              "Payments go to the operator's UPI ID and are confirmed manually.",
          source="Sara Explorer help"),
 ]

@@ -8,12 +8,12 @@ import SaraAvatar from "../components/SaraAvatar";
 import { useAuth } from "../lib/auth";
 
 const FEATURES = [
-  { icon: <Sparkles size={20} />, title: "Plan by chatting", text: "Tell Sara where, when and who. Get a day-by-day plan with real costs in seconds." },
+  { icon: <Sparkles size={20} />, title: "Plan by tapping — or chatting", text: "Pick from simple dropdowns, or just tell Sara where, when and who." },
   { icon: <Compass size={20} />, title: "The Strategist", text: "When to book, when to go, which airport, which day — strategies that save money and stress." },
-  { icon: <BadgeCheck size={20} />, title: "Books only with your OK", text: "Sara shortlists and holds. You approve the exact total. Nothing is booked behind your back." },
+  { icon: <BadgeCheck size={20} />, title: "Pay by UPI, booked on receipt", text: "Approve the exact total, pay by UPI QR, and your trip is booked once the money is received." },
   { icon: <Mic size={20} />, title: "Speak, don't type", text: "Tap the mic and talk to Sara in English or Hindi." },
   { icon: <TrainFront size={20} />, title: "Made for Indian rails", text: "Waitlist confirmation chances, quotas, Tatkal timing and fog-season buffers." },
-  { icon: <Radar size={20} />, title: "Permits & local rules", text: "Inner Line Permits, closed days of monuments, pilgrim registrations — with sources." },
+  { icon: <Radar size={20} />, title: "Maps, photos & places", text: "Explore destinations with photos, maps, things to see and places to eat nearby." },
 ];
 
 const SEASONS = [
@@ -27,7 +27,7 @@ const SEASONS = [
 const STEPS = [
   { n: "01", title: "Ask", text: "\"Plan 5 days in Kerala with my parents under ₹50k.\"" },
   { n: "02", title: "Strategise", text: "Sara checks seasons, fares, closed days and permits." },
-  { n: "03", title: "Approve", text: "One consent card with the full price and cancellation terms." },
+  { n: "03", title: "Approve & pay", text: "One approval card with the full price, then pay by UPI." },
   { n: "04", title: "Travel", text: "Your references, bookings and plan — all in one place." },
 ];
 
@@ -76,7 +76,7 @@ export default function Landing() {
             </div>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-400">
               <span className="flex items-center gap-1.5"><ShieldCheck size={16} className="text-mustard-500" /> Consent before every booking</span>
-              <span className="flex items-center gap-1.5"><Lock size={16} className="text-mustard-500" /> Signed, verified payments</span>
+              <span className="flex items-center gap-1.5"><Lock size={16} className="text-mustard-500" /> Booked only after payment is confirmed</span>
             </div>
           </div>
 
@@ -171,7 +171,7 @@ export default function Landing() {
           <ul className="grid gap-3 sm:grid-cols-2">
             {[
               [<BadgeCheck size={18} key="1" />, "Consent gate", "The AI can only propose. You approve the exact amount."],
-              [<Lock size={18} key="2" />, "Verified payments", "HMAC-signed, amount locked server-side, no duplicates."],
+              [<Lock size={18} key="2" />, "Verified payments", "Amount locked server-side; booked only after the money is confirmed."],
               [<Fingerprint size={18} key="3" />, "Hardened login", "Argon2 passwords, lockout and rotating sessions."],
               [<ShieldCheck size={18} key="4" />, "You're in control", "See every signed-in device and sign out anywhere."],
             ].map(([icon, title, text]) => (
@@ -196,7 +196,7 @@ export default function Landing() {
       <footer className="border-t border-ink-100">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-8 text-sm text-ink-500">
           <Logo />
-          <p>Demo build · sandbox inventory and test payments · no real tickets are issued.</p>
+          <p>Demo build · sandbox flights, trains and hotels · no real tickets are issued.</p>
         </div>
       </footer>
     </div>

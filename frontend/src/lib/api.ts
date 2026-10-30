@@ -9,6 +9,7 @@ export type User = {
   account_type: string;
   consent_level: string;
   spend_cap_inr: number;
+  is_admin?: boolean;
 };
 
 export class ApiError extends Error {

@@ -9,7 +9,7 @@ from app.audit import audit
 from app.config import get_settings
 from app.db import aware, get_db, utcnow
 from app.models import AuthSession, User, uid
-from app.security.deps import csrf_guard, get_current_user
+from app.security.deps import csrf_guard, get_current_user, is_admin
 from app.security.passwords import hash_password, needs_rehash, password_problems, verify_password
 from app.security.rate_limit import client_ip, enforce
 from app.security.tokens import create_access_token, hash_token, new_refresh_token
@@ -42,11 +42,12 @@ class UserOut(BaseModel):
     account_type: str
     consent_level: str
     spend_cap_inr: int
+    is_admin: bool = False
 
 
 def user_out(u: User) -> UserOut:
     return UserOut(id=u.id, name=u.name, email=u.email, phone=u.phone, account_type=u.account_type,
-                   consent_level=u.consent_level, spend_cap_inr=u.spend_cap_inr)
+                   consent_level=u.consent_level, spend_cap_inr=u.spend_cap_inr, is_admin=is_admin(u))
 
 
 def _set_cookie(response: Response, token: str, remember: bool) -> None:
@@ -85,7 +86,7 @@ async def _start_session(db: AsyncSession, user: User, request: Request, respons
 
 @router.post("/register", status_code=201)
 async def register(body: RegisterIn, request: Request, response: Response, db: AsyncSession = Depends(get_db)):
-    await enforce(f"register:{client_ip(request)}", 5, 3600)
+    await enforce(f"register:{client_ip(request)}", 10, 3600)
     email = body.email.lower().strip()
     problems = password_problems(body.password, email)
     if problems:

@@ -2,7 +2,7 @@ import { Compass, Loader2, ShieldCheck, Sparkles } from "lucide-react";
 import { useEffect, useState, type FormEvent } from "react";
 import { MonthStrip, Suggestions } from "../components/cards/Cards";
 import { api, type Card } from "../lib/api";
-import { cx, day } from "../lib/format";
+import { cx, day, isoDay } from "../lib/format";
 
 type Dest = { slug: string; name: string; state: string; tags: string[] };
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -58,7 +58,7 @@ export default function Strategist() {
     }
   };
 
-  const minDate = new Date().toISOString().slice(0, 10);
+  const minDate = isoDay(new Date());
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6">

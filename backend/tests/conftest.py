@@ -11,6 +11,8 @@ os.environ.update({
     "REDIS_URL": "",
     "GROQ_API_KEY": "",
     "CORS_ORIGINS": "http://testserver",
+    "ADMIN_EMAILS": "admin@example.com",
+    "MERCHANT_UPI_ID": "saraexplorer@okaxis",
 })
 
 import pytest  # noqa: E402

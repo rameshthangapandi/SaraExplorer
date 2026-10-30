@@ -41,3 +41,11 @@ def test_where_to_go_in_july_prefers_ladakh():
 
 def test_knowledge_search_finds_ilp():
     assert search("do I need a permit for Tawang?")[0]["id"] == "ilp-arunachal"
+
+
+def test_attraction_filter_keeps_sights_only():
+    from app.providers.places import is_sight
+    assert is_sight("Hawa Mahal", "Palace in Jaipur, India")
+    assert is_sight("Jantar Mantar, Jaipur", "Astronomical observatory")
+    assert not is_sight("St Xavier's School, Jaipur", "Private primary and secondary school")
+    assert not is_sight("Jaipur district", "District of Rajasthan")

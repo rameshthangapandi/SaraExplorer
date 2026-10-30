@@ -1,22 +1,27 @@
 """Payment gateways.
 
-Security model (same for both providers):
-- The amount always comes from the server-side consent record, never from the client.
-- A payment is accepted only with a valid HMAC-SHA256 signature over "order_id|payment_id",
-  compared in constant time.
-- Card / UPI details never touch this server (Razorpay Checkout handles them; PCI-DSS scope stays with them).
+Providers
+- "upi" (default, free): the traveller pays the exact amount to the merchant's UPI ID by QR / UPI app and
+  submits the 12-digit UTR. The booking is created ONLY after an admin confirms the money was received.
+  (Without a paid gateway nothing can detect incoming UPI money automatically, so a human verifies it.)
+- "razorpay": automatic confirmation via Razorpay Checkout + HMAC-signed callbacks / webhooks.
+- "mock": instant test payments, for automated tests only. Never enable it for real users.
 
-"mock" is a free, built-in test gateway that follows the exact same signature flow, so the app can be
-built and demonstrated at zero cost. Switch PAYMENT_PROVIDER=razorpay with test or live keys later.
+In every provider the amount comes from the server-side consent record, never from the client.
 """
 
 import hashlib
 import hmac
+import re
 import secrets
+from urllib.parse import quote
 
 import httpx
 
 from app.config import get_settings
+
+UPI_ID_RE = re.compile(r"^[A-Za-z0-9.\-_]{2,256}@[A-Za-z]{2,64}$")
+UTR_RE = re.compile(r"^\d{12}$")
 
 
 class PaymentError(Exception):
@@ -30,15 +35,23 @@ def _sign(secret: str, message: str) -> str:
 def _secret() -> str:
     s = get_settings()
     secret = s.razorpay_key_secret if s.payment_provider == "razorpay" else s.mock_payment_secret
-    if not secret or len(secret) < 16:
-        raise PaymentError("Payment gateway is not configured")
+    if s.payment_provider not in ("razorpay", "mock") or not secret or len(secret) < 16:
+        raise PaymentError("Signature payments are not enabled")
     return secret
+
+
+def upi_ready() -> bool:
+    return bool(UPI_ID_RE.match(get_settings().merchant_upi_id or ""))
 
 
 async def create_order(amount_paise: int, receipt: str) -> dict:
     s = get_settings()
     if amount_paise <= 0:
         raise PaymentError("Invalid amount")
+    if s.payment_provider == "upi":
+        if not upi_ready():
+            raise PaymentError("UPI payments are not set up yet. The admin must set MERCHANT_UPI_ID.")
+        return {"provider": "upi", "order_id": f"SE{secrets.token_hex(6).upper()}", "key_id": None}
     if s.payment_provider == "razorpay":
         try:
             async with httpx.AsyncClient(timeout=15) as client:
@@ -54,8 +67,24 @@ async def create_order(amount_paise: int, receipt: str) -> dict:
         if data.get("amount") != amount_paise:
             raise PaymentError("Gateway amount mismatch")
         return {"provider": "razorpay", "order_id": data["id"], "key_id": s.razorpay_key_id}
-    _secret()
-    return {"provider": "mock", "order_id": f"order_mock_{secrets.token_hex(10)}", "key_id": None}
+    if s.payment_provider == "mock":
+        _secret()
+        return {"provider": "mock", "order_id": f"order_mock_{secrets.token_hex(10)}", "key_id": None}
+    raise PaymentError("Unknown payment provider")
+
+
+def upi_uri(order_id: str, amount_paise: int) -> str:
+    """Standard UPI deep link (NPCI 'upi://pay'): opens any UPI app with payee and amount pre-filled."""
+    s = get_settings()
+    params = {
+        "pa": s.merchant_upi_id,
+        "pn": s.merchant_name,
+        "am": f"{amount_paise / 100:.2f}",
+        "cu": "INR",
+        "tn": f"Sara Explorer {order_id}",
+        "tr": order_id,
+    }
+    return "upi://pay?" + "&".join(f"{k}={quote(v, safe='@.')}" for k, v in params.items())
 
 
 def verify_signature(order_id: str, payment_id: str, signature: str) -> bool:
@@ -64,7 +93,6 @@ def verify_signature(order_id: str, payment_id: str, signature: str) -> bool:
 
 
 def mock_capture(order_id: str) -> dict:
-    """Simulates the gateway's success callback (only available when PAYMENT_PROVIDER=mock)."""
     if get_settings().payment_provider != "mock":
         raise PaymentError("Mock payments are disabled")
     payment_id = f"pay_mock_{secrets.token_hex(10)}"

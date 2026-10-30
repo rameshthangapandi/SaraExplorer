@@ -181,7 +181,7 @@ export default function AskSara() {
           <SaraAvatar size={32} mood={mood} />
           <div>
             <div className="text-sm font-bold leading-tight">Ask Sara</div>
-            <div className="text-[11px] text-ink-500">{busy ? "Working on it…" : "Your India travel guide · demo mode"}</div>
+            <div className="text-[11px] text-ink-500">{busy ? "Working on it…" : "Your India travel guide"}</div>
           </div>
           <button onClick={newChat} className="btn-ghost ml-auto px-3 py-1.5 text-xs"><Plus size={14} /> New</button>
         </div>
@@ -266,7 +266,7 @@ export default function AskSara() {
                 {busy ? <Loader2 size={18} className="animate-spin" /> : <ArrowUp size={18} />}
               </button>
             </div>
-            <p className="mt-2 text-center text-[11px] text-ink-400">Sara never books without your approval. Demo inventory & test payments — no real tickets.</p>
+            <p className="mt-2 text-center text-[11px] text-ink-400">Sara never books without your approval and a confirmed payment. Demo inventory — no real tickets.</p>
           </div>
         </div>
       </section>

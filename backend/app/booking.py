@@ -7,7 +7,7 @@ user's authenticated consent request.
 
 import secrets
 import string
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -30,12 +30,21 @@ def _code(n: int, alphabet: str = _ALNUM) -> str:
     return "".join(secrets.choice(alphabet) for _ in range(n))
 
 
+def _when(iso: str) -> str:
+    dt = datetime.fromisoformat(iso)
+    return dt.strftime("%a %d %b, %I:%M %p").replace(" 0", " ")
+
+
+def _day(iso: str) -> str:
+    return datetime.fromisoformat(iso).strftime("%a %d %b")
+
+
 def option_title(kind: str, d: dict) -> str:
     if kind == "flight":
-        return f"{d['airline']} {d['flight_no']} {d['from']}→{d['to']} {d['depart'][:16].replace('T', ' ')}"
+        return f"{d['airline']} {d['flight_no']} · {d['from']}→{d['to']} · {_when(d['depart'])}"
     if kind == "train":
-        return f"{d['train_name']} ({d['train_no']}) {d['class']} {d['depart'][:16].replace('T', ' ')}"
-    return f"{d['hotel']} · {d['nights']} night(s) from {d['check_in']}"
+        return f"{d['train_name']} ({d['train_no']}) · {d['class']} · {_when(d['depart'])}"
+    return f"{d['hotel']} · {d['nights']} night{'s' if d['nights'] > 1 else ''} from {_day(d['check_in'])}"
 
 
 async def store_options(db: AsyncSession, user_id: str, kind: str, items: list[dict]) -> list[dict]:
@@ -124,6 +133,6 @@ def create_bookings(db: AsyncSession, consent: ConsentRequest) -> list[Booking]:
 
 
 def booking_dict(b: Booking) -> dict:
-    return {"id": b.id, "kind": b.kind, "title": b.title, "amount_inr": b.amount_inr, "reference": b.reference,
+    return {"id": b.id, "consent_id": b.consent_id, "kind": b.kind, "title": b.title, "amount_inr": b.amount_inr, "reference": b.reference,
             "status": b.status, "details": b.details, "created_at": aware(b.created_at).isoformat(),
             "cancelled_at": aware(b.cancelled_at).isoformat() if b.cancelled_at else None}

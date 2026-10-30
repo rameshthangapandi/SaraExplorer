@@ -5,9 +5,13 @@ import SaraAvatar from "./components/SaraAvatar";
 import { AuthProvider, useAuth } from "./lib/auth";
 import Account from "./pages/Account";
 import AppLayout from "./pages/AppLayout";
+import Admin from "./pages/Admin";
 import AskSara from "./pages/AskSara";
 import { Login, Register } from "./pages/Auth";
+import { Destination, ExploreList } from "./pages/Explore";
+import Guide from "./pages/Guide";
 import Landing from "./pages/Landing";
+import Plan from "./pages/Plan";
 import Strategist from "./pages/Strategist";
 import Trips from "./pages/Trips";
 
@@ -47,7 +51,12 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/app" element={<Protected><AppLayout /></Protected>}>
-            <Route index element={<AskSara />} />
+            <Route index element={<Plan />} />
+            <Route path="ask" element={<AskSara />} />
+            <Route path="explore" element={<ExploreList />} />
+            <Route path="explore/:slug" element={<Destination />} />
+            <Route path="guide" element={<Guide />} />
+            <Route path="admin" element={<Admin />} />
             <Route path="strategist" element={<Strategist />} />
             <Route path="trips" element={<Trips />} />
             <Route path="account" element={<Account />} />

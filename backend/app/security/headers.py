@@ -11,7 +11,7 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         h.setdefault("X-Content-Type-Options", "nosniff")
         h.setdefault("X-Frame-Options", "DENY")
         h.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")
-        h.setdefault("Permissions-Policy", "camera=(), geolocation=(), microphone=(self), payment=(self)")
+        h.setdefault("Permissions-Policy", "camera=(), geolocation=(self), microphone=(self), payment=(self)")
         h.setdefault("Cross-Origin-Opener-Policy", "same-origin")
         # API responses are JSON / SSE only; nothing should ever be rendered or framed from them.
         h.setdefault("Content-Security-Policy", "default-src 'none'; frame-ancestors 'none'")

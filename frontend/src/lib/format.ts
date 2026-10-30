@@ -12,6 +12,16 @@ export const day = (iso: string) =>
 
 export const duration = (min: number) => `${Math.floor(min / 60)}h ${String(min % 60).padStart(2, "0")}m`;
 
+/** YYYY-MM-DD in the user's local time zone (toISOString would shift dates in IST). */
+export function isoDay(d: Date) {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
+export function addDays(iso: string, n: number) {
+  const [y, m, d] = iso.split("-").map(Number);
+  return isoDay(new Date(y, m - 1, d + n));
+}
+
 export function cx(...parts: (string | false | null | undefined)[]) {
   return parts.filter(Boolean).join(" ");
 }

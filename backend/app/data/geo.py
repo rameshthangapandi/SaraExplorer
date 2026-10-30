@@ -1,0 +1,86 @@
+"""Airports and railway stations used by the sandbox providers. Coordinates are approximate."""
+
+AIRPORTS: dict[str, dict] = {
+    "DEL": {"name": "Indira Gandhi Intl", "city": "Delhi", "lat": 28.56, "lon": 77.10, "hub": True},
+    "BOM": {"name": "Chhatrapati Shivaji Maharaj Intl", "city": "Mumbai", "lat": 19.09, "lon": 72.87, "hub": True},
+    "BLR": {"name": "Kempegowda Intl", "city": "Bengaluru", "lat": 13.20, "lon": 77.71, "hub": True},
+    "MAA": {"name": "Chennai Intl", "city": "Chennai", "lat": 12.99, "lon": 80.17, "hub": True},
+    "CCU": {"name": "Netaji Subhas Chandra Bose Intl", "city": "Kolkata", "lat": 22.65, "lon": 88.45, "hub": True},
+    "HYD": {"name": "Rajiv Gandhi Intl", "city": "Hyderabad", "lat": 17.24, "lon": 78.43, "hub": True},
+    "PNQ": {"name": "Pune", "city": "Pune", "lat": 18.58, "lon": 73.92, "hub": False},
+    "AMD": {"name": "Sardar Vallabhbhai Patel Intl", "city": "Ahmedabad", "lat": 23.08, "lon": 72.63, "hub": False},
+    "COK": {"name": "Cochin Intl", "city": "Kochi", "lat": 10.15, "lon": 76.40, "hub": False},
+    "TRV": {"name": "Thiruvananthapuram Intl", "city": "Thiruvananthapuram", "lat": 8.48, "lon": 76.92, "hub": False},
+    "JAI": {"name": "Jaipur Intl", "city": "Jaipur", "lat": 26.82, "lon": 75.81, "hub": False},
+    "LKO": {"name": "Chaudhary Charan Singh Intl", "city": "Lucknow", "lat": 26.76, "lon": 80.89, "hub": False},
+    "IXC": {"name": "Chandigarh Intl", "city": "Chandigarh", "lat": 30.67, "lon": 76.79, "hub": False},
+    "GAU": {"name": "Lokpriya Gopinath Bordoloi Intl", "city": "Guwahati", "lat": 26.11, "lon": 91.59, "hub": False},
+    "GOI": {"name": "Dabolim", "city": "Goa", "lat": 15.38, "lon": 73.83, "hub": False},
+    "GOX": {"name": "Manohar Intl (Mopa)", "city": "Goa", "lat": 15.74, "lon": 73.86, "hub": False},
+    "AGR": {"name": "Agra", "city": "Agra", "lat": 27.16, "lon": 77.96, "hub": False},
+    "VNS": {"name": "Lal Bahadur Shastri Intl", "city": "Varanasi", "lat": 25.45, "lon": 82.86, "hub": False},
+    "DED": {"name": "Jolly Grant", "city": "Dehradun", "lat": 30.19, "lon": 78.18, "hub": False},
+    "KUU": {"name": "Bhuntar (Kullu)", "city": "Kullu", "lat": 31.88, "lon": 77.15, "hub": False},
+    "IXL": {"name": "Kushok Bakula Rimpochee", "city": "Leh", "lat": 34.14, "lon": 77.55, "hub": False},
+    "SXR": {"name": "Sheikh ul-Alam Intl", "city": "Srinagar", "lat": 33.99, "lon": 74.77, "hub": False},
+    "UDR": {"name": "Maharana Pratap", "city": "Udaipur", "lat": 24.62, "lon": 73.90, "hub": False},
+    "JDH": {"name": "Jodhpur", "city": "Jodhpur", "lat": 26.25, "lon": 73.05, "hub": False},
+    "JSA": {"name": "Jaisalmer", "city": "Jaisalmer", "lat": 26.89, "lon": 70.86, "hub": False},
+    "IXB": {"name": "Bagdogra", "city": "Siliguri", "lat": 26.68, "lon": 88.33, "hub": False},
+    "TEZ": {"name": "Tezpur", "city": "Tezpur", "lat": 26.71, "lon": 92.78, "hub": False},
+    "IXZ": {"name": "Veer Savarkar Intl", "city": "Port Blair", "lat": 11.64, "lon": 92.73, "hub": False},
+    "HBX": {"name": "Hubballi", "city": "Hubballi", "lat": 15.36, "lon": 75.08, "hub": False},
+    "BHJ": {"name": "Bhuj", "city": "Bhuj", "lat": 23.29, "lon": 69.67, "hub": False},
+    "ATQ": {"name": "Sri Guru Ram Dass Jee Intl", "city": "Amritsar", "lat": 31.71, "lon": 74.80, "hub": False},
+    "CJB": {"name": "Coimbatore Intl", "city": "Coimbatore", "lat": 11.03, "lon": 77.04, "hub": False},
+    "IXE": {"name": "Mangaluru Intl", "city": "Mangaluru", "lat": 12.96, "lon": 74.89, "hub": False},
+}
+
+STATIONS: dict[str, dict] = {
+    "NDLS": {"name": "New Delhi", "city": "Delhi", "lat": 28.64, "lon": 77.22},
+    "CSMT": {"name": "Mumbai CSMT", "city": "Mumbai", "lat": 18.94, "lon": 72.84},
+    "SBC": {"name": "KSR Bengaluru", "city": "Bengaluru", "lat": 12.98, "lon": 77.57},
+    "MAS": {"name": "Chennai Central", "city": "Chennai", "lat": 13.08, "lon": 80.28},
+    "HWH": {"name": "Howrah", "city": "Kolkata", "lat": 22.58, "lon": 88.34},
+    "SC": {"name": "Secunderabad", "city": "Hyderabad", "lat": 17.43, "lon": 78.50},
+    "PUNE": {"name": "Pune Jn", "city": "Pune", "lat": 18.53, "lon": 73.87},
+    "ADI": {"name": "Ahmedabad Jn", "city": "Ahmedabad", "lat": 23.03, "lon": 72.60},
+    "ERS": {"name": "Ernakulam Jn", "city": "Kochi", "lat": 9.97, "lon": 76.29},
+    "ALLP": {"name": "Alappuzha", "city": "Alleppey", "lat": 9.49, "lon": 76.33},
+    "JP": {"name": "Jaipur Jn", "city": "Jaipur", "lat": 26.92, "lon": 75.79},
+    "AGC": {"name": "Agra Cantt", "city": "Agra", "lat": 27.16, "lon": 77.99},
+    "BSB": {"name": "Varanasi Jn", "city": "Varanasi", "lat": 25.33, "lon": 82.96},
+    "LKO": {"name": "Lucknow Charbagh", "city": "Lucknow", "lat": 26.83, "lon": 80.92},
+    "YNRK": {"name": "Yog Nagari Rishikesh", "city": "Rishikesh", "lat": 30.09, "lon": 78.27},
+    "CDG": {"name": "Chandigarh", "city": "Chandigarh", "lat": 30.70, "lon": 76.82},
+    "SML": {"name": "Shimla", "city": "Shimla", "lat": 31.10, "lon": 77.17},
+    "UDZ": {"name": "Udaipur City", "city": "Udaipur", "lat": 24.57, "lon": 73.70},
+    "JSM": {"name": "Jaisalmer", "city": "Jaisalmer", "lat": 26.92, "lon": 70.92},
+    "NJP": {"name": "New Jalpaiguri", "city": "Siliguri", "lat": 26.68, "lon": 88.44},
+    "GHY": {"name": "Guwahati", "city": "Guwahati", "lat": 26.18, "lon": 91.75},
+    "MAO": {"name": "Madgaon", "city": "Goa", "lat": 15.27, "lon": 73.97},
+    "HPT": {"name": "Hosapete Jn", "city": "Hampi", "lat": 15.27, "lon": 76.39},
+    "BHUJ": {"name": "Bhuj", "city": "Bhuj", "lat": 23.25, "lon": 69.67},
+    "ASR": {"name": "Amritsar Jn", "city": "Amritsar", "lat": 31.63, "lon": 74.87},
+    "PDY": {"name": "Puducherry", "city": "Puducherry", "lat": 11.93, "lon": 79.83},
+    "SINA": {"name": "Srinagar", "city": "Srinagar", "lat": 34.00, "lon": 74.85},
+    "TVC": {"name": "Thiruvananthapuram Central", "city": "Thiruvananthapuram", "lat": 8.49, "lon": 76.95},
+}
+
+# Common alternative names -> canonical city / destination name.
+ALIASES: dict[str, str] = {
+    "bombay": "mumbai", "calcutta": "kolkata", "madras": "chennai", "bangalore": "bengaluru",
+    "new delhi": "delhi", "ncr": "delhi", "gurgaon": "delhi", "gurugram": "delhi", "noida": "delhi",
+    "banaras": "varanasi", "benares": "varanasi", "kashi": "varanasi", "cochin": "kochi", "ernakulam": "kochi",
+    "alappuzha": "alleppey", "trivandrum": "thiruvananthapuram", "pondy": "puducherry",
+    "pondicherry": "puducherry", "port blair": "andaman", "andamans": "andaman", "havelock": "andaman",
+    "kutch": "rann-of-kutch", "rann of kutch": "rann-of-kutch", "white rann": "rann-of-kutch",
+    "ladakh": "leh", "kashmir": "srinagar", "sikkim": "gangtok", "meghalaya": "shillong",
+    "ooty": "ooty", "udhagamandalam": "ooty", "mysuru": "mysore", "vizag": "visakhapatnam",
+    "north goa": "goa", "south goa": "goa", "panaji": "goa", "panjim": "goa",
+}
+
+
+def normalise(name: str) -> str:
+    key = " ".join(name.lower().replace("-", " ").split())
+    return ALIASES.get(key, key)

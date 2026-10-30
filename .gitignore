@@ -1,0 +1,43 @@
+# --- Secrets: never commit ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# --- Local databases ---
+*.db
+*.sqlite3
+
+# --- Node / frontend ---
+node_modules/
+dist/
+*.tsbuildinfo
+.vite/
+
+# --- Editors / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Office lock files and superseded plan drafts ---
+~$*
+Yaanova_Project_Plan.docx
+Reisewelt_Ind_Project_Plan.docx
+
+# --- Logs ---
+*.log
+
+# Root copy of the plan (tracked copy lives in docs/)
+/Sara_Explorer_Project_Plan.docx

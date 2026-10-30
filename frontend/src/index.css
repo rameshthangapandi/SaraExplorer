@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --color-mustard-50: #fff9e8;
+  --color-mustard-100: #fdefc4;
+  --color-mustard-200: #f9de8a;
+  --color-mustard-300: #f3c94e;
+  --color-mustard-400: #ebb627;
+  --color-mustard-500: #e3a812;
+  --color-mustard-600: #c2870b;
+  --color-mustard-700: #94650c;
+  --color-mustard-800: #6b4a0f;
+
+  --color-ink-950: #0b0b0b;
+  --color-ink-900: #141414;
+  --color-ink-800: #1e1e1e;
+  --color-ink-700: #2b2b2b;
+  --color-ink-600: #3f3f3f;
+  --color-ink-500: #5c5c5c;
+  --color-ink-400: #8a8a8a;
+  --color-ink-300: #b8b8b8;
+  --color-ink-200: #dedbd3;
+  --color-ink-100: #eeebe3;
+
+  --color-cream: #fbf8f0;
+
+  --animate-blink: blink 5s infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-rise: rise 0.35s ease-out both;
+
+  @keyframes blink {
+    0%, 94%, 100% { transform: scaleY(1); }
+    96% { transform: scaleY(0.1); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@layer base {
+  html { -webkit-font-smoothing: antialiased; }
+  body { @apply bg-cream text-ink-900 font-sans; }
+  h1, h2, h3, h4 { @apply font-display tracking-tight; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-mustard-500; }
+  ::selection { @apply bg-mustard-300 text-ink-950; }
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold
+    transition-all duration-150 disabled:cursor-not-allowed disabled:opacity-50 active:scale-[0.98];
+}
+
+@layer components {
+  .btn-primary { @apply btn bg-mustard-500 text-ink-950 hover:bg-mustard-400 shadow-[0_6px_20px_-8px] shadow-mustard-600; }
+  .btn-dark { @apply btn bg-ink-950 text-cream hover:bg-ink-800; }
+  .btn-ghost { @apply btn bg-transparent text-ink-800 hover:bg-ink-100; }
+  .btn-outline { @apply btn border border-ink-200 bg-white text-ink-900 hover:border-ink-900; }
+
+  .input {
+    @apply w-full rounded-xl border border-ink-200 bg-white px-4 py-3 text-sm text-ink-900 placeholder:text-ink-400
+      transition focus:border-ink-900 focus:outline-none focus:ring-4 focus:ring-mustard-200;
+  }
+  .label { @apply mb-1.5 block text-xs font-semibold uppercase tracking-wider text-ink-500; }
+  .card { @apply rounded-2xl border border-ink-100 bg-white shadow-[0_1px_0_rgba(0,0,0,0.03)]; }
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full border border-ink-200 bg-white px-2.5 py-0.5 text-[11px] font-medium text-ink-600;
+  }
+
+  /* Ticket-stub motif: perforated edge used for consent and booking cards. */
+  .ticket {
+    @apply relative overflow-hidden rounded-2xl bg-white;
+    --notch: 10px;
+    mask: radial-gradient(circle var(--notch) at left 0 top 50%, #0000 98%, #000) left / 51% 100% no-repeat,
+          radial-gradient(circle var(--notch) at right 0 top 50%, #0000 98%, #000) right / 51% 100% no-repeat;
+  }
+  .perforation { border-top: 2px dashed var(--color-ink-200); }
+
+  .prose-sara { @apply text-[15px] leading-relaxed text-ink-800; }
+  .prose-sara p { @apply my-2; }
+  .prose-sara strong { @apply font-semibold text-ink-950; }
+  .prose-sara ul { @apply my-2 list-disc pl-5; }
+  .prose-sara ol { @apply my-2 list-decimal pl-5; }
+  .prose-sara li { @apply my-0.5; }
+  .prose-sara h1, .prose-sara h2, .prose-sara h3 { @apply mt-4 mb-2 text-base font-bold text-ink-950; }
+  .prose-sara a { @apply font-medium text-mustard-700 underline underline-offset-2; }
+  .prose-sara code { @apply rounded bg-ink-100 px-1 py-0.5 text-[13px]; }
+  .prose-sara table { @apply my-3 w-full border-collapse text-[13px]; }
+  .prose-sara th { @apply border-b-2 border-ink-900 px-2 py-1.5 text-left font-semibold; }
+  .prose-sara td { @apply border-b border-ink-100 px-2 py-1.5 align-top; }
+  .prose-sara hr { @apply my-4 border-ink-100; }
+}
+
+.bg-grid {
+  background-image: linear-gradient(rgba(227, 168, 18, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(227, 168, 18, 0.08) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

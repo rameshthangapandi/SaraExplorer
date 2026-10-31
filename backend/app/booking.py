@@ -73,15 +73,15 @@ def _slug(text: str) -> str:
 
 
 async def ensure_vendors(db: AsyncSession, items: list[dict]) -> dict[str, Vendor]:
-    """Get the vendors for these items, creating synthetic sandbox vendors on first use."""
+    """Get the vendors for these items, creating pending vendors on first use."""
     keys = {i["vendor_key"]: i for i in items}
     rows = (await db.scalars(select(Vendor).where(Vendor.key.in_(keys)))).all()
     vendors = {v.key: v for v in rows}
     for key, item in keys.items():
         if key not in vendors:
-            # "@sandbox" is not a real UPI handle, so a demo QR can never send money to anyone.
+            # "@sandbox" is not a routable UPI handle, so no money can reach a vendor before it is live.
             v = Vendor(key=key, name=item["vendor_name"], kind=item["vendor_kind"],
-                       upi_id=f"{key.replace('-', '.')[:60]}@sandbox", synthetic=True)
+                       upi_id=f"{key.replace('-', '.')[:60]}@sandbox", pending=True)
             db.add(v)
             vendors[key] = v
     await db.flush()

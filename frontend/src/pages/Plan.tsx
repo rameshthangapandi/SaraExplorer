@@ -132,7 +132,7 @@ export default function Plan() {
   const [meta, setMeta] = useState<Meta | null>(null);
   const [form, setForm] = useState({
     origin: "Delhi", destination: params.get("to") ?? "goa", depart: addDays(today, 21), nights: 3, adults: 2,
-    mode: "both", budget: "", roundTrip: true,
+    mode: "both", budget: "", roundTrip: true, total: "", objective: "balanced",
   });
   const [searched, setSearched] = useState<typeof form | null>(null);
   const [out, setOut] = useState<Section>(empty);
@@ -144,6 +144,8 @@ export default function Plan() {
   const [consent, setConsent] = useState<Card | null>(null);
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState("");
+  const [planning, setPlanning] = useState(false);
+  const [autoNote, setAutoNote] = useState<{ ok: boolean; text: string } | null>(null);
 
   useEffect(() => {
     api<Meta>("/api/meta/places").then(setMeta).catch(() => undefined);
@@ -161,9 +163,10 @@ export default function Plan() {
     return { loading: false, options, error: options.length ? undefined : `No ${mode === "both" ? "flights or trains" : mode + "s"} found for this route. Try another departure city.` };
   }
 
-  const search = async (e: FormEvent) => {
-    e.preventDefault();
+  const search = async (e?: FormEvent) => {
+    e?.preventDefault();
     setError("");
+    setAutoNote(null);
     setConsent(null);
     setPicked({ out: undefined, back: undefined, stay: undefined });
     setAdvice(null);
@@ -183,6 +186,32 @@ export default function Plan() {
       method: "POST", body: { destination: f.destination, origin: f.origin, travel_date: f.depart, nights: f.nights, adults: f.adults },
     }).then((r) => setAdvice(r.suggestions)).catch(() => setAdvice([]));
     api<Card>(`/api/strategist/best-time/${f.destination}`).then(setBestTime).catch(() => undefined);
+  };
+
+  /** Constraint solver: picks the best onward + stay + return that satisfies every constraint. */
+  const autoPlan = async () => {
+    search();
+    setPlanning(true);
+    try {
+      const res = await api<Card>("/api/plan/auto", {
+        method: "POST",
+        body: {
+          origin: form.origin, destination: form.destination, depart: form.depart, nights: form.nights, adults: form.adults,
+          mode: form.mode === "both" ? "any" : form.mode, round_trip: form.roundTrip, objective: form.objective,
+          budget_total: form.total ? +form.total : null, hotel_max_per_night: form.budget ? +form.budget : null,
+        },
+      });
+      if (res.status === "ok") {
+        setPicked({ out: res.plan.out, back: res.plan.back ?? undefined, stay: res.plan.stay });
+        setAutoNote({ ok: true, text: `Sara checked ${res.candidates_checked} combinations and picked the best one that meets all your conditions.` });
+      } else {
+        setAutoNote({ ok: false, text: res.reasons.join(" ") });
+      }
+    } catch (err) {
+      setAutoNote({ ok: false, text: (err as Error).message });
+    } finally {
+      setPlanning(false);
+    }
   };
 
   const chosen = useMemo(() => (Object.values(picked).filter(Boolean) as Card[]), [picked]);
@@ -258,12 +287,30 @@ export default function Plan() {
             <option value="10000">Up to ₹10,000</option>
           </select>
         </Field>
-        <div className="flex flex-col justify-end gap-2">
+        <Field label="Total trip budget" icon={<Sparkles size={13} />}>
+          <select className="input" value={form.total} onChange={(e) => setForm({ ...form, total: e.target.value })}>
+            <option value="">No limit</option>
+            {[15000, 25000, 40000, 60000, 100000, 150000, 250000].map((v) => <option key={v} value={v}>Up to ₹{v.toLocaleString("en-IN")}</option>)}
+          </select>
+        </Field>
+        <Field label="Priority" icon={<Check size={13} />}>
+          <select className="input" value={form.objective} onChange={(e) => setForm({ ...form, objective: e.target.value })}>
+            <option value="balanced">Best balance</option>
+            <option value="cheapest">Lowest price</option>
+            <option value="comfort">Most comfortable</option>
+          </select>
+        </Field>
+        <div className="flex flex-col justify-end gap-2 sm:col-span-2">
           <label className="flex items-center gap-2 text-sm text-ink-600">
             <input type="checkbox" className="size-4 accent-ink-950" checked={form.roundTrip} onChange={(e) => setForm({ ...form, roundTrip: e.target.checked })} />
             Include return journey
           </label>
-          <button className="btn-primary w-full py-3"><Search size={16} /> Search trip</button>
+          <div className="grid grid-cols-2 gap-2">
+            <button className="btn-outline w-full py-3"><Search size={16} /> Search &amp; compare</button>
+            <button type="button" onClick={autoPlan} disabled={planning} className="btn-primary w-full py-3">
+              {planning ? <Loader2 size={16} className="animate-spin" /> : <Sparkles size={16} />} Auto-plan best trip
+            </button>
+          </div>
         </div>
       </form>
 
@@ -288,7 +335,6 @@ export default function Plan() {
             )}
             <ResultBlock title={`Stays in ${destName} · ${searched.nights} night${searched.nights > 1 ? "s" : ""}`} icon={<Hotel size={16} className="text-mustard-600" />}
               section={stay} selectedId={picked.stay?.id} onSelect={toggle("stay")} render={(o) => <HotelOption o={o} />} empty="No stays in this budget — try a higher one." />
-            <p className="text-[11px] text-ink-400">Demo inventory: flights, trains and hotels are sandbox data, so no real tickets are issued.</p>
           </div>
 
           <aside className="space-y-4 lg:sticky lg:top-4">
@@ -298,7 +344,10 @@ export default function Plan() {
                 <div className="text-xs text-ink-300">{destName} · {day(searched.depart)} – {day(addDays(searched.depart, searched.nights))} · {searched.adults} adult{searched.adults > 1 ? "s" : ""}</div>
               </div>
               <div className="space-y-2 p-4">
-                {chosen.length === 0 && <p className="text-sm text-ink-500">Select a journey and a stay to build your trip.</p>}
+                {autoNote && (
+                  <p className={cx("rounded-lg p-2.5 text-xs", autoNote.ok ? "bg-emerald-50 text-emerald-800" : "bg-red-50 text-red-700")}>{autoNote.text}</p>
+                )}
+                {chosen.length === 0 && <p className="text-sm text-ink-500">Select a journey and a stay, or press “Auto-plan best trip”.</p>}
                 {(["out", "back", "stay"] as Kind[]).map((k) => picked[k] && (
                   <div key={k} className="flex items-start gap-2 text-sm">
                     <div className="flex-1">

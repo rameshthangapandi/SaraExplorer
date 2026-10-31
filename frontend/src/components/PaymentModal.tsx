@@ -71,7 +71,7 @@ export type VendorPay = {
   status: string;
   utr: string | null;
   upi_uri?: string;
-  vendor: { name: string; kind: string; upi_id: string; demo: boolean };
+  vendor: { name: string; kind: string; upi_id: string; pending: boolean };
 };
 
 function VendorQr({ p }: { p: VendorPay }) {
@@ -91,13 +91,8 @@ function VendorQr({ p }: { p: VendorPay }) {
   };
   return (
     <div className="flex flex-col items-center gap-2 rounded-2xl border border-ink-100 bg-cream p-4">
-      {p.vendor.demo && (
-        <div className="w-full rounded-lg bg-red-600 px-3 py-1.5 text-center text-xs font-bold uppercase tracking-wider text-white">
-          Demo QR · sample vendor · do not pay
-        </div>
-      )}
       <div className="relative">
-        {qr ? <img src={qr} alt={`UPI QR code to pay ${inr(p.amount_inr)} to ${p.vendor.name}`} className={cx("size-48 rounded-xl bg-white p-2", p.vendor.demo && "opacity-90")} /> : <Loader2 className="animate-spin" />}
+        {qr ? <img src={qr} alt={`UPI QR code to pay ${inr(p.amount_inr)} to ${p.vendor.name}`} className="size-48 rounded-xl bg-white p-2" /> : <Loader2 className="animate-spin" />}
       </div>
       <div className="text-center text-sm">
         <div className="font-semibold">{p.vendor.name}</div>

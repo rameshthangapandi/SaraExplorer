@@ -88,8 +88,4 @@ DOCS = [
          text="You stay signed in until your session ends. You can see every signed-in device under Account & Security and "
               "sign them out individually or all at once. Sara Explorer never asks for your password, OTP or UPI PIN in chat.",
          source="Sara Explorer help"),
-    dict(id="app-sandbox", title="Demo mode", tags=["app", "help", "demo", "sandbox", "test", "payment"],
-         text="This version is a demo: flights, trains and hotels come from a sandbox, so no real tickets are issued. "
-              "Vendors are sample vendors with demo QR codes that cannot receive money — do not pay them.",
-         source="Sara Explorer help"),
 ]

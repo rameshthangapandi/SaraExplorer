@@ -48,13 +48,13 @@ async def _submit_all(client, auth, order):
         assert r.status_code == 200, r.text
 
 
-async def test_one_payment_per_vendor_with_demo_qr(client, upi):
+async def test_one_payment_per_vendor_with_qr(client, upi):
     _, _, card, order = await _approved(client)
     pays = order["payments"]
     assert len(pays) == 2  # airline + hotel are different vendors
     assert sum(p["amount_inr"] for p in pays) == card["total_inr"]
     for p in pays:
-        assert p["vendor"]["demo"] is True
+        assert p["vendor"]["pending"] is True
         assert p["vendor"]["upi_id"].endswith("@sandbox")  # not a real UPI handle: can't receive money
         assert p["upi_uri"].startswith(f"upi://pay?pa={p['vendor']['upi_id']}")
         assert f"am={p['amount_inr']}.00" in p["upi_uri"]
@@ -66,7 +66,7 @@ async def test_each_vendor_confirms_its_own_part(client, upi):
     assert (await client.get("/api/bookings", headers=auth)).json() == []  # nothing booked yet
     assert (await client.post(f"/api/consents/{card['consent_id']}/reject", headers=auth)).status_code == 409
 
-    admin = await _login_or_register(client, "admin@example.com")  # confirms on behalf of demo vendors
+    admin = await _login_or_register(client, "admin@example.com")  # confirms on behalf of vendors not live yet
     mine = {p["order_id"] for p in order["payments"]}
     pending = [p for p in (await client.get("/api/vendor-portal/payments", headers=admin)).json() if p["order_id"] in mine]
     assert len(pending) == 2
@@ -101,18 +101,18 @@ async def test_real_vendor_owner_confirms_and_others_cannot(client, upi):
     hotel_name = order["payments"][0]["vendor"]["name"] if order["payments"][0]["vendor"]["kind"] == "hotel" else order["payments"][1]["vendor"]["name"]
     hotel = next(v for v in vendors if v["name"] == hotel_name)
 
-    # Can't go live with a demo UPI ID; can after adding a real one.
+    # Cannot go live with a placeholder UPI ID; can after adding the verified one.
     assert (await client.patch(f"/api/admin/vendors/{hotel['id']}", json={"live": True}, headers=admin)).status_code == 422
     assert (await client.patch(f"/api/admin/vendors/{hotel['id']}", json={"upi_id": "not a upi"}, headers=admin)).status_code == 422
     owner_email = f"owner{uuid.uuid4().hex[:6]}@example.com"
     r = await client.patch(f"/api/admin/vendors/{hotel['id']}",
                            json={"upi_id": "realhotel@okaxis", "owner_email": owner_email, "live": True}, headers=admin)
-    assert r.status_code == 200 and r.json()["demo"] is False
+    assert r.status_code == 200 and r.json()["pending"] is False
 
     # A new trip now shows the vendor's real UPI ID.
     _, auth2, _, order2 = await _approved(client)
     live = [p for p in order2["payments"] if p["vendor"]["name"] == hotel_name]  # same dates -> same sandbox hotel
-    assert live and live[0]["vendor"]["upi_id"] == "realhotel@okaxis" and live[0]["vendor"]["demo"] is False
+    assert live and live[0]["vendor"]["upi_id"] == "realhotel@okaxis" and live[0]["vendor"]["pending"] is False
 
     # Owner sees and confirms only their own payments; a random user sees nothing.
     pay = next(p for p in order["payments"] if p["vendor"]["name"] == hotel_name)

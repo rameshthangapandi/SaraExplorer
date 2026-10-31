@@ -1,0 +1,5702 @@
+[
+ {
+  "id": "Q001",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 7140,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "gangtok",
+   "depart": "2027-01-31",
+   "nights": 1,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 12900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q002",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 78470,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "amritsar",
+   "depart": "2027-02-17",
+   "nights": 4,
+   "adults": 5,
+   "mode": "flight",
+   "budget_total": 80800,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q003",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 18430,
+  "request": {
+   "origin": "Kochi",
+   "destination": "darjeeling",
+   "depart": "2027-02-04",
+   "nights": 3,
+   "adults": 2,
+   "mode": "train",
+   "budget_total": 24900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q004",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 12085,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "gangtok",
+   "depart": "2027-01-30",
+   "nights": 1,
+   "adults": 3,
+   "mode": "train",
+   "budget_total": 16300,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q005",
+  "level": "easy",
+  "feasible": false,
+  "oracle_min_total": 96200,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "alleppey",
+   "depart": "2026-12-26",
+   "nights": 4,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 85100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q006",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 64120,
+  "request": {
+   "origin": "Mumbai",
+   "destination": "udaipur",
+   "depart": "2027-01-13",
+   "nights": 5,
+   "adults": 4,
+   "mode": "train",
+   "budget_total": 115400,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q007",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 27570,
+  "request": {
+   "origin": "Delhi",
+   "destination": "andaman",
+   "depart": "2026-12-08",
+   "nights": 2,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 49600,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q008",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 15820,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "shimla",
+   "depart": "2027-02-26",
+   "nights": 1,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 21400,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q009",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 43800,
+  "request": {
+   "origin": "Kochi",
+   "destination": "gangtok",
+   "depart": "2027-02-07",
+   "nights": 4,
+   "adults": 4,
+   "mode": "train",
+   "budget_total": 45100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q010",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 42940,
+  "request": {
+   "origin": "Kochi",
+   "destination": "hampi",
+   "depart": "2027-01-07",
+   "nights": 5,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 49400,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q011",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 40000,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "jaisalmer",
+   "depart": "2027-01-14",
+   "nights": 4,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 41200,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q012",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 16420,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "jaisalmer",
+   "depart": "2027-02-21",
+   "nights": 1,
+   "adults": 4,
+   "mode": "train",
+   "budget_total": 29600,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q013",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 46185,
+  "request": {
+   "origin": "Delhi",
+   "destination": "puducherry",
+   "depart": "2027-01-18",
+   "nights": 3,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 62300,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q014",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 28720,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "puducherry",
+   "depart": "2027-02-28",
+   "nights": 4,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 38800,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q015",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 44305,
+  "request": {
+   "origin": "Kochi",
+   "destination": "rishikesh",
+   "depart": "2026-11-27",
+   "nights": 5,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 79700,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q016",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 25410,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "tawang",
+   "depart": "2026-12-05",
+   "nights": 4,
+   "adults": 1,
+   "mode": "flight",
+   "budget_total": 34300,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q017",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 41200,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "andaman",
+   "depart": "2027-01-28",
+   "nights": 2,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 55600,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q018",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 58420,
+  "request": {
+   "origin": "Chennai",
+   "destination": "kolkata",
+   "depart": "2027-02-08",
+   "nights": 1,
+   "adults": 5,
+   "mode": "flight",
+   "budget_total": 67200,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q019",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 34730,
+  "request": {
+   "origin": "Kochi",
+   "destination": "manali",
+   "depart": "2027-01-10",
+   "nights": 6,
+   "adults": 1,
+   "mode": "flight",
+   "budget_total": 39900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q020",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 60695,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "kochi",
+   "depart": "2026-12-14",
+   "nights": 4,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 62500,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q021",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 41440,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "alleppey",
+   "depart": "2026-12-02",
+   "nights": 3,
+   "adults": 4,
+   "mode": "train",
+   "budget_total": 47700,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q022",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 70775,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "jaisalmer",
+   "depart": "2026-11-25",
+   "nights": 5,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 72900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q023",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 59450,
+  "request": {
+   "origin": "Chennai",
+   "destination": "goa",
+   "depart": "2026-11-21",
+   "nights": 4,
+   "adults": 3,
+   "mode": "flight",
+   "budget_total": 80300,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q024",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 9440,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "tawang",
+   "depart": "2027-01-17",
+   "nights": 2,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 10900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q025",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 25695,
+  "request": {
+   "origin": "Pune",
+   "destination": "rishikesh",
+   "depart": "2026-11-23",
+   "nights": 6,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 29500,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q026",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 94395,
+  "request": {
+   "origin": "Mumbai",
+   "destination": "gangtok",
+   "depart": "2026-12-20",
+   "nights": 3,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 108600,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q027",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 59260,
+  "request": {
+   "origin": "Mumbai",
+   "destination": "goa",
+   "depart": "2027-01-01",
+   "nights": 3,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 61000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q028",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 16460,
+  "request": {
+   "origin": "Delhi",
+   "destination": "srinagar",
+   "depart": "2026-11-25",
+   "nights": 1,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 22200,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q029",
+  "level": "easy",
+  "feasible": false,
+  "oracle_min_total": 79705,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "hampi",
+   "depart": "2027-01-29",
+   "nights": 6,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 58100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q030",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 49270,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "jaisalmer",
+   "depart": "2027-01-03",
+   "nights": 6,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 66500,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q031",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 58605,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "udaipur",
+   "depart": "2026-11-13",
+   "nights": 3,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 60400,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q032",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 20940,
+  "request": {
+   "origin": "Pune",
+   "destination": "munnar",
+   "depart": "2027-01-23",
+   "nights": 1,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 24100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q033",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 33970,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "delhi",
+   "depart": "2026-11-30",
+   "nights": 5,
+   "adults": 1,
+   "mode": "flight",
+   "budget_total": 45900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q034",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 52380,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "varanasi",
+   "depart": "2026-12-25",
+   "nights": 4,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 94300,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q035",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 36520,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "rishikesh",
+   "depart": "2027-01-18",
+   "nights": 1,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 42000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q036",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 56320,
+  "request": {
+   "origin": "Delhi",
+   "destination": "leh",
+   "depart": "2027-01-18",
+   "nights": 4,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 76000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q037",
+  "level": "easy",
+  "feasible": false,
+  "oracle_min_total": 87670,
+  "request": {
+   "origin": "Kochi",
+   "destination": "andaman",
+   "depart": "2026-11-21",
+   "nights": 2,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 76900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q038",
+  "level": "hard",
+  "feasible": false,
+  "oracle_min_total": 84510,
+  "request": {
+   "origin": "Kolkata",
+   "destination": "munnar",
+   "depart": "2027-01-30",
+   "nights": 5,
+   "adults": 3,
+   "mode": "flight",
+   "budget_total": 56700,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q039",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 90705,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "amritsar",
+   "depart": "2026-12-31",
+   "nights": 6,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 122500,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q040",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 99120,
+  "request": {
+   "origin": "Chennai",
+   "destination": "alleppey",
+   "depart": "2026-12-25",
+   "nights": 4,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 133800,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q041",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 28995,
+  "request": {
+   "origin": "Kochi",
+   "destination": "udaipur",
+   "depart": "2026-11-29",
+   "nights": 4,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 52200,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q042",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 62130,
+  "request": {
+   "origin": "Kochi",
+   "destination": "rishikesh",
+   "depart": "2026-11-20",
+   "nights": 3,
+   "adults": 3,
+   "mode": "flight",
+   "budget_total": 64000,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q043",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 59810,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "andaman",
+   "depart": "2026-12-19",
+   "nights": 5,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 68800,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q044",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 80720,
+  "request": {
+   "origin": "Mumbai",
+   "destination": "agra",
+   "depart": "2026-11-28",
+   "nights": 6,
+   "adults": 4,
+   "mode": "train",
+   "budget_total": 92800,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q045",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 34290,
+  "request": {
+   "origin": "Kolkata",
+   "destination": "srinagar",
+   "depart": "2027-01-18",
+   "nights": 3,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 61700,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q046",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 121060,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "mumbai",
+   "depart": "2026-11-11",
+   "nights": 5,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 163400,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q047",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 23350,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "rishikesh",
+   "depart": "2027-02-10",
+   "nights": 5,
+   "adults": 1,
+   "mode": "flight",
+   "budget_total": 24100,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q048",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 35995,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "delhi",
+   "depart": "2027-02-25",
+   "nights": 6,
+   "adults": 1,
+   "mode": "train",
+   "budget_total": 64800,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q049",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 28080,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "shimla",
+   "depart": "2027-02-24",
+   "nights": 3,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 37900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q050",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 26280,
+  "request": {
+   "origin": "Mumbai",
+   "destination": "tawang",
+   "depart": "2027-01-12",
+   "nights": 3,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 30200,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q051",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 31860,
+  "request": {
+   "origin": "Pune",
+   "destination": "gangtok",
+   "depart": "2027-01-20",
+   "nights": 3,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 57300,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q052",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 21480,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "manali",
+   "depart": "2027-02-21",
+   "nights": 4,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 29000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q053",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 30560,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "kochi",
+   "depart": "2026-12-07",
+   "nights": 2,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 41300,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q054",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 34995,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "puducherry",
+   "depart": "2026-11-25",
+   "nights": 3,
+   "adults": 3,
+   "mode": "train",
+   "budget_total": 47200,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q055",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 96290,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "delhi",
+   "depart": "2027-02-04",
+   "nights": 4,
+   "adults": 5,
+   "mode": "train",
+   "budget_total": 173300,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q056",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 36350,
+  "request": {
+   "origin": "Delhi",
+   "destination": "puducherry",
+   "depart": "2026-12-08",
+   "nights": 6,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 41800,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q057",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 72060,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "leh",
+   "depart": "2027-01-28",
+   "nights": 6,
+   "adults": 3,
+   "mode": "flight",
+   "budget_total": 82900,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q058",
+  "level": "hard",
+  "feasible": false,
+  "oracle_min_total": 17560,
+  "request": {
+   "origin": "Chennai",
+   "destination": "hampi",
+   "depart": "2027-02-04",
+   "nights": 2,
+   "adults": 3,
+   "mode": "train",
+   "budget_total": 15800,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q059",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 19680,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "amritsar",
+   "depart": "2027-01-14",
+   "nights": 2,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 26600,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q060",
+  "level": "medium",
+  "feasible": false,
+  "oracle_min_total": 27140,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "hampi",
+   "depart": "2027-01-10",
+   "nights": 3,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 20500,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q061",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 41260,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "leh",
+   "depart": "2027-02-25",
+   "nights": 4,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 74300,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q062",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 20100,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "jaipur",
+   "depart": "2027-02-22",
+   "nights": 4,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 27100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q063",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 89425,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "agra",
+   "depart": "2027-02-27",
+   "nights": 5,
+   "adults": 5,
+   "mode": "train",
+   "budget_total": 102800,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q064",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 41710,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "tawang",
+   "depart": "2026-12-02",
+   "nights": 3,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 75100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q065",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 30700,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "manali",
+   "depart": "2026-11-13",
+   "nights": 4,
+   "adults": 2,
+   "mode": "flight",
+   "budget_total": 41400,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q066",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 49605,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "darjeeling",
+   "depart": "2026-11-27",
+   "nights": 5,
+   "adults": 3,
+   "mode": "train",
+   "budget_total": 57000,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q067",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 141790,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "tawang",
+   "depart": "2027-02-22",
+   "nights": 6,
+   "adults": 5,
+   "mode": "flight",
+   "budget_total": 163100,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q068",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 60160,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "rann-of-kutch",
+   "depart": "2026-12-25",
+   "nights": 2,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 62000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q069",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 55840,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "agra",
+   "depart": "2027-01-08",
+   "nights": 6,
+   "adults": 4,
+   "mode": "train",
+   "budget_total": 57500,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q070",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 48135,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "rann-of-kutch",
+   "depart": "2027-02-22",
+   "nights": 3,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 49600,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q071",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 10440,
+  "request": {
+   "origin": "Pune",
+   "destination": "manali",
+   "depart": "2027-02-24",
+   "nights": 2,
+   "adults": 2,
+   "mode": "train",
+   "budget_total": 12000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q072",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 67590,
+  "request": {
+   "origin": "Pune",
+   "destination": "amritsar",
+   "depart": "2027-01-03",
+   "nights": 4,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 121700,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q073",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 21060,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "hampi",
+   "depart": "2027-01-10",
+   "nights": 1,
+   "adults": 2,
+   "mode": "flight",
+   "budget_total": 24200,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q074",
+  "level": "easy",
+  "feasible": false,
+  "oracle_min_total": 34120,
+  "request": {
+   "origin": "Chennai",
+   "destination": "mumbai",
+   "depart": "2027-01-04",
+   "nights": 2,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 31100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q075",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 41430,
+  "request": {
+   "origin": "Kochi",
+   "destination": "tawang",
+   "depart": "2026-12-14",
+   "nights": 3,
+   "adults": 3,
+   "mode": "train",
+   "budget_total": 55900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q076",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 36040,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "varanasi",
+   "depart": "2026-11-23",
+   "nights": 2,
+   "adults": 5,
+   "mode": "train",
+   "budget_total": 37100,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q077",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 20840,
+  "request": {
+   "origin": "Kochi",
+   "destination": "shillong",
+   "depart": "2026-12-21",
+   "nights": 3,
+   "adults": 1,
+   "mode": "train",
+   "budget_total": 21500,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q078",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 24515,
+  "request": {
+   "origin": "Mumbai",
+   "destination": "gangtok",
+   "depart": "2027-01-06",
+   "nights": 5,
+   "adults": 1,
+   "mode": "train",
+   "budget_total": 25300,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q079",
+  "level": "easy",
+  "feasible": false,
+  "oracle_min_total": 26400,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "varanasi",
+   "depart": "2026-11-13",
+   "nights": 1,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 20400,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q080",
+  "level": "easy",
+  "feasible": false,
+  "oracle_min_total": 71050,
+  "request": {
+   "origin": "Delhi",
+   "destination": "amritsar",
+   "depart": "2026-11-19",
+   "nights": 5,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 64500,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q081",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 20800,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "varanasi",
+   "depart": "2026-12-19",
+   "nights": 4,
+   "adults": 2,
+   "mode": "train",
+   "budget_total": 28100,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q082",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 47200,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "shimla",
+   "depart": "2027-01-25",
+   "nights": 2,
+   "adults": 4,
+   "mode": "flight",
+   "budget_total": 85000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q083",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 18950,
+  "request": {
+   "origin": "Delhi",
+   "destination": "darjeeling",
+   "depart": "2026-12-07",
+   "nights": 4,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 25600,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q084",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 14130,
+  "request": {
+   "origin": "Pune",
+   "destination": "amritsar",
+   "depart": "2027-01-23",
+   "nights": 1,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 16200,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q085",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 38970,
+  "request": {
+   "origin": "Mumbai",
+   "destination": "tawang",
+   "depart": "2027-01-02",
+   "nights": 4,
+   "adults": 1,
+   "mode": "flight",
+   "budget_total": 52600,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q086",
+  "level": "easy",
+  "feasible": false,
+  "oracle_min_total": 106680,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "jaipur",
+   "depart": "2026-12-07",
+   "nights": 6,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 79300,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q087",
+  "level": "easy",
+  "feasible": false,
+  "oracle_min_total": 24750,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "mumbai",
+   "depart": "2026-11-18",
+   "nights": 3,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 19700,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q088",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 92380,
+  "request": {
+   "origin": "Kolkata",
+   "destination": "agra",
+   "depart": "2027-02-07",
+   "nights": 6,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 106200,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q089",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 128970,
+  "request": {
+   "origin": "Delhi",
+   "destination": "shillong",
+   "depart": "2026-12-25",
+   "nights": 2,
+   "adults": 5,
+   "mode": "flight",
+   "budget_total": 132800,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q090",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 102880,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "agra",
+   "depart": "2027-01-05",
+   "nights": 6,
+   "adults": 5,
+   "mode": "flight",
+   "budget_total": 118300,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q091",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 49620,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "kochi",
+   "depart": "2026-12-15",
+   "nights": 6,
+   "adults": 2,
+   "mode": "flight",
+   "budget_total": 57100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q092",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 25260,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "gangtok",
+   "depart": "2027-02-17",
+   "nights": 2,
+   "adults": 4,
+   "mode": "train",
+   "budget_total": 26000,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q093",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 41520,
+  "request": {
+   "origin": "Pune",
+   "destination": "agra",
+   "depart": "2027-02-07",
+   "nights": 4,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 56100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q094",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 92755,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "agra",
+   "depart": "2027-02-13",
+   "nights": 6,
+   "adults": 5,
+   "mode": "train",
+   "budget_total": 167000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q095",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 107100,
+  "request": {
+   "origin": "Kolkata",
+   "destination": "hampi",
+   "depart": "2027-02-04",
+   "nights": 5,
+   "adults": 5,
+   "mode": "flight",
+   "budget_total": 123200,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q096",
+  "level": "hard",
+  "feasible": false,
+  "oracle_min_total": 62160,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "delhi",
+   "depart": "2026-12-11",
+   "nights": 6,
+   "adults": 4,
+   "mode": "train",
+   "budget_total": 37400,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q097",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 19760,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "udaipur",
+   "depart": "2026-12-12",
+   "nights": 1,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 20400,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q098",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 48820,
+  "request": {
+   "origin": "Mumbai",
+   "destination": "delhi",
+   "depart": "2026-12-09",
+   "nights": 3,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 87900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q099",
+  "level": "hard",
+  "feasible": false,
+  "oracle_min_total": 76705,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "srinagar",
+   "depart": "2026-12-12",
+   "nights": 4,
+   "adults": 5,
+   "mode": "train",
+   "budget_total": 59500,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q100",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 23100,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "srinagar",
+   "depart": "2027-02-09",
+   "nights": 4,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 31200,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q101",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 58640,
+  "request": {
+   "origin": "Mumbai",
+   "destination": "shimla",
+   "depart": "2026-12-29",
+   "nights": 2,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 105600,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q102",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 58540,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "srinagar",
+   "depart": "2027-01-18",
+   "nights": 5,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 79000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q103",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 70320,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "shimla",
+   "depart": "2026-12-02",
+   "nights": 5,
+   "adults": 3,
+   "mode": "flight",
+   "budget_total": 80900,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q104",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 48660,
+  "request": {
+   "origin": "Pune",
+   "destination": "mumbai",
+   "depart": "2027-01-12",
+   "nights": 6,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 65700,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q105",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 101200,
+  "request": {
+   "origin": "Pune",
+   "destination": "shimla",
+   "depart": "2027-02-06",
+   "nights": 6,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 136600,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q106",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 50980,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "puducherry",
+   "depart": "2026-12-29",
+   "nights": 5,
+   "adults": 2,
+   "mode": "train",
+   "budget_total": 68800,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q107",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 65330,
+  "request": {
+   "origin": "Chennai",
+   "destination": "shillong",
+   "depart": "2027-01-23",
+   "nights": 4,
+   "adults": 3,
+   "mode": "flight",
+   "budget_total": 117600,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q108",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 29240,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "rishikesh",
+   "depart": "2027-01-04",
+   "nights": 5,
+   "adults": 2,
+   "mode": "flight",
+   "budget_total": 30100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q109",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 41960,
+  "request": {
+   "origin": "Mumbai",
+   "destination": "jaisalmer",
+   "depart": "2027-01-25",
+   "nights": 3,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 43200,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q110",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 16460,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "srinagar",
+   "depart": "2026-11-10",
+   "nights": 1,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 29600,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q111",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 43560,
+  "request": {
+   "origin": "Mumbai",
+   "destination": "manali",
+   "depart": "2027-02-20",
+   "nights": 5,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 50100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q112",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 43440,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "shimla",
+   "depart": "2026-11-29",
+   "nights": 4,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 44700,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q113",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 16970,
+  "request": {
+   "origin": "Delhi",
+   "destination": "jaisalmer",
+   "depart": "2027-01-09",
+   "nights": 3,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 17500,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q114",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 23770,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "gangtok",
+   "depart": "2026-12-11",
+   "nights": 4,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 27300,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q115",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 22320,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "hampi",
+   "depart": "2027-01-26",
+   "nights": 3,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 40200,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q116",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 31840,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "shimla",
+   "depart": "2026-12-26",
+   "nights": 1,
+   "adults": 4,
+   "mode": "train",
+   "budget_total": 43000,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q117",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 57680,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "gangtok",
+   "depart": "2026-12-03",
+   "nights": 5,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 77900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q118",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 26710,
+  "request": {
+   "origin": "Kolkata",
+   "destination": "udaipur",
+   "depart": "2027-02-12",
+   "nights": 3,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 36100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q119",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 12630,
+  "request": {
+   "origin": "Kolkata",
+   "destination": "delhi",
+   "depart": "2027-01-26",
+   "nights": 2,
+   "adults": 1,
+   "mode": "train",
+   "budget_total": 13000,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q120",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 117720,
+  "request": {
+   "origin": "Pune",
+   "destination": "mumbai",
+   "depart": "2027-01-03",
+   "nights": 5,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 211900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q121",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 25150,
+  "request": {
+   "origin": "Kolkata",
+   "destination": "tawang",
+   "depart": "2027-01-10",
+   "nights": 1,
+   "adults": 3,
+   "mode": "flight",
+   "budget_total": 34000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q122",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 14805,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "tawang",
+   "depart": "2026-11-16",
+   "nights": 1,
+   "adults": 3,
+   "mode": "train",
+   "budget_total": 20000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q123",
+  "level": "easy",
+  "feasible": false,
+  "oracle_min_total": 17500,
+  "request": {
+   "origin": "Chennai",
+   "destination": "jaipur",
+   "depart": "2026-11-19",
+   "nights": 2,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 12600,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q124",
+  "level": "hard",
+  "feasible": false,
+  "oracle_min_total": 17110,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "shillong",
+   "depart": "2027-01-07",
+   "nights": 1,
+   "adults": 5,
+   "mode": "train",
+   "budget_total": 12600,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q125",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 35620,
+  "request": {
+   "origin": "Mumbai",
+   "destination": "delhi",
+   "depart": "2027-02-19",
+   "nights": 1,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 64100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q126",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 15730,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "shillong",
+   "depart": "2027-02-12",
+   "nights": 1,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 21200,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q127",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 54370,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "manali",
+   "depart": "2026-11-16",
+   "nights": 4,
+   "adults": 3,
+   "mode": "flight",
+   "budget_total": 56000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q128",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 57020,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "udaipur",
+   "depart": "2027-02-23",
+   "nights": 4,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 65600,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q129",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 9790,
+  "request": {
+   "origin": "Kolkata",
+   "destination": "puducherry",
+   "depart": "2027-02-17",
+   "nights": 1,
+   "adults": 2,
+   "mode": "train",
+   "budget_total": 11300,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q130",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 9840,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "srinagar",
+   "depart": "2026-11-13",
+   "nights": 1,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 10100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q131",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 55300,
+  "request": {
+   "origin": "Mumbai",
+   "destination": "goa",
+   "depart": "2026-12-26",
+   "nights": 5,
+   "adults": 1,
+   "mode": "flight",
+   "budget_total": 74700,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q132",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 27770,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "shillong",
+   "depart": "2026-11-24",
+   "nights": 5,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 50000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q133",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 77560,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "rishikesh",
+   "depart": "2026-11-29",
+   "nights": 2,
+   "adults": 5,
+   "mode": "flight",
+   "budget_total": 139600,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q134",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 19830,
+  "request": {
+   "origin": "Kolkata",
+   "destination": "tawang",
+   "depart": "2027-02-20",
+   "nights": 5,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 22800,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q135",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 94200,
+  "request": {
+   "origin": "Mumbai",
+   "destination": "darjeeling",
+   "depart": "2026-12-20",
+   "nights": 3,
+   "adults": 3,
+   "mode": "flight",
+   "budget_total": 97000,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q136",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 14850,
+  "request": {
+   "origin": "Kochi",
+   "destination": "manali",
+   "depart": "2027-01-18",
+   "nights": 1,
+   "adults": 1,
+   "mode": "flight",
+   "budget_total": 15300,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q137",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 59145,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "udaipur",
+   "depart": "2027-02-05",
+   "nights": 3,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 68000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q138",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 112760,
+  "request": {
+   "origin": "Kochi",
+   "destination": "andaman",
+   "depart": "2027-02-09",
+   "nights": 4,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 116100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q139",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 77790,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "alleppey",
+   "depart": "2026-12-05",
+   "nights": 5,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 80100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q140",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 36350,
+  "request": {
+   "origin": "Delhi",
+   "destination": "udaipur",
+   "depart": "2027-01-08",
+   "nights": 6,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 65400,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q141",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 36350,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "mumbai",
+   "depart": "2027-02-28",
+   "nights": 3,
+   "adults": 1,
+   "mode": "flight",
+   "budget_total": 41800,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q142",
+  "level": "easy",
+  "feasible": false,
+  "oracle_min_total": 7670,
+  "request": {
+   "origin": "Chennai",
+   "destination": "jaisalmer",
+   "depart": "2027-02-05",
+   "nights": 1,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 7000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q143",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 35270,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "kochi",
+   "depart": "2027-02-20",
+   "nights": 6,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 63500,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q144",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 9340,
+  "request": {
+   "origin": "Pune",
+   "destination": "shillong",
+   "depart": "2027-01-04",
+   "nights": 2,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 12600,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q145",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 71850,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "shillong",
+   "depart": "2027-02-12",
+   "nights": 5,
+   "adults": 5,
+   "mode": "train",
+   "budget_total": 82600,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q146",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 26200,
+  "request": {
+   "origin": "Chennai",
+   "destination": "amritsar",
+   "depart": "2027-02-17",
+   "nights": 2,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 27000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q147",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 8050,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "srinagar",
+   "depart": "2027-02-06",
+   "nights": 1,
+   "adults": 1,
+   "mode": "train",
+   "budget_total": 14500,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q148",
+  "level": "hard",
+  "feasible": false,
+  "oracle_min_total": 41700,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "udaipur",
+   "depart": "2027-02-13",
+   "nights": 3,
+   "adults": 4,
+   "mode": "train",
+   "budget_total": 36600,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q149",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 14610,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "tawang",
+   "depart": "2027-01-22",
+   "nights": 3,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 19700,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q150",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 30080,
+  "request": {
+   "origin": "Kolkata",
+   "destination": "rishikesh",
+   "depart": "2027-01-21",
+   "nights": 3,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 31000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q151",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 224630,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "rann-of-kutch",
+   "depart": "2026-11-10",
+   "nights": 6,
+   "adults": 5,
+   "mode": "flight",
+   "budget_total": 231400,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q152",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 79860,
+  "request": {
+   "origin": "Kochi",
+   "destination": "varanasi",
+   "depart": "2026-11-12",
+   "nights": 1,
+   "adults": 4,
+   "mode": "flight",
+   "budget_total": 82300,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q153",
+  "level": "medium",
+  "feasible": false,
+  "oracle_min_total": 28490,
+  "request": {
+   "origin": "Delhi",
+   "destination": "manali",
+   "depart": "2027-02-14",
+   "nights": 5,
+   "adults": 2,
+   "mode": "flight",
+   "budget_total": 21200,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q154",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 38540,
+  "request": {
+   "origin": "Kolkata",
+   "destination": "gangtok",
+   "depart": "2027-01-13",
+   "nights": 4,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 39700,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q155",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 32040,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "goa",
+   "depart": "2026-12-11",
+   "nights": 5,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 33000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q156",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 9390,
+  "request": {
+   "origin": "Delhi",
+   "destination": "mumbai",
+   "depart": "2026-12-06",
+   "nights": 1,
+   "adults": 1,
+   "mode": "train",
+   "budget_total": 16900,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q157",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 41150,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "alleppey",
+   "depart": "2026-12-02",
+   "nights": 5,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 47300,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q158",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 7600,
+  "request": {
+   "origin": "Delhi",
+   "destination": "gangtok",
+   "depart": "2027-02-08",
+   "nights": 1,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 10300,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q159",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 88100,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "amritsar",
+   "depart": "2026-12-02",
+   "nights": 5,
+   "adults": 5,
+   "mode": "flight",
+   "budget_total": 101300,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q160",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 33440,
+  "request": {
+   "origin": "Kochi",
+   "destination": "delhi",
+   "depart": "2027-01-14",
+   "nights": 4,
+   "adults": 1,
+   "mode": "flight",
+   "budget_total": 34400,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q161",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 62800,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "goa",
+   "depart": "2027-02-03",
+   "nights": 4,
+   "adults": 4,
+   "mode": "train",
+   "budget_total": 64700,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q162",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 58600,
+  "request": {
+   "origin": "Chennai",
+   "destination": "munnar",
+   "depart": "2026-11-22",
+   "nights": 4,
+   "adults": 4,
+   "mode": "flight",
+   "budget_total": 79100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q163",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 39060,
+  "request": {
+   "origin": "Chennai",
+   "destination": "leh",
+   "depart": "2027-01-19",
+   "nights": 6,
+   "adults": 1,
+   "mode": "flight",
+   "budget_total": 44900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q164",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 30500,
+  "request": {
+   "origin": "Chennai",
+   "destination": "amritsar",
+   "depart": "2027-01-01",
+   "nights": 4,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 35100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q165",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 90315,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "rann-of-kutch",
+   "depart": "2026-11-27",
+   "nights": 6,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 103900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q166",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 63410,
+  "request": {
+   "origin": "Kolkata",
+   "destination": "varanasi",
+   "depart": "2026-12-31",
+   "nights": 2,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 114100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q167",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 64200,
+  "request": {
+   "origin": "Delhi",
+   "destination": "tawang",
+   "depart": "2027-02-05",
+   "nights": 5,
+   "adults": 3,
+   "mode": "flight",
+   "budget_total": 115600,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q168",
+  "level": "easy",
+  "feasible": false,
+  "oracle_min_total": 66470,
+  "request": {
+   "origin": "Mumbai",
+   "destination": "munnar",
+   "depart": "2026-11-25",
+   "nights": 4,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 42100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q169",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 53260,
+  "request": {
+   "origin": "Kochi",
+   "destination": "varanasi",
+   "depart": "2026-12-23",
+   "nights": 2,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 95900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q170",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 60570,
+  "request": {
+   "origin": "Chennai",
+   "destination": "mumbai",
+   "depart": "2027-01-09",
+   "nights": 5,
+   "adults": 2,
+   "mode": "flight",
+   "budget_total": 62400,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q171",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 24540,
+  "request": {
+   "origin": "Delhi",
+   "destination": "rishikesh",
+   "depart": "2026-11-26",
+   "nights": 2,
+   "adults": 5,
+   "mode": "train",
+   "budget_total": 33100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q172",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 37140,
+  "request": {
+   "origin": "Chennai",
+   "destination": "varanasi",
+   "depart": "2027-01-11",
+   "nights": 3,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 50100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q173",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 13595,
+  "request": {
+   "origin": "Chennai",
+   "destination": "amritsar",
+   "depart": "2026-12-26",
+   "nights": 1,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 14000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q174",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 75320,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "darjeeling",
+   "depart": "2026-11-19",
+   "nights": 6,
+   "adults": 4,
+   "mode": "flight",
+   "budget_total": 101700,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q175",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 48600,
+  "request": {
+   "origin": "Kochi",
+   "destination": "alleppey",
+   "depart": "2026-11-19",
+   "nights": 4,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 50100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q176",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 76750,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "mumbai",
+   "depart": "2027-01-01",
+   "nights": 5,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 79100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q177",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 13490,
+  "request": {
+   "origin": "Delhi",
+   "destination": "manali",
+   "depart": "2027-01-29",
+   "nights": 1,
+   "adults": 2,
+   "mode": "flight",
+   "budget_total": 18200,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q178",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 40610,
+  "request": {
+   "origin": "Chennai",
+   "destination": "srinagar",
+   "depart": "2026-11-24",
+   "nights": 5,
+   "adults": 1,
+   "mode": "flight",
+   "budget_total": 41800,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q179",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 34990,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "tawang",
+   "depart": "2026-11-26",
+   "nights": 6,
+   "adults": 1,
+   "mode": "flight",
+   "budget_total": 63000,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q180",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 19920,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "jaisalmer",
+   "depart": "2027-01-11",
+   "nights": 4,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 20500,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q181",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 83190,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "srinagar",
+   "depart": "2027-02-25",
+   "nights": 4,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 112300,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q182",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 6880,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "udaipur",
+   "depart": "2026-12-14",
+   "nights": 1,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 12400,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q183",
+  "level": "easy",
+  "feasible": false,
+  "oracle_min_total": 83780,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "mumbai",
+   "depart": "2027-01-05",
+   "nights": 4,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 72500,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q184",
+  "level": "hard",
+  "feasible": false,
+  "oracle_min_total": 37920,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "agra",
+   "depart": "2026-12-08",
+   "nights": 5,
+   "adults": 2,
+   "mode": "flight",
+   "budget_total": 29700,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q185",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 26320,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "goa",
+   "depart": "2027-01-22",
+   "nights": 4,
+   "adults": 1,
+   "mode": "train",
+   "budget_total": 30300,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q186",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 71010,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "tawang",
+   "depart": "2027-02-26",
+   "nights": 6,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 127800,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q187",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 53400,
+  "request": {
+   "origin": "Delhi",
+   "destination": "hampi",
+   "depart": "2027-02-14",
+   "nights": 5,
+   "adults": 4,
+   "mode": "train",
+   "budget_total": 72100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q188",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 13420,
+  "request": {
+   "origin": "Delhi",
+   "destination": "shimla",
+   "depart": "2027-01-07",
+   "nights": 2,
+   "adults": 1,
+   "mode": "flight",
+   "budget_total": 13800,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q189",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 40440,
+  "request": {
+   "origin": "Pune",
+   "destination": "gangtok",
+   "depart": "2027-01-24",
+   "nights": 4,
+   "adults": 3,
+   "mode": "train",
+   "budget_total": 72800,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q190",
+  "level": "medium",
+  "feasible": false,
+  "oracle_min_total": 79550,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "jaipur",
+   "depart": "2027-02-02",
+   "nights": 2,
+   "adults": 5,
+   "mode": "flight",
+   "budget_total": 63700,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q191",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 67120,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "hampi",
+   "depart": "2027-02-18",
+   "nights": 4,
+   "adults": 4,
+   "mode": "flight",
+   "budget_total": 77200,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q192",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 71640,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "goa",
+   "depart": "2026-11-21",
+   "nights": 6,
+   "adults": 4,
+   "mode": "train",
+   "budget_total": 129000,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q193",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 74770,
+  "request": {
+   "origin": "Delhi",
+   "destination": "rann-of-kutch",
+   "depart": "2026-12-28",
+   "nights": 6,
+   "adults": 2,
+   "mode": "train",
+   "budget_total": 134600,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q194",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 77440,
+  "request": {
+   "origin": "Kolkata",
+   "destination": "udaipur",
+   "depart": "2027-02-20",
+   "nights": 4,
+   "adults": 3,
+   "mode": "flight",
+   "budget_total": 139400,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q195",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 14500,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "agra",
+   "depart": "2026-12-16",
+   "nights": 1,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 19600,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q196",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 52840,
+  "request": {
+   "origin": "Kochi",
+   "destination": "tawang",
+   "depart": "2027-01-26",
+   "nights": 6,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 71300,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q197",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 32150,
+  "request": {
+   "origin": "Mumbai",
+   "destination": "shillong",
+   "depart": "2027-01-24",
+   "nights": 5,
+   "adults": 1,
+   "mode": "flight",
+   "budget_total": 57900,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q198",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 20820,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "udaipur",
+   "depart": "2027-01-24",
+   "nights": 2,
+   "adults": 2,
+   "mode": "flight",
+   "budget_total": 21400,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q199",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 23380,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "leh",
+   "depart": "2027-02-13",
+   "nights": 4,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 24100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q200",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 122930,
+  "request": {
+   "origin": "Kochi",
+   "destination": "varanasi",
+   "depart": "2027-01-30",
+   "nights": 6,
+   "adults": 5,
+   "mode": "flight",
+   "budget_total": 166000,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q201",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 24030,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "darjeeling",
+   "depart": "2027-01-21",
+   "nights": 5,
+   "adults": 2,
+   "mode": "train",
+   "budget_total": 27600,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q202",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 19100,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "udaipur",
+   "depart": "2027-02-28",
+   "nights": 1,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 25800,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q203",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 48120,
+  "request": {
+   "origin": "Mumbai",
+   "destination": "agra",
+   "depart": "2026-12-17",
+   "nights": 3,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 65000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q204",
+  "level": "medium",
+  "feasible": false,
+  "oracle_min_total": 216520,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "udaipur",
+   "depart": "2026-12-26",
+   "nights": 6,
+   "adults": 5,
+   "mode": "flight",
+   "budget_total": 173700,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q205",
+  "level": "hard",
+  "feasible": false,
+  "oracle_min_total": 36570,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "delhi",
+   "depart": "2026-12-16",
+   "nights": 5,
+   "adults": 1,
+   "mode": "flight",
+   "budget_total": 31100,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q206",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 27410,
+  "request": {
+   "origin": "Kolkata",
+   "destination": "puducherry",
+   "depart": "2027-02-05",
+   "nights": 1,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 28200,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q207",
+  "level": "medium",
+  "feasible": false,
+  "oracle_min_total": 77380,
+  "request": {
+   "origin": "Kochi",
+   "destination": "puducherry",
+   "depart": "2027-02-07",
+   "nights": 5,
+   "adults": 4,
+   "mode": "flight",
+   "budget_total": 49300,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q208",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 45990,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "rann-of-kutch",
+   "depart": "2026-12-16",
+   "nights": 3,
+   "adults": 3,
+   "mode": "train",
+   "budget_total": 62100,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q209",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 32820,
+  "request": {
+   "origin": "Chennai",
+   "destination": "hampi",
+   "depart": "2027-01-29",
+   "nights": 6,
+   "adults": 2,
+   "mode": "flight",
+   "budget_total": 33800,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q210",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 8480,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "tawang",
+   "depart": "2027-02-25",
+   "nights": 2,
+   "adults": 1,
+   "mode": "train",
+   "budget_total": 9800,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q211",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 23410,
+  "request": {
+   "origin": "Kolkata",
+   "destination": "rishikesh",
+   "depart": "2026-12-08",
+   "nights": 4,
+   "adults": 2,
+   "mode": "train",
+   "budget_total": 24100,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q212",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 67480,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "srinagar",
+   "depart": "2026-11-28",
+   "nights": 3,
+   "adults": 4,
+   "mode": "flight",
+   "budget_total": 91100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q213",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 21840,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "puducherry",
+   "depart": "2027-01-04",
+   "nights": 1,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 29500,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q214",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 28970,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "kochi",
+   "depart": "2026-11-20",
+   "nights": 2,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 39100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q215",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 31960,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "rann-of-kutch",
+   "depart": "2026-12-16",
+   "nights": 2,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 32900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q216",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 19840,
+  "request": {
+   "origin": "Kochi",
+   "destination": "manali",
+   "depart": "2026-12-11",
+   "nights": 1,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 22800,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q217",
+  "level": "easy",
+  "feasible": false,
+  "oracle_min_total": 52770,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "tawang",
+   "depart": "2027-02-27",
+   "nights": 6,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 38900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q218",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 23450,
+  "request": {
+   "origin": "Chennai",
+   "destination": "mumbai",
+   "depart": "2027-02-01",
+   "nights": 3,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 42200,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q219",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 14440,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "udaipur",
+   "depart": "2026-12-09",
+   "nights": 1,
+   "adults": 3,
+   "mode": "train",
+   "budget_total": 26000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q220",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 96160,
+  "request": {
+   "origin": "Mumbai",
+   "destination": "gangtok",
+   "depart": "2026-11-17",
+   "nights": 6,
+   "adults": 4,
+   "mode": "train",
+   "budget_total": 173100,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q221",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 74120,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "leh",
+   "depart": "2027-02-07",
+   "nights": 4,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 85200,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q222",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 30780,
+  "request": {
+   "origin": "Delhi",
+   "destination": "rishikesh",
+   "depart": "2027-01-13",
+   "nights": 3,
+   "adults": 5,
+   "mode": "train",
+   "budget_total": 55400,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q223",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 19840,
+  "request": {
+   "origin": "Kochi",
+   "destination": "jaisalmer",
+   "depart": "2027-01-17",
+   "nights": 1,
+   "adults": 4,
+   "mode": "train",
+   "budget_total": 35700,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q224",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 64480,
+  "request": {
+   "origin": "Mumbai",
+   "destination": "darjeeling",
+   "depart": "2027-01-25",
+   "nights": 4,
+   "adults": 5,
+   "mode": "train",
+   "budget_total": 116100,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q225",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 63395,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "alleppey",
+   "depart": "2027-02-15",
+   "nights": 3,
+   "adults": 5,
+   "mode": "any",
+   "budget_total": 114100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q226",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 95440,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "shillong",
+   "depart": "2027-02-10",
+   "nights": 4,
+   "adults": 5,
+   "mode": "flight",
+   "budget_total": 109800,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q227",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 10420,
+  "request": {
+   "origin": "Kolkata",
+   "destination": "gangtok",
+   "depart": "2027-01-07",
+   "nights": 1,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 12000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q228",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 28700,
+  "request": {
+   "origin": "Kolkata",
+   "destination": "jaipur",
+   "depart": "2027-02-23",
+   "nights": 2,
+   "adults": 2,
+   "mode": "flight",
+   "budget_total": 33000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q229",
+  "level": "medium",
+  "feasible": false,
+  "oracle_min_total": 40890,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "jaisalmer",
+   "depart": "2027-01-13",
+   "nights": 3,
+   "adults": 3,
+   "mode": "flight",
+   "budget_total": 37300,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q230",
+  "level": "hard",
+  "feasible": false,
+  "oracle_min_total": 62270,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "andaman",
+   "depart": "2026-12-02",
+   "nights": 5,
+   "adults": 2,
+   "mode": "flight",
+   "budget_total": 47000,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q231",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 63240,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "puducherry",
+   "depart": "2026-11-25",
+   "nights": 6,
+   "adults": 3,
+   "mode": "flight",
+   "budget_total": 113800,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q232",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 71800,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "manali",
+   "depart": "2026-12-31",
+   "nights": 4,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 96900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q233",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 11910,
+  "request": {
+   "origin": "Chennai",
+   "destination": "varanasi",
+   "depart": "2026-12-08",
+   "nights": 1,
+   "adults": 2,
+   "mode": "train",
+   "budget_total": 21400,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q234",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 66900,
+  "request": {
+   "origin": "Chennai",
+   "destination": "rishikesh",
+   "depart": "2027-02-11",
+   "nights": 4,
+   "adults": 3,
+   "mode": "flight",
+   "budget_total": 68900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q235",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 37930,
+  "request": {
+   "origin": "Pune",
+   "destination": "leh",
+   "depart": "2026-12-02",
+   "nights": 5,
+   "adults": 2,
+   "mode": "flight",
+   "budget_total": 51200,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q236",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 47390,
+  "request": {
+   "origin": "Chennai",
+   "destination": "munnar",
+   "depart": "2027-01-22",
+   "nights": 1,
+   "adults": 5,
+   "mode": "flight",
+   "budget_total": 64000,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q237",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 15880,
+  "request": {
+   "origin": "Kolkata",
+   "destination": "puducherry",
+   "depart": "2026-12-17",
+   "nights": 1,
+   "adults": 3,
+   "mode": "train",
+   "budget_total": 28600,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q238",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 11810,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "alleppey",
+   "depart": "2027-02-06",
+   "nights": 2,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 15900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q239",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 15360,
+  "request": {
+   "origin": "Pune",
+   "destination": "alleppey",
+   "depart": "2026-11-18",
+   "nights": 1,
+   "adults": 4,
+   "mode": "train",
+   "budget_total": 20700,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q240",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 32460,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "hampi",
+   "depart": "2026-11-17",
+   "nights": 2,
+   "adults": 4,
+   "mode": "train",
+   "budget_total": 58400,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q241",
+  "level": "medium",
+  "feasible": false,
+  "oracle_min_total": 43200,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "srinagar",
+   "depart": "2027-01-03",
+   "nights": 1,
+   "adults": 3,
+   "mode": "flight",
+   "budget_total": 39400,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q242",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 46510,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "agra",
+   "depart": "2026-12-19",
+   "nights": 4,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 53500,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q243",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 135600,
+  "request": {
+   "origin": "Chennai",
+   "destination": "leh",
+   "depart": "2027-01-15",
+   "nights": 5,
+   "adults": 5,
+   "mode": "flight",
+   "budget_total": 183100,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q244",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 23830,
+  "request": {
+   "origin": "Delhi",
+   "destination": "gangtok",
+   "depart": "2027-01-24",
+   "nights": 5,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 32200,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q245",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 21390,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "tawang",
+   "depart": "2027-01-24",
+   "nights": 6,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 22000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q246",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 43840,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "varanasi",
+   "depart": "2027-02-21",
+   "nights": 4,
+   "adults": 3,
+   "mode": "train",
+   "budget_total": 59200,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q247",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 18310,
+  "request": {
+   "origin": "Kolkata",
+   "destination": "srinagar",
+   "depart": "2027-02-02",
+   "nights": 3,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 24700,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q248",
+  "level": "hard",
+  "feasible": false,
+  "oracle_min_total": 60420,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "alleppey",
+   "depart": "2027-01-28",
+   "nights": 6,
+   "adults": 2,
+   "mode": "flight",
+   "budget_total": 50600,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q249",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 5680,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "jaisalmer",
+   "depart": "2026-12-07",
+   "nights": 1,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 6500,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q250",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 107720,
+  "request": {
+   "origin": "Pune",
+   "destination": "gangtok",
+   "depart": "2026-11-10",
+   "nights": 3,
+   "adults": 4,
+   "mode": "flight",
+   "budget_total": 111000,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q251",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 107080,
+  "request": {
+   "origin": "Kochi",
+   "destination": "shillong",
+   "depart": "2026-12-07",
+   "nights": 6,
+   "adults": 4,
+   "mode": "flight",
+   "budget_total": 123100,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q252",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 27440,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "munnar",
+   "depart": "2027-02-06",
+   "nights": 2,
+   "adults": 4,
+   "mode": "train",
+   "budget_total": 28300,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q253",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 13580,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "jaisalmer",
+   "depart": "2027-01-08",
+   "nights": 2,
+   "adults": 2,
+   "mode": "train",
+   "budget_total": 24400,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q254",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 32850,
+  "request": {
+   "origin": "Chennai",
+   "destination": "udaipur",
+   "depart": "2027-01-30",
+   "nights": 5,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 33800,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q255",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 37150,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "rann-of-kutch",
+   "depart": "2026-11-23",
+   "nights": 4,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 50200,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q256",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 62190,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "rishikesh",
+   "depart": "2026-12-22",
+   "nights": 1,
+   "adults": 3,
+   "mode": "flight",
+   "budget_total": 111900,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q257",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 52360,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "kolkata",
+   "depart": "2027-02-21",
+   "nights": 2,
+   "adults": 4,
+   "mode": "flight",
+   "budget_total": 70700,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q258",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 28770,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "puducherry",
+   "depart": "2026-12-04",
+   "nights": 5,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 51800,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q259",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 28000,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "delhi",
+   "depart": "2026-12-08",
+   "nights": 1,
+   "adults": 4,
+   "mode": "flight",
+   "budget_total": 50400,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q260",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 51240,
+  "request": {
+   "origin": "Pune",
+   "destination": "hampi",
+   "depart": "2026-12-28",
+   "nights": 4,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 69200,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q261",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 46760,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "jaisalmer",
+   "depart": "2027-01-14",
+   "nights": 2,
+   "adults": 4,
+   "mode": "flight",
+   "budget_total": 84200,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q262",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 36020,
+  "request": {
+   "origin": "Chennai",
+   "destination": "srinagar",
+   "depart": "2026-11-26",
+   "nights": 2,
+   "adults": 4,
+   "mode": "train",
+   "budget_total": 41400,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q263",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 71005,
+  "request": {
+   "origin": "Chennai",
+   "destination": "mumbai",
+   "depart": "2026-12-04",
+   "nights": 4,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 127800,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q264",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 54240,
+  "request": {
+   "origin": "Chennai",
+   "destination": "goa",
+   "depart": "2027-02-22",
+   "nights": 3,
+   "adults": 3,
+   "mode": "flight",
+   "budget_total": 62400,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q265",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 14830,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "shillong",
+   "depart": "2026-12-03",
+   "nights": 1,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 20000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q266",
+  "level": "medium",
+  "feasible": false,
+  "oracle_min_total": 15560,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "manali",
+   "depart": "2026-12-03",
+   "nights": 1,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 11800,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q267",
+  "level": "hard",
+  "feasible": false,
+  "oracle_min_total": 17600,
+  "request": {
+   "origin": "Kolkata",
+   "destination": "rann-of-kutch",
+   "depart": "2027-02-02",
+   "nights": 2,
+   "adults": 1,
+   "mode": "train",
+   "budget_total": 11600,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q268",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 40260,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "kolkata",
+   "depart": "2026-11-30",
+   "nights": 3,
+   "adults": 3,
+   "mode": "train",
+   "budget_total": 72500,
+   "hotel_max_per_night": 6000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q269",
+  "level": "easy",
+  "feasible": false,
+  "oracle_min_total": 7290,
+  "request": {
+   "origin": "Pune",
+   "destination": "jaipur",
+   "depart": "2026-11-16",
+   "nights": 1,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 6300,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q270",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 20830,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "jaisalmer",
+   "depart": "2027-01-25",
+   "nights": 4,
+   "adults": 2,
+   "mode": "train",
+   "budget_total": 37500,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q271",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 69040,
+  "request": {
+   "origin": "Mumbai",
+   "destination": "kochi",
+   "depart": "2027-01-24",
+   "nights": 6,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 71100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q272",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 22470,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "srinagar",
+   "depart": "2027-01-27",
+   "nights": 4,
+   "adults": 2,
+   "mode": "train",
+   "budget_total": 23100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q273",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 61445,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "delhi",
+   "depart": "2027-02-17",
+   "nights": 5,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 63300,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q274",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 55195,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "rishikesh",
+   "depart": "2027-01-01",
+   "nights": 5,
+   "adults": 3,
+   "mode": "any",
+   "budget_total": 99400,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q275",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 47400,
+  "request": {
+   "origin": "Kolkata",
+   "destination": "srinagar",
+   "depart": "2026-11-11",
+   "nights": 2,
+   "adults": 3,
+   "mode": "train",
+   "budget_total": 54500,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q276",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 15220,
+  "request": {
+   "origin": "Pune",
+   "destination": "munnar",
+   "depart": "2026-12-07",
+   "nights": 3,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 15700,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q277",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 14090,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "udaipur",
+   "depart": "2027-02-23",
+   "nights": 1,
+   "adults": 2,
+   "mode": "flight",
+   "budget_total": 25400,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q278",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 16420,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "delhi",
+   "depart": "2026-12-30",
+   "nights": 2,
+   "adults": 2,
+   "mode": "train",
+   "budget_total": 29600,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q279",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 46560,
+  "request": {
+   "origin": "Delhi",
+   "destination": "jaisalmer",
+   "depart": "2027-01-19",
+   "nights": 5,
+   "adults": 4,
+   "mode": "train",
+   "budget_total": 62900,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q280",
+  "level": "hard",
+  "feasible": false,
+  "oracle_min_total": 81480,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "varanasi",
+   "depart": "2026-12-01",
+   "nights": 6,
+   "adults": 3,
+   "mode": "flight",
+   "budget_total": 72000,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q281",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 25100,
+  "request": {
+   "origin": "Delhi",
+   "destination": "leh",
+   "depart": "2026-12-05",
+   "nights": 3,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 25900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q282",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 52180,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "manali",
+   "depart": "2027-01-25",
+   "nights": 5,
+   "adults": 3,
+   "mode": "flight",
+   "budget_total": 93900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q283",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 28980,
+  "request": {
+   "origin": "Mumbai",
+   "destination": "goa",
+   "depart": "2026-12-13",
+   "nights": 5,
+   "adults": 1,
+   "mode": "train",
+   "budget_total": 52200,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q284",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 12750,
+  "request": {
+   "origin": "Delhi",
+   "destination": "jaipur",
+   "depart": "2026-12-25",
+   "nights": 1,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 23000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q285",
+  "level": "hard",
+  "feasible": false,
+  "oracle_min_total": 123200,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "jaisalmer",
+   "depart": "2026-12-19",
+   "nights": 5,
+   "adults": 5,
+   "mode": "flight",
+   "budget_total": 93800,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q286",
+  "level": "easy",
+  "feasible": false,
+  "oracle_min_total": 35850,
+  "request": {
+   "origin": "Chennai",
+   "destination": "varanasi",
+   "depart": "2026-11-14",
+   "nights": 5,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 25800,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q287",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 14480,
+  "request": {
+   "origin": "Ahmedabad",
+   "destination": "darjeeling",
+   "depart": "2026-11-20",
+   "nights": 2,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 26100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q288",
+  "level": "easy",
+  "feasible": false,
+  "oracle_min_total": 43700,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "rann-of-kutch",
+   "depart": "2027-01-11",
+   "nights": 6,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 30000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q289",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 19380,
+  "request": {
+   "origin": "Chennai",
+   "destination": "manali",
+   "depart": "2026-11-18",
+   "nights": 4,
+   "adults": 1,
+   "mode": "train",
+   "budget_total": 22300,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q290",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 14400,
+  "request": {
+   "origin": "Delhi",
+   "destination": "jaipur",
+   "depart": "2026-11-21",
+   "nights": 2,
+   "adults": 1,
+   "mode": "flight",
+   "budget_total": 25900,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q291",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 38040,
+  "request": {
+   "origin": "Mumbai",
+   "destination": "varanasi",
+   "depart": "2027-02-25",
+   "nights": 1,
+   "adults": 3,
+   "mode": "flight",
+   "budget_total": 39200,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 3,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q292",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 91220,
+  "request": {
+   "origin": "Bengaluru",
+   "destination": "udaipur",
+   "depart": "2026-12-25",
+   "nights": 6,
+   "adults": 2,
+   "mode": "flight",
+   "budget_total": 94000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q293",
+  "level": "easy",
+  "feasible": false,
+  "oracle_min_total": 74180,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "rann-of-kutch",
+   "depart": "2026-12-29",
+   "nights": 6,
+   "adults": 2,
+   "mode": "any",
+   "budget_total": 48500,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q294",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 52730,
+  "request": {
+   "origin": "Kochi",
+   "destination": "gangtok",
+   "depart": "2027-02-14",
+   "nights": 5,
+   "adults": 2,
+   "mode": "flight",
+   "budget_total": 60600,
+   "hotel_max_per_night": 9000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q295",
+  "level": "easy",
+  "feasible": false,
+  "oracle_min_total": 11640,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "varanasi",
+   "depart": "2027-01-17",
+   "nights": 3,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 7200,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q296",
+  "level": "medium",
+  "feasible": true,
+  "oracle_min_total": 56880,
+  "request": {
+   "origin": "Guwahati",
+   "destination": "hampi",
+   "depart": "2026-12-03",
+   "nights": 3,
+   "adults": 3,
+   "mode": "flight",
+   "budget_total": 65400,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q297",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 57360,
+  "request": {
+   "origin": "Chennai",
+   "destination": "munnar",
+   "depart": "2027-01-09",
+   "nights": 6,
+   "adults": 4,
+   "mode": "any",
+   "budget_total": 59100,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q298",
+  "level": "hard",
+  "feasible": true,
+  "oracle_min_total": 50620,
+  "request": {
+   "origin": "Jaipur",
+   "destination": "shimla",
+   "depart": "2027-02-09",
+   "nights": 3,
+   "adults": 4,
+   "mode": "flight",
+   "budget_total": 68300,
+   "hotel_max_per_night": 14000,
+   "hotel_min_stars": 4,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q299",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 18410,
+  "request": {
+   "origin": "Lucknow",
+   "destination": "munnar",
+   "depart": "2026-12-26",
+   "nights": 2,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 19000,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ },
+ {
+  "id": "Q300",
+  "level": "easy",
+  "feasible": true,
+  "oracle_min_total": 14980,
+  "request": {
+   "origin": "Hyderabad",
+   "destination": "udaipur",
+   "depart": "2027-01-08",
+   "nights": 2,
+   "adults": 1,
+   "mode": "any",
+   "budget_total": 15400,
+   "hotel_max_per_night": null,
+   "hotel_min_stars": null,
+   "round_trip": true,
+   "objective": "balanced"
+  }
+ }
+]

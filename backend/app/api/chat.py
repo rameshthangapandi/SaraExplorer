@@ -66,6 +66,10 @@ async def chat_stream(body: ChatIn, user: User = Depends(get_current_user), db: 
                     cards.append(ev["card"])
                 elif ev["type"] == "status":
                     notes.append(ev["text"])
+                elif ev["type"] == "replace":
+                    text = ev["text"]
+                elif ev["type"] == "grounding":
+                    continue
                 yield _sse(ev)
         except RateLimitError:
             msg = "I'm getting a lot of requests right now. Please try again in a minute."

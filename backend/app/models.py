@@ -104,8 +104,8 @@ class ConsentRequest(Base):
 class Vendor(Base):
     """Who actually receives the traveller's money (Model B: pay the vendor directly).
 
-    Sandbox vendors are synthetic: their UPI ID uses the non-existent "@sandbox" handle, so a demo QR can't
-    move real money. An admin replaces it with the vendor's real UPI ID and marks the vendor live."""
+    A vendor starts as pending: its UPI ID uses the non-routable "@sandbox" handle, so no money can reach it
+    until an admin adds the vendor's verified UPI ID and marks the vendor live."""
 
     __tablename__ = "vendors"
 
@@ -114,7 +114,7 @@ class Vendor(Base):
     name: Mapped[str] = mapped_column(String(120))
     kind: Mapped[str] = mapped_column(String(20))  # airline | railway | hotel | guide | taxi
     upi_id: Mapped[str] = mapped_column(String(120))
-    synthetic: Mapped[bool] = mapped_column(Boolean, default=True)
+    pending: Mapped[bool] = mapped_column("synthetic", Boolean, default=True)  # True until the vendor is live
     owner_email: Mapped[str | None] = mapped_column(String(254), nullable=True, index=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 

@@ -13,6 +13,7 @@ from app.data.geo import AIRPORTS, STATIONS
 from app.knowledge.docs import DOCS, VERIFIED
 from app.knowledge.search import search as kb_search
 from app.models import User
+from app.planner.solver import TripRequest
 from app.providers import places, weather
 from app.security.deps import get_current_user
 from app.security.rate_limit import enforce
@@ -72,6 +73,29 @@ async def search_hotels(q: HotelQ, user: User = Depends(get_current_user)):
     await enforce(f"search:{user.id}", 40, 60)
     return _card_or_error(await tools.search_hotels(ToolContext(user.id), q.city, q.check_in.isoformat(),
                                                     q.check_out.isoformat(), q.guests, q.max_price_per_night))
+
+
+class AutoPlanQ(BaseModel):
+    origin: str = Field(max_length=60)
+    destination: str = Field(max_length=60)
+    depart: date
+    nights: int = Field(default=3, ge=1, le=14)
+    adults: int = Field(default=2, ge=1, le=9)
+    mode: str = Field(default="any", pattern="^(any|flight|train)$")
+    budget_total: int | None = Field(default=None, ge=500, le=2_000_000)
+    hotel_max_per_night: int | None = Field(default=None, ge=500, le=200_000)
+    hotel_min_stars: int | None = Field(default=None, ge=1, le=5)
+    round_trip: bool = True
+    objective: str = Field(default="balanced", pattern="^(cheapest|balanced|comfort)$")
+
+
+@router.post("/plan/auto")
+async def auto_plan(q: AutoPlanQ, user: User = Depends(get_current_user)):
+    """Constraint solver: best complete trip satisfying every constraint, or an explanation why none exists."""
+    await enforce(f"autoplan:{user.id}", 30, 60)
+    if q.depart < date.today():
+        raise HTTPException(422, "Departure date is in the past")
+    return await tools.run_auto_plan(user.id, TripRequest(**q.model_dump()))
 
 
 # ---------------------------------------------------------------- Explore

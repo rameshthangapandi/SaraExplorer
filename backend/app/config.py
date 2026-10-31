@@ -35,7 +35,7 @@ class Settings(BaseSettings):
     # Payments
     payment_provider: str = "upi"        # upi (pay vendors directly) | razorpay | mock (automated tests only)
     merchant_name: str = "Sara Explorer"
-    admin_emails: str = ""               # comma-separated; admins manage vendors and confirm for demo vendors
+    admin_emails: str = ""               # comma-separated; admins manage vendors and confirm for vendors not live yet
     razorpay_key_id: str = ""
     razorpay_key_secret: str = ""
     razorpay_webhook_secret: str = ""

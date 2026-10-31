@@ -185,7 +185,7 @@ export default function ConsentCard({ card: initial, onChange }: { card: Card; o
           <div className="text-[11px] font-semibold uppercase tracking-wider text-ink-500">Payments to vendors</div>
           {payments.map((p) => (
             <div key={p.order_id} className="flex flex-wrap items-center gap-2 text-sm">
-              <span className="flex-1 font-medium">{p.vendor?.name ?? "Vendor"}{p.vendor?.demo && <span className="ml-1.5 rounded bg-red-100 px-1.5 py-0.5 text-[10px] font-bold uppercase text-red-700">demo</span>}</span>
+              <span className="flex-1 font-medium">{p.vendor?.name ?? "Vendor"}</span>
               <span className="font-semibold">{inr(p.amount_inr)}</span>
               <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-bold ${
                 p.status === "paid" ? "bg-emerald-50 text-emerald-700" : p.status === "submitted" ? "bg-mustard-100 text-mustard-800" : p.status === "rejected" ? "bg-red-50 text-red-700" : "bg-ink-100 text-ink-600"}`}>

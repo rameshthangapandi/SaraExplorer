@@ -1,9 +1,8 @@
 """Consent, payment, booking and vendor-portal endpoints — the only path by which anything gets booked.
 
 Model B (default "upi" provider): the traveller pays each vendor directly — one UPI payment per vendor — and
-each vendor's part of the trip is booked only after THAT vendor confirms the money arrived. Sandbox vendors are
-synthetic (demo UPI IDs that can't receive money); an admin confirms on their behalf and can switch a vendor to
-its real UPI ID once the details are available."""
+each vendor's part of the trip is booked only after THAT vendor confirms the money arrived. Vendors that are not
+live yet are confirmed by an admin, who switches a vendor to its verified UPI ID once the details are available."""
 
 import json
 import logging
@@ -43,7 +42,7 @@ async def _expire_if_needed(db: AsyncSession, c: ConsentRequest) -> None:
 def _vendor_payment(p: Payment, v: Vendor | None) -> dict:
     out = {"order_id": p.order_id, "amount_inr": p.amount_paise // 100, "status": p.status,
            "utr": p.payment_id if p.status != "created" else None,
-           "vendor": {"name": v.name, "kind": v.kind, "upi_id": v.upi_id, "demo": v.synthetic} if v else None}
+           "vendor": {"name": v.name, "kind": v.kind, "upi_id": v.upi_id, "pending": v.pending} if v else None}
     if v and p.status == "created":
         out["upi_uri"] = gateway.upi_uri(p.order_id, p.amount_paise, v.upi_id, v.name)
     return out
@@ -301,10 +300,10 @@ async def webhook(request: Request, db: AsyncSession = Depends(get_db)):
 # ---------------------------------------------------------------- vendor portal: confirm money received
 
 def _vendor_scope(user: User):
-    """Vendors this user may confirm payments for: their own vendors, plus demo vendors if admin."""
+    """Vendors this user may confirm payments for: their own vendors, plus vendors that are not live yet if admin."""
     conds = [Vendor.owner_email == user.email.lower()]
     if is_admin(user):
-        conds.append(Vendor.synthetic.is_(True))
+        conds.append(Vendor.pending.is_(True))
     return or_(*conds)
 
 
@@ -327,7 +326,7 @@ async def portal_payments(status: str = "submitted", user: User = Depends(get_cu
         "id": p.id, "order_id": p.order_id, "utr": p.payment_id, "amount_inr": p.amount_paise // 100, "status": p.status,
         "created_at": aware(p.created_at).isoformat(), "trip": c.title,
         "items": [i["title"] for i in c.items if i.get("vendor_key") == v.key],
-        "vendor": {"name": v.name, "upi_id": v.upi_id, "demo": v.synthetic},
+        "vendor": {"name": v.name, "upi_id": v.upi_id, "pending": v.pending},
         "traveller": {"name": u.name, "email": u.email},
     } for p, v, c, u in rows]
 
@@ -376,13 +375,13 @@ async def portal_reject(payment_id: str, body: RejectIn, request: Request, user:
 # ---------------------------------------------------------------- admin: manage vendors
 
 def _vendor_dict(v: Vendor) -> dict:
-    return {"id": v.id, "key": v.key, "name": v.name, "kind": v.kind, "upi_id": v.upi_id, "demo": v.synthetic,
+    return {"id": v.id, "key": v.key, "name": v.name, "kind": v.kind, "upi_id": v.upi_id, "pending": v.pending,
             "owner_email": v.owner_email}
 
 
 @router.get("/admin/vendors")
 async def admin_vendors(admin: User = Depends(require_admin), db: AsyncSession = Depends(get_db)):
-    rows = (await db.scalars(select(Vendor).order_by(Vendor.synthetic, Vendor.kind, Vendor.name))).all()
+    rows = (await db.scalars(select(Vendor).order_by(Vendor.pending, Vendor.kind, Vendor.name))).all()
     return [_vendor_dict(v) for v in rows]
 
 
@@ -411,7 +410,7 @@ async def admin_update_vendor(vendor_id: str, body: VendorIn, request: Request, 
     if body.live is not None:
         if body.live and v.upi_id.endswith("@sandbox"):
             raise HTTPException(422, "Add the vendor's real UPI ID before marking it live.")
-        v.synthetic = not body.live
+        v.pending = not body.live
     audit(db, "vendor.updated", admin.id, v.id, fields=[k for k, val in body.model_dump().items() if val is not None],
           ip=client_ip(request))
     await db.commit()

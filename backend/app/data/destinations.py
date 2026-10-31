@@ -233,6 +233,14 @@ def find_destination(name: str) -> dict | None:
     for d in D:
         if key == d["name"].lower() or key in d["name"].lower() or d["slug"] in slug:
             return d
+    # Gateway towns: a place whose airport or station serves a destination resolves to that destination
+    # (e.g. Bhuj -> Rann of Kutch, Kullu -> Manali).
+    from app.data.geo import AIRPORTS, STATIONS
+    for d in D:
+        codes = [c for c in d["airports"][:1] if c in AIRPORTS] + [c for c in d["stations"][:1] if c in STATIONS]
+        cities = {(AIRPORTS.get(c) or STATIONS.get(c))["city"].lower() for c in codes}
+        if key in cities and key not in {"delhi", "mumbai", "kolkata", "chennai", "bengaluru", "hyderabad", "guwahati", "chandigarh", "siliguri"}:
+            return d
     return None
 
 

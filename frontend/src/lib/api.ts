@@ -118,6 +118,8 @@ export type StreamEvent =
   | { type: "status"; text: string }
   | { type: "card"; card: Card }
   | { type: "error"; text: string }
+  | { type: "replace"; text: string }
+  | { type: "grounding"; base: number[]; bad_before: number[]; bad_after: number[] }
   | { type: "done"; message_id: string };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

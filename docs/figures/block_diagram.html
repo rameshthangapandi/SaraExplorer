@@ -1,0 +1,91 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Sara Explorer block diagram</title>
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  body { width: 1920px; height: 1080px; background: #ffffff; font-family: "Segoe UI", Inter, Arial, sans-serif; color: #111; }
+  .wrap { padding: 46px 44px 40px; height: 100%; display: flex; flex-direction: column; }
+  h1 { font-size: 44px; font-weight: 800; letter-spacing: -0.5px; }
+  h1 span { color: #b8860b; }
+  .sub { font-size: 22px; color: #444; margin-top: 6px; }
+  .flow { display: grid; grid-template-columns: 0.95fr 50px 1.15fr 50px 1.1fr 50px 1.35fr 50px 1.2fr; align-items: stretch; margin-top: 34px; flex: 1; }
+  .col { border: 3px solid; border-radius: 18px; padding: 20px 18px; display: flex; flex-direction: column; justify-content: flex-start; gap: 14px; background: #fff; }
+  .col .box { margin-block: auto; }
+  .col .tag { margin-bottom: 6px; }
+  .col h2 { font-size: 27px; font-weight: 800; text-align: center; }
+  .col .tag { font-size: 17px; text-align: center; color: #555; margin-top: -8px; }
+  .box { border: 2px solid; border-radius: 12px; padding: 14px 16px; font-size: 19px; line-height: 1.3; background: #fff; }
+  .box b { display: block; font-size: 21px; margin-bottom: 2px; }
+  .box small { color: #444; font-size: 17px; }
+  .arrow { display: flex; align-items: center; justify-content: center; }
+  .arrow svg { width: 46px; height: 46px; }
+  .c1 { border-color: #374151; } .c1 .box { border-color: #9ca3af; }
+  .c2 { border-color: #d4a017; } .c2 .box { border-color: #e9c46a; }
+  .c3 { border-color: #c2410c; } .c3 .box { border-color: #f4a261; }
+  .c4 { border-color: #1d4ed8; } .c4 .box { border-color: #93c5fd; }
+  .c5 { border-color: #15803d; } .c5 .box { border-color: #86efac; }
+  .lane { margin-top: 26px; border: 3px solid #7c3aed; border-radius: 18px; padding: 16px 20px; display: flex; align-items: center; gap: 14px; }
+  .lane .title { font-size: 24px; font-weight: 800; width: 230px; flex-shrink: 0; }
+  .step { border: 2px solid #c4b5fd; border-radius: 12px; padding: 12px 14px; font-size: 20px; font-weight: 600; text-align: center; flex: 1; }
+  .step small { display: block; font-weight: 400; color: #444; font-size: 16.5px; }
+  .chev { color: #7c3aed; font-size: 30px; font-weight: 800; }
+</style></head>
+<body><div class="wrap">
+  <h1>Sara <span>Explorer</span> — System Workflow</h1>
+  <div class="sub">An agentic AI trip planner for India: plan, strategise, verify and book with consent-gated vendor payments</div>
+
+  <div class="flow">
+    <div class="col c1">
+      <h2>Users</h2><div class="tag">web &amp; mobile</div>
+      <div class="box"><b>Traveller</b><small>plans, approves, pays</small></div>
+      <div class="box"><b>Vendor</b><small>confirms payments received</small></div>
+      <div class="box"><b>Admin</b><small>onboards vendors</small></div>
+      <div class="box"><b>Voice</b><small>speak to Sara</small></div>
+    </div>
+    <div class="arrow"><svg viewBox="0 0 46 46"><path d="M6 23h28M26 13l10 10-10 10" stroke="#111" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+    <div class="col c2">
+      <h2>Web Application</h2><div class="tag">React · TypeScript · Tailwind</div>
+      <div class="box"><b>Plan &amp; Book</b><small>dropdowns, compare, auto-plan</small></div>
+      <div class="box"><b>Explore</b><small>photos, maps, nearby places</small></div>
+      <div class="box"><b>Strategist &amp; Guide</b><small>best time, permits, rules</small></div>
+      <div class="box"><b>Ask Sara chat</b><small>streaming answers + cards</small></div>
+      <div class="box"><b>My Trips · Vendor portal</b></div>
+    </div>
+    <div class="arrow"><svg viewBox="0 0 46 46"><path d="M6 23h28M26 13l10 10-10 10" stroke="#111" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+    <div class="col c3">
+      <h2>API &amp; Security</h2><div class="tag">nginx · FastAPI</div>
+      <div class="box"><b>Authentication</b><small>Argon2id, rotating sessions</small></div>
+      <div class="box"><b>Guards</b><small>rate limits, CSRF, CSP headers</small></div>
+      <div class="box"><b>REST + SSE endpoints</b><small>plan, chat, explore, vendors</small></div>
+      <div class="box"><b>Audit log</b><small>every approval and payment</small></div>
+    </div>
+    <div class="arrow"><svg viewBox="0 0 46 46"><path d="M6 23h28M26 13l10 10-10 10" stroke="#111" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+    <div class="col c4">
+      <h2>AI Core</h2><div class="tag">LangGraph · Groq</div>
+      <div class="box"><b>Ask Sara agent</b><small>gpt-oss-120b, 11 tools, Whisper voice</small></div>
+      <div class="box"><b>Constraint solver</b><small>budget, nights, mode, hotel rules; proves "no plan"</small></div>
+      <div class="box"><b>Strategist</b><small>9 plug-in strategies: timing, airports, seasons, risks</small></div>
+      <div class="box"><b>Plan verifier &amp; knowledge search</b><small>12 constraint checks, cited answers</small></div>
+    </div>
+    <div class="arrow"><svg viewBox="0 0 46 46"><path d="M6 23h28M26 13l10 10-10 10" stroke="#111" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+    <div class="col c5">
+      <h2>Data &amp; Services</h2><div class="tag">storage and providers</div>
+      <div class="box"><b>Travel inventory</b><small>flights, trains, hotels</small></div>
+      <div class="box"><b>Open-Meteo · Wikipedia · OSM</b><small>weather, photos, sights, restaurants</small></div>
+      <div class="box"><b>PostgreSQL</b><small>users, trips, payments, vendors</small></div>
+      <div class="box"><b>Redis</b><small>rate-limit counters</small></div>
+    </div>
+  </div>
+
+  <div class="lane">
+    <div class="title">Consent-gated booking</div>
+    <div class="step">1. Approve trip<small>exact total, 15-min price hold</small></div><div class="chev">›</div>
+    <div class="step">2. UPI QR per vendor<small>pay vendors directly</small></div><div class="chev">›</div>
+    <div class="step">3. Submit UTR<small>12-digit UPI reference</small></div><div class="chev">›</div>
+    <div class="step">4. Vendor confirms<small>money received</small></div><div class="chev">›</div>
+    <div class="step">5. Booked<small>reference in My Trips</small></div>
+  </div>
+</div></body></html>

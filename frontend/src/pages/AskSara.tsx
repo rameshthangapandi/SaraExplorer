@@ -128,6 +128,7 @@ export default function AskSara() {
             case "step": patch((m) => (m.content ? { ...m, content: m.content + "\n\n" } : m)); break;
             case "status": patch((m) => ({ ...m, status: ev.text })); break;
             case "card": patch((m) => ({ ...m, cards: [...m.cards, ev.card] })); break;
+            case "replace": patch((m) => ({ ...m, content: ev.text })); break;
             case "error": patch((m) => ({ ...m, content: (m.content ? m.content + "\n\n" : "") + ev.text, error: true })); break;
             case "done": patch((m) => ({ ...m, status: undefined })); break;
           }
@@ -266,7 +267,7 @@ export default function AskSara() {
                 {busy ? <Loader2 size={18} className="animate-spin" /> : <ArrowUp size={18} />}
               </button>
             </div>
-            <p className="mt-2 text-center text-[11px] text-ink-400">Sara never books without your approval and a confirmed payment. Demo inventory — no real tickets.</p>
+            <p className="mt-2 text-center text-[11px] text-ink-400">Sara never books without your approval and a confirmed payment.</p>
           </div>
         </div>
       </section>

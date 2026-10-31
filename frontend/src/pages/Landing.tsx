@@ -196,7 +196,7 @@ export default function Landing() {
       <footer className="border-t border-ink-100">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-8 text-sm text-ink-500">
           <Logo />
-          <p>Demo build · sandbox flights, trains and hotels · no real tickets are issued.</p>
+          <p>© 2026 Sara Explorer · Plan India, ask Sara.</p>
         </div>
       </footer>
     </div>

@@ -49,7 +49,7 @@ function ChooseButton({ onClick }: { onClick: () => void }) {
 
 function Flights({ card, onSend }: { card: Card; onSend: Send }) {
   return (
-    <Shell icon={<Plane size={16} />} title={`${card.title} · ${day(card.date)}`} badge="Sandbox">
+    <Shell icon={<Plane size={16} />} title={`${card.title} · ${day(card.date)}`} >
       <ShowMore
         items={card.options}
         render={(o: Card) => (
@@ -87,7 +87,7 @@ function availabilityStyle(status: string) {
 
 function Trains({ card, onSend }: { card: Card; onSend: Send }) {
   return (
-    <Shell icon={<TrainFront size={16} />} title={`${card.title} · ${day(card.date)}`} badge="Mock railway">
+    <Shell icon={<TrainFront size={16} />} title={`${card.title} · ${day(card.date)}`}>
       <ShowMore
         items={card.options}
         initial={4}
@@ -113,7 +113,7 @@ function Trains({ card, onSend }: { card: Card; onSend: Send }) {
 
 function Hotels({ card, onSend }: { card: Card; onSend: Send }) {
   return (
-    <Shell icon={<Hotel size={16} />} title={card.title} badge="Sandbox">
+    <Shell icon={<Hotel size={16} />} title={card.title}>
       <ShowMore
         items={card.options}
         render={(o: Card) => (
@@ -293,8 +293,42 @@ function Bookings({ card }: { card: Card }) {
   );
 }
 
+function AutoPlan({ card, onSend }: { card: Card; onSend: Send }) {
+  if (card.status !== "ok") {
+    return (
+      <Shell icon={<AlertTriangle size={16} />} title="No plan fits these conditions" badge="Solver">
+        <p className="text-sm text-ink-700">{card.reasons.join(" ")}</p>
+      </Shell>
+    );
+  }
+  const legs: [string, Card | null][] = [["Onward", card.plan.out], ["Stay", card.plan.stay], ["Return", card.plan.back]];
+  return (
+    <Shell icon={<Sparkles size={16} />} title="Best trip within your conditions" badge="Solver">
+      <div className="space-y-2">
+        {legs.filter(([, o]) => o).map(([label, o]) => (
+          <div key={label} className="flex items-center gap-3 rounded-xl border border-ink-100 px-3 py-2.5">
+            <span className="w-16 text-[11px] font-semibold uppercase tracking-wider text-ink-400">{label}</span>
+            <span className="flex-1 text-sm font-semibold">{o!.hotel ?? o!.airline ?? o!.train_name}
+              <span className="ml-1 text-[11px] font-normal text-ink-500">{o!.hotel ? `${o!.nights} nights` : `${time(o!.depart)} · ${o!.flight_no ?? o!.class}`}</span>
+            </span>
+            <span className="font-display font-bold">{inr(o!.price_total)}</span>
+          </div>
+        ))}
+      </div>
+      <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
+        <div className="text-sm"><span className="text-ink-500">Total</span> <b className="font-display text-lg">{inr(card.total)}</b>
+          {card.budget_total && <span className="ml-1 text-xs text-emerald-700">within ₹{Number(card.budget_total).toLocaleString("en-IN")}</span>}
+        </div>
+        <button onClick={() => onSend(`Book this plan: ${card.option_ids.join(", ")}`)} className="btn-dark px-4 py-2">Book this plan</button>
+      </div>
+      <p className="mt-2 text-[11px] text-ink-400">Checked {card.candidates_checked} combinations against all your conditions.</p>
+    </Shell>
+  );
+}
+
 export default function CardRenderer({ card, onSend }: { card: Card; onSend: Send }) {
   switch (card.type) {
+    case "autoplan": return <AutoPlan card={card} onSend={onSend} />;
     case "flights": return <Flights card={card} onSend={onSend} />;
     case "trains": return <Trains card={card} onSend={onSend} />;
     case "hotels": return <Hotels card={card} onSend={onSend} />;

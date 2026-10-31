@@ -49,3 +49,10 @@ def test_attraction_filter_keeps_sights_only():
     assert is_sight("Jantar Mantar, Jaipur", "Astronomical observatory")
     assert not is_sight("St Xavier's School, Jaipur", "Private primary and secondary school")
     assert not is_sight("Jaipur district", "District of Rajasthan")
+
+
+def test_gateway_town_resolves_to_destination():
+    from app.data.destinations import find_destination
+    assert find_destination("Bhuj")["slug"] == "rann-of-kutch"
+    assert find_destination("Kullu")["slug"] == "manali"
+    assert find_destination("Goa")["slug"] == "goa"

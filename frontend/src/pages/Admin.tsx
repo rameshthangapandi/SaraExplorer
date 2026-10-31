@@ -33,7 +33,7 @@ function PaymentRow({ p, onDone }: { p: Card; onDone: () => void }) {
           <div className="flex items-center gap-2">
             <span className="font-display text-2xl font-extrabold">{inr(p.amount_inr)}</span>
             <span className="text-sm text-ink-500">to <b className="text-ink-900">{p.vendor.name}</b></span>
-            {p.vendor.demo && <span className="rounded bg-red-100 px-1.5 py-0.5 text-[10px] font-bold uppercase text-red-700">demo vendor</span>}
+            {p.vendor.pending && <span className="rounded bg-ink-100 px-1.5 py-0.5 text-[10px] font-bold uppercase text-ink-600">not live</span>}
           </div>
           <div className="text-sm">UTR <span className="font-mono font-semibold">{p.utr}</span> · Ref <span className="font-mono">{p.order_id}</span></div>
           <div className="text-xs text-ink-500">From {p.traveller.name} ({p.traveller.email}) · {new Date(p.created_at).toLocaleString("en-IN")}</div>
@@ -48,7 +48,7 @@ function PaymentRow({ p, onDone }: { p: Card; onDone: () => void }) {
             )}
             {confirm === "ok" && (
               <>
-                <span className="text-xs text-ink-600">{inr(p.amount_inr)} with UTR {p.utr} is in {p.vendor.demo ? "the vendor's" : "your"} account?</span>
+                <span className="text-xs text-ink-600">{inr(p.amount_inr)} with UTR {p.utr} is in "the vendor's" account?</span>
                 <button className="btn-ghost px-3 py-1.5" onClick={() => setConfirm("")}>Back</button>
                 <button className="btn-primary px-3 py-1.5" disabled={busy} onClick={() => act("confirm")}>{busy && <Loader2 size={14} className="animate-spin" />} Yes, book it</button>
               </>
@@ -98,7 +98,7 @@ function Payments() {
 
 function VendorRow({ v, onSaved }: { v: Card; onSaved: (v: Card) => void }) {
   const [edit, setEdit] = useState(false);
-  const [form, setForm] = useState({ upi_id: v.demo ? "" : v.upi_id, owner_email: v.owner_email ?? "" });
+  const [form, setForm] = useState({ upi_id: v.pending ? "" : v.upi_id, owner_email: v.owner_email ?? "" });
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const save = async (e: FormEvent) => {
@@ -124,8 +124,8 @@ function VendorRow({ v, onSaved }: { v: Card; onSaved: (v: Card) => void }) {
           <div className="font-semibold">{v.name} <span className="chip ml-1 capitalize">{v.kind}</span></div>
           <div className="font-mono text-xs text-ink-500">{v.upi_id}{v.owner_email && <span className="font-sans"> · login: {v.owner_email}</span>}</div>
         </div>
-        <span className={cx("rounded-full px-2.5 py-0.5 text-[11px] font-bold uppercase", v.demo ? "bg-red-50 text-red-700" : "bg-emerald-50 text-emerald-700")}>{v.demo ? "Demo" : "Live"}</span>
-        <button className="btn-outline px-3 py-1.5" onClick={() => setEdit(!edit)}><Pencil size={14} /> {v.demo ? "Add real details" : "Edit"}</button>
+        <span className={cx("rounded-full px-2.5 py-0.5 text-[11px] font-bold uppercase", v.pending ? "bg-ink-100 text-ink-600" : "bg-emerald-50 text-emerald-700")}>{v.pending ? "Not live" : "Live"}</span>
+        <button className="btn-outline px-3 py-1.5" onClick={() => setEdit(!edit)}><Pencil size={14} /> {v.pending ? "Add real details" : "Edit"}</button>
       </div>
       {edit && (
         <form onSubmit={save} className="mt-4 grid gap-3 border-t border-ink-100 pt-4 sm:grid-cols-[1fr_1fr_auto]">
@@ -168,7 +168,7 @@ export default function Admin() {
             ))}
           </div>
           {section === "payments" && (
-            <p className="mb-4 rounded-xl bg-mustard-50 p-3 text-xs text-mustard-800">As admin you confirm for <b>demo vendors</b> (no real money can reach them). Live vendors confirm their own payments.</p>
+            <p className="mb-4 rounded-xl bg-mustard-50 p-3 text-xs text-mustard-800">As admin you confirm payments for vendors that are <b>not live yet</b>. Live vendors confirm their own payments.</p>
           )}
         </>
       )}

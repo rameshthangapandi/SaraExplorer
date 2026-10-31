@@ -41,3 +41,8 @@ Reisewelt_Ind_Project_Plan.docx
 
 # Root copy of the plan (tracked copy lives in docs/)
 /Sara_Explorer_Project_Plan.docx
+
+# Academic deliverables (report, paper, handbook) and the reference report stay local
+/deliverables/
+/docs/DocketPilot_Project_Report.docx
+/backend/benchmarks/results/*.log

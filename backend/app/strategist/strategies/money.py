@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from app.data.geo import AIRPORTS
+from app.planner.groups import profile
 from app.providers import sandbox
 from app.strategist.base import Strategy, Suggestion, register
 
@@ -47,6 +48,11 @@ class DepartureTime(Strategy):
 
     def suggest(self, ctx):
         flights = sandbox.search_flights(ctx.origin, ctx.destination["name"], ctx.travel_date, ctx.adults, ctx.today)
+        g = profile(ctx.traveller_type)
+        if g:  # respect the group's timing needs (e.g. no pre-dawn flights for families or seniors)
+            flights = [f for f in flights
+                       if not (g["avoid_early"] and int(f["depart"][11:13]) < 6)
+                       and not (g["avoid_late"] and int(f["depart"][11:13]) >= 22)]
         if len(flights) < 2:
             return []
         cheapest, priciest = flights[0], flights[-1]
@@ -56,7 +62,7 @@ class DepartureTime(Strategy):
         dep = datetime.fromisoformat(cheapest["depart"]).strftime("%I:%M %p").lstrip("0")
         return [Suggestion(self.name, self.category, f"Take the {dep} flight",
                            f"{cheapest['airline']} {cheapest['flight_no']} at {dep} is ₹{saving:,} cheaper than the most "
-                           f"expensive departure that day. Early-morning and late-night flights are usually cheapest.",
+                           f"expensive departure that day." + ("" if g else " Early-morning and late-night flights are usually cheapest."),
                            score=min(90, 40 + saving / 100), confidence=0.85, saving_inr=saving)]
 
 

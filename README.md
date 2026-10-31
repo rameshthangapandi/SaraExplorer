@@ -6,10 +6,12 @@
 
 ## Highlights
 
-- **Two ways to plan** – dropdown-based *Plan & Book* screens, or *Ask Sara*, a streaming chat agent (LangGraph + Groq `openai/gpt-oss-120b`) with 11 tools and voice input (`whisper-large-v3`).
+- **Two ways to plan** – dropdown-based *Plan & Book* screens, or *Ask Sara*, a streaming chat agent (LangGraph + Groq `openai/gpt-oss-120b`) with 12 tools and voice input (`whisper-large-v3`).
 - **Guaranteed plans** – a constraint solver checks every combination of onward travel, stay and return travel and returns only plans that meet the budget, nights, travel mode and hotel rules, or explains exactly why none exists and what each change would cost.
 - **No invented prices** – a price-grounding guard checks every ₹ amount in Sara's reply against tool results and rewrites anything it cannot verify.
-- **Strategist** – nine strategies: booking time, cheapest departure hour, nearby airports, monument closing days, seasons, shoulder months, festivals, fog / monsoon buffers and permits.
+- **Plans for who is travelling** – honeymoon couples, families with children, friends, senior citizens, solo and business travellers get different destinations, stays, journey times and advice, without ever breaking the budget or other rules.
+- **Local rides compared** – city bus, metro, Rapido, Ola and Uber (bike, auto, cab, sedan, SUV): estimated fare, fare per person, time and vehicles needed, with the cheapest, fastest and recommended option and a link to book in the operator's app.
+- **Strategist** – ten strategies, including traveller-group advice: booking time, cheapest departure hour, nearby airports, monument closing days, seasons, shoulder months, festivals, fog / monsoon buffers and permits.
 - **Consent-gated booking** – approve an exact total with a 15-minute price hold, pay **each vendor directly** with a UPI QR code, and each part is booked only after that vendor confirms the money arrived. The platform never holds customer funds.
 - **Explore India** – 26 destinations ranked by month, Wikipedia photos, live Open-Meteo forecasts and an OpenStreetMap map of nearby sights, restaurants, cafes and stays (around the destination or *near me*).
 - **Security first** – Argon2id, rotating refresh tokens with reuse detection, lockout, rate limits, CSRF guard, strict CSP and an audit log.
@@ -28,6 +30,8 @@
 | ![Restaurants](docs/screenshots/15_nearby_restaurants.png) **15. Nearby restaurants** – cuisine, veg tag, hours and distance, with a link to Google Maps for photos and reviews. | ![Strategist](docs/screenshots/16_strategist.png) **16. Strategist** – ranked advice for a trip and month-by-month ratings. |
 | ![Guide](docs/screenshots/17_travel_guide.png) **17. Travel Guide** – permits, train rules, pilgrimages and safety with sources. | ![Account](docs/screenshots/18_account_security.png) **18. Account & Security** – spending limit and every signed-in device, with *sign out everywhere*. |
 | ![Mobile plan](docs/screenshots/19_mobile_plan.png) **19. Phone layout** – the full planner on a phone. | ![Mobile destination](docs/screenshots/20_mobile_destination.png) **20. Phone destination page** – photos and details on a small screen. |
+| ![Local rides](docs/screenshots/21_local_rides.png) **21. Local Rides** – bus, metro, Rapido, Ola and Uber compared by fare per person and time for a family of four. | ![Family plan](docs/screenshots/22_plan_family.png) **22. Plan for a family** – the auto-plan explains why the trip suits a family with children. |
+| ![Couples](docs/screenshots/23_explore_couples.png) **23. Explore for couples** – honeymoon-friendly destinations ranked first. | ![Strategist family](docs/screenshots/24_strategist_family.png) **24. Group advice** – the strategist warns a family that Leh is high altitude. |
 
 ## Benchmark: SaraBench-IN
 
@@ -48,6 +52,7 @@ The end-to-end Ask Sara agent reached a 100% final pass rate on its 14-request s
 |---|---|
 | ![Final pass](docs/figures/benchmarks/fig01_final_pass_vs_published.png) | ![Metrics](docs/figures/benchmarks/fig02_travelplanner_metrics.png) |
 | ![Latency](docs/figures/benchmarks/fig06_latency.png) | ![Grounding](docs/figures/benchmarks/fig13_grounding.png) |
+| ![Groups](docs/figures/benchmarks/fig14_group_personalisation.png) | ![Local rides](docs/figures/benchmarks/fig15_local_rides.png) |
 
 Published values come from each paper's own TravelPlanner evaluation; SaraBench-IN uses the same constraint definitions on Indian routes. Reproduce with:
 
@@ -87,7 +92,7 @@ npm install
 npm run dev                  # http://localhost:5173
 ```
 
-Tests: `cd backend && .venv/Scripts/python -m pytest` (39 tests).
+Tests: `cd backend && .venv/Scripts/python -m pytest` (49 tests).
 
 ## Security
 
@@ -101,10 +106,10 @@ Tests: `cd backend && .venv/Scripts/python -m pytest` (39 tests).
 ```
 backend/app/
   agents/        Ask Sara graph (sara.py), tools (tools.py), price-grounding guard (grounding.py)
-  planner/       constraint solver (solver.py) and plan verifier (verify.py)
-  strategist/    plug-in framework and strategies (money, timing, experience, risk)
+  planner/       constraint solver (solver.py), plan verifier (verify.py) and traveller groups (groups.py)
+  strategist/    plug-in framework and strategies (money, timing, experience, risk, group)
   api/           auth, chat (SSE), trips (approvals, payments, vendor portal), explore, misc
-  providers/     inventory adapters, Open-Meteo weather, places (Wikipedia + OpenStreetMap)
+  providers/     inventory adapters, Open-Meteo weather, places (Wikipedia + OpenStreetMap), local rides (local_transport.py)
   knowledge/     travel knowledge base and search
   payments/      UPI links, optional Razorpay, signature checks
   security/      passwords, tokens, rate limits, headers, access checks

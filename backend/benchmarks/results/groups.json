@@ -1,0 +1,89 @@
+{
+ "n": 261,
+ "groups": {
+  "solo": {
+   "generic": {
+    "feature_pct": 58.6,
+    "unsuitable_pct": 39.1,
+    "valid_pct": 100.0,
+    "avg_cost": 45109
+   },
+   "personalised": {
+    "feature_pct": 80.5,
+    "unsuitable_pct": 35.6,
+    "valid_pct": 100.0,
+    "avg_cost": 46170
+   }
+  },
+  "couple": {
+   "generic": {
+    "feature_pct": 89.7,
+    "unsuitable_pct": 78.5,
+    "valid_pct": 100.0,
+    "avg_cost": 45109
+   },
+   "personalised": {
+    "feature_pct": 97.7,
+    "unsuitable_pct": 55.2,
+    "valid_pct": 100.0,
+    "avg_cost": 48387
+   }
+  },
+  "family": {
+   "generic": {
+    "feature_pct": 93.9,
+    "unsuitable_pct": 90.8,
+    "valid_pct": 100.0,
+    "avg_cost": 45109
+   },
+   "personalised": {
+    "feature_pct": 98.9,
+    "unsuitable_pct": 65.9,
+    "valid_pct": 100.0,
+    "avg_cost": 48294
+   }
+  },
+  "friends": {
+   "generic": {
+    "feature_pct": 77.8,
+    "unsuitable_pct": 45.2,
+    "valid_pct": 100.0,
+    "avg_cost": 45109
+   },
+   "personalised": {
+    "feature_pct": 92.3,
+    "unsuitable_pct": 42.1,
+    "valid_pct": 100.0,
+    "avg_cost": 46306
+   }
+  },
+  "seniors": {
+   "generic": {
+    "feature_pct": 83.5,
+    "unsuitable_pct": 90.8,
+    "valid_pct": 100.0,
+    "avg_cost": 45109
+   },
+   "personalised": {
+    "feature_pct": 96.6,
+    "unsuitable_pct": 67.0,
+    "valid_pct": 100.0,
+    "avg_cost": 48836
+   }
+  },
+  "business": {
+   "generic": {
+    "feature_pct": 74.7,
+    "unsuitable_pct": 71.6,
+    "valid_pct": 100.0,
+    "avg_cost": 45109
+   },
+   "personalised": {
+    "feature_pct": 95.0,
+    "unsuitable_pct": 62.8,
+    "valid_pct": 100.0,
+    "avg_cost": 48668
+   }
+  }
+ }
+}

@@ -1,4 +1,4 @@
-import { BadgeIndianRupee, BookOpen, Compass, LogOut, Map, Menu, MessageCircle, Route, ShieldCheck, Ticket, X } from "lucide-react";
+import { BadgeIndianRupee, BookOpen, CarTaxiFront, Compass, LogOut, Map, Menu, MessageCircle, Route, ShieldCheck, Ticket, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { api } from "../lib/api";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
@@ -10,6 +10,7 @@ import { cx } from "../lib/format";
 const NAV = [
   { to: "/app", label: "Plan & Book", icon: <Route size={18} />, end: true },
   { to: "/app/explore", label: "Explore", icon: <Map size={18} /> },
+  { to: "/app/rides", label: "Local Rides", icon: <CarTaxiFront size={18} /> },
   { to: "/app/strategist", label: "Strategist", icon: <Compass size={18} /> },
   { to: "/app/guide", label: "Travel Guide", icon: <BookOpen size={18} /> },
   { to: "/app/trips", label: "My Trips", icon: <Ticket size={18} /> },

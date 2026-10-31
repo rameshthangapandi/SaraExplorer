@@ -11,6 +11,7 @@ from datetime import date, timedelta
 from itertools import product
 
 from app.data.destinations import find_destination
+from app.planner import groups
 from app.providers import sandbox
 
 # A waitlisted train is only treated as bookable when it is likely to confirm.
@@ -32,6 +33,7 @@ class TripRequest:
     hotel_min_stars: int | None = None
     round_trip: bool = True
     objective: str = "balanced"            # cheapest | balanced | comfort
+    traveller_type: str | None = None      # solo | couple | family | friends | seniors | business
 
 
 @dataclass
@@ -45,6 +47,7 @@ class PlanResult:
     min_possible_total: int | None = None
     candidates_checked: int = 0
     alternatives: list[dict] = field(default_factory=list)
+    why: list[str] = field(default_factory=list)
 
 
 def _transport(req: TripRequest, origin: str, dest: str, day: date, today: date) -> list[dict]:
@@ -68,15 +71,38 @@ def _hotels(req: TripRequest, city: str) -> list[dict]:
 
 
 def _score(req: TripRequest, out: dict, back: dict | None, stay: dict) -> float:
-    """Lower is better."""
+    """Lower is better. Group preferences add rupee-equivalent bonuses/penalties; hard constraints are unaffected."""
     total = out["price_total"] + (back["price_total"] if back else 0) + stay["price_total"]
     if req.objective == "cheapest":
         return total
     hours = (out["duration_min"] + (back["duration_min"] if back else 0)) / 60
     quality = stay["stars"] * 900 + stay["rating"] * 1200
+    group = 0
+    if req.traveller_type:
+        group -= groups.hotel_bonus(stay, req.traveller_type)[0]
+        group += sum(groups.transport_penalty(l, req.traveller_type)[0] for l in (out, back) if l)
     if req.objective == "comfort":
-        return total * 0.35 + hours * 120 - quality * 2
-    return total + hours * 180 - quality * 0.6  # balanced: ₹180 per travel hour, small bonus for better stays
+        return total * 0.35 + hours * 120 - quality * 2 + group
+    return total + hours * 180 - quality * 0.6 + group  # balanced: ₹180 per travel hour, small bonus for better stays
+
+
+def explain_fit(req: TripRequest, out: dict, back: dict | None, stay: dict) -> list[str]:
+    """Plain-language reasons why the chosen plan suits the traveller group."""
+    g = groups.profile(req.traveller_type)
+    if not g:
+        return []
+    why = []
+    _, matched = groups.hotel_bonus(stay, req.traveller_type)
+    if matched:
+        why.append(f"Stay has {', '.join(m.lower() for m in matched)}")
+    issues = [w for l in (out, back) if l for w in groups.transport_penalty(l, req.traveller_type)[1]]
+    if not issues and (g["avoid_early"] or g["avoid_late"]):
+        why.append("No very early or late-night travel")
+    if g["min_train_class"] != "SL" and not any("class" in w for w in issues):
+        legs = [l for l in (out, back) if l and "class" in l]
+        if legs:
+            why.append(f"Comfortable train class ({', '.join(sorted({l['class'] for l in legs}))})")
+    return why
 
 
 def relaxations(req: TripRequest, today: date) -> list[dict]:
@@ -141,4 +167,4 @@ def solve(req: TripRequest, today: date | None = None) -> PlanResult:
                                    f"₹{req.budget_total:,} budget."])
     out, back, stay, total = best
     return PlanResult(status="ok", out=out, back=back, stay=stay, total=total, candidates_checked=checked,
-                      min_possible_total=cheapest)
+                      min_possible_total=cheapest, why=explain_fit(req, out, back, stay))

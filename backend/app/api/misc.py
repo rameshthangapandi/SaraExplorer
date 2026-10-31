@@ -75,8 +75,10 @@ async def strategist_best_time(slug: str, user: User = Depends(get_current_user)
 
 @router.get("/strategist/where")
 async def strategist_where(month: int = Query(ge=1, le=12), interest: str | None = None,
+                           traveller_type: str | None = Query(default=None, pattern="^(solo|couple|family|friends|seniors|business)$"),
                            user: User = Depends(get_current_user)):
-    return {"picks": where_to_go(month, interest, limit=8), "avoid": avoid_in(month), "peaks": upcoming_peaks()}
+    return {"picks": where_to_go(month, interest, limit=8, traveller_type=traveller_type), "avoid": avoid_in(month),
+            "peaks": upcoming_peaks()}
 
 
 class AdviceIn(BaseModel):
@@ -85,6 +87,7 @@ class AdviceIn(BaseModel):
     travel_date: date | None = None
     nights: int = Field(default=3, ge=1, le=30)
     adults: int = Field(default=1, ge=1, le=9)
+    traveller_type: str | None = Field(default=None, pattern="^(solo|couple|family|friends|seniors|business)$")
 
 
 @router.post("/strategist/advice")
@@ -96,7 +99,8 @@ async def strategist_advice(body: AdviceIn, user: User = Depends(get_current_use
     if body.travel_date and body.travel_date < date.today():
         raise HTTPException(422, "Travel date is in the past")
     ctx = TripContext(destination=d, month=(body.travel_date or date.today()).month, origin=body.origin,
-                      travel_date=body.travel_date, nights=body.nights, adults=body.adults)
+                      travel_date=body.travel_date, nights=body.nights, adults=body.adults,
+                      traveller_type=body.traveller_type)
     return {"destination": d["name"], "suggestions": [s.to_dict() for s in advise(ctx, limit=8)]}
 
 

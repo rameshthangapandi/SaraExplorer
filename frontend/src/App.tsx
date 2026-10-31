@@ -12,6 +12,7 @@ import { Destination, ExploreList } from "./pages/Explore";
 import Guide from "./pages/Guide";
 import Landing from "./pages/Landing";
 import Plan from "./pages/Plan";
+import Rides from "./pages/Rides";
 import Strategist from "./pages/Strategist";
 import Trips from "./pages/Trips";
 
@@ -56,6 +57,7 @@ export default function App() {
             <Route path="explore" element={<ExploreList />} />
             <Route path="explore/:slug" element={<Destination />} />
             <Route path="guide" element={<Guide />} />
+            <Route path="rides" element={<Rides />} />
             <Route path="vendor" element={<Admin />} />
             <Route path="strategist" element={<Strategist />} />
             <Route path="trips" element={<Trips />} />

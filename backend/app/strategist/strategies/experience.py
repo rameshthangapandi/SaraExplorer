@@ -21,7 +21,7 @@ class Weather(Strategy):
             return [Suggestion(self.name, self.category, f"{MONTHS[ctx.month - 1]} is {LABEL[r]} for {d['name']}",
                                f"Weather is usually pleasant then.{best_txt}", score=40 + r * 5, confidence=0.75)]
         return [Suggestion(self.name, self.category, f"{MONTHS[ctx.month - 1]} is {LABEL[r]} for {d['name']}",
-                           f"{d['tips'][0] if d['tips'] else 'Weather is often unfavourable then.'}{best_txt}",
+                           f"{(d['tips'][0].rstrip('.') + '.') if d['tips'] else 'Weather is often unfavourable then.'}{best_txt}",
                            score=95 - r * 10, confidence=0.75)]
 
 

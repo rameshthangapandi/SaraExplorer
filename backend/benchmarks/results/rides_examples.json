@@ -1,0 +1,72 @@
+{
+ "route": "Jaipur International Airport to Hawa Mahal",
+ "distance_km": 15.1,
+ "rows": [
+  {
+   "group": "Solo traveller",
+   "people": 1,
+   "bags": 0,
+   "hour": 11,
+   "recommended": "Metro",
+   "per_person": 40,
+   "minutes": 47,
+   "cheapest": "City bus",
+   "cheapest_pp": 20
+  },
+  {
+   "group": "Couple / honeymoon",
+   "people": 2,
+   "bags": 1,
+   "hour": 20,
+   "recommended": "Rapido Cab Economy",
+   "per_person": 195,
+   "minutes": 62,
+   "cheapest": "City bus",
+   "cheapest_pp": 20
+  },
+  {
+   "group": "Family with children",
+   "people": 4,
+   "bags": 2,
+   "hour": 18,
+   "recommended": "Rapido Cab Economy",
+   "per_person": 98,
+   "minutes": 62,
+   "cheapest": "City bus",
+   "cheapest_pp": 21
+  },
+  {
+   "group": "Friends group",
+   "people": 5,
+   "bags": 3,
+   "hour": 14,
+   "recommended": "Ola Prime SUV",
+   "per_person": 99,
+   "minutes": 45,
+   "cheapest": "City bus",
+   "cheapest_pp": 21
+  },
+  {
+   "group": "Senior citizens",
+   "people": 2,
+   "bags": 2,
+   "hour": 10,
+   "recommended": "Rapido Cab Economy",
+   "per_person": 195,
+   "minutes": 62,
+   "cheapest": "City bus",
+   "cheapest_pp": 20
+  },
+  {
+   "group": "Business traveller",
+   "people": 1,
+   "bags": 1,
+   "hour": 9,
+   "recommended": "Uber Go",
+   "per_person": 485,
+   "minutes": 61,
+   "cheapest": "City bus",
+   "cheapest_pp": 20
+  }
+ ]
+}

@@ -12,6 +12,7 @@ class TripContext:
     nights: int = 3
     adults: int = 1
     today: date = field(default_factory=date.today)
+    traveller_type: str | None = None
 
 
 @dataclass

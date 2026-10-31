@@ -1,91 +1,19 @@
-<!doctype html>
-<html><head><meta charset="utf-8"><title>Sara Explorer block diagram</title>
+<!doctype html><html><head><meta charset="utf-8"><title>Sara Explorer block diagram</title><style>html,body{margin:0;background:#fff}</style></head><body><svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f1f1f"/></marker>
+<marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1D4ED8"/></marker>
+<marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7C3AED"/></marker>
 <style>
-  * { box-sizing: border-box; margin: 0; }
-  body { width: 1920px; height: 1080px; background: #ffffff; font-family: "Segoe UI", Inter, Arial, sans-serif; color: #111; }
-  .wrap { padding: 46px 44px 40px; height: 100%; display: flex; flex-direction: column; }
-  h1 { font-size: 44px; font-weight: 800; letter-spacing: -0.5px; }
-  h1 span { color: #b8860b; }
-  .sub { font-size: 22px; color: #444; margin-top: 6px; }
-  .flow { display: grid; grid-template-columns: 0.95fr 50px 1.15fr 50px 1.1fr 50px 1.35fr 50px 1.2fr; align-items: stretch; margin-top: 34px; flex: 1; }
-  .col { border: 3px solid; border-radius: 18px; padding: 20px 18px; display: flex; flex-direction: column; justify-content: flex-start; gap: 14px; background: #fff; }
-  .col .box { margin-block: auto; }
-  .col .tag { margin-bottom: 6px; }
-  .col h2 { font-size: 27px; font-weight: 800; text-align: center; }
-  .col .tag { font-size: 17px; text-align: center; color: #555; margin-top: -8px; }
-  .box { border: 2px solid; border-radius: 12px; padding: 14px 16px; font-size: 19px; line-height: 1.3; background: #fff; }
-  .box b { display: block; font-size: 21px; margin-bottom: 2px; }
-  .box small { color: #444; font-size: 17px; }
-  .arrow { display: flex; align-items: center; justify-content: center; }
-  .arrow svg { width: 46px; height: 46px; }
-  .c1 { border-color: #374151; } .c1 .box { border-color: #9ca3af; }
-  .c2 { border-color: #d4a017; } .c2 .box { border-color: #e9c46a; }
-  .c3 { border-color: #c2410c; } .c3 .box { border-color: #f4a261; }
-  .c4 { border-color: #1d4ed8; } .c4 .box { border-color: #93c5fd; }
-  .c5 { border-color: #15803d; } .c5 .box { border-color: #86efac; }
-  .lane { margin-top: 26px; border: 3px solid #7c3aed; border-radius: 18px; padding: 16px 20px; display: flex; align-items: center; gap: 14px; }
-  .lane .title { font-size: 24px; font-weight: 800; width: 230px; flex-shrink: 0; }
-  .step { border: 2px solid #c4b5fd; border-radius: 12px; padding: 12px 14px; font-size: 20px; font-weight: 600; text-align: center; flex: 1; }
-  .step small { display: block; font-weight: 400; color: #444; font-size: 16.5px; }
-  .chev { color: #7c3aed; font-size: 30px; font-weight: 800; }
-</style></head>
-<body><div class="wrap">
-  <h1>Sara <span>Explorer</span> — System Workflow</h1>
-  <div class="sub">An agentic AI trip planner for India: plan, strategise, verify and book with consent-gated vendor payments</div>
-
-  <div class="flow">
-    <div class="col c1">
-      <h2>Users</h2><div class="tag">web &amp; mobile</div>
-      <div class="box"><b>Traveller</b><small>plans, approves, pays</small></div>
-      <div class="box"><b>Vendor</b><small>confirms payments received</small></div>
-      <div class="box"><b>Admin</b><small>onboards vendors</small></div>
-      <div class="box"><b>Voice</b><small>speak to Sara</small></div>
-    </div>
-    <div class="arrow"><svg viewBox="0 0 46 46"><path d="M6 23h28M26 13l10 10-10 10" stroke="#111" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-
-    <div class="col c2">
-      <h2>Web Application</h2><div class="tag">React · TypeScript · Tailwind</div>
-      <div class="box"><b>Plan &amp; Book</b><small>dropdowns, compare, auto-plan</small></div>
-      <div class="box"><b>Explore</b><small>photos, maps, nearby places</small></div>
-      <div class="box"><b>Strategist &amp; Guide</b><small>best time, permits, rules</small></div>
-      <div class="box"><b>Ask Sara chat</b><small>streaming answers + cards</small></div>
-      <div class="box"><b>My Trips · Vendor portal</b></div>
-    </div>
-    <div class="arrow"><svg viewBox="0 0 46 46"><path d="M6 23h28M26 13l10 10-10 10" stroke="#111" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-
-    <div class="col c3">
-      <h2>API &amp; Security</h2><div class="tag">nginx · FastAPI</div>
-      <div class="box"><b>Authentication</b><small>Argon2id, rotating sessions</small></div>
-      <div class="box"><b>Guards</b><small>rate limits, CSRF, CSP headers</small></div>
-      <div class="box"><b>REST + SSE endpoints</b><small>plan, chat, explore, vendors</small></div>
-      <div class="box"><b>Audit log</b><small>every approval and payment</small></div>
-    </div>
-    <div class="arrow"><svg viewBox="0 0 46 46"><path d="M6 23h28M26 13l10 10-10 10" stroke="#111" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-
-    <div class="col c4">
-      <h2>AI Core</h2><div class="tag">LangGraph · Groq</div>
-      <div class="box"><b>Ask Sara agent</b><small>gpt-oss-120b, 11 tools, Whisper voice</small></div>
-      <div class="box"><b>Constraint solver</b><small>budget, nights, mode, hotel rules; proves "no plan"</small></div>
-      <div class="box"><b>Strategist</b><small>9 plug-in strategies: timing, airports, seasons, risks</small></div>
-      <div class="box"><b>Plan verifier &amp; knowledge search</b><small>12 constraint checks, cited answers</small></div>
-    </div>
-    <div class="arrow"><svg viewBox="0 0 46 46"><path d="M6 23h28M26 13l10 10-10 10" stroke="#111" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-
-    <div class="col c5">
-      <h2>Data &amp; Services</h2><div class="tag">storage and providers</div>
-      <div class="box"><b>Travel inventory</b><small>flights, trains, hotels</small></div>
-      <div class="box"><b>Open-Meteo · Wikipedia · OSM</b><small>weather, photos, sights, restaurants</small></div>
-      <div class="box"><b>PostgreSQL</b><small>users, trips, payments, vendors</small></div>
-      <div class="box"><b>Redis</b><small>rate-limit counters</small></div>
-    </div>
-  </div>
-
-  <div class="lane">
-    <div class="title">Consent-gated booking</div>
-    <div class="step">1. Approve trip<small>exact total, 15-min price hold</small></div><div class="chev">›</div>
-    <div class="step">2. UPI QR per vendor<small>pay vendors directly</small></div><div class="chev">›</div>
-    <div class="step">3. Submit UTR<small>12-digit UPI reference</small></div><div class="chev">›</div>
-    <div class="step">4. Vendor confirms<small>money received</small></div><div class="chev">›</div>
-    <div class="step">5. Booked<small>reference in My Trips</small></div>
-  </div>
-</div></body></html>
+.t{font:700 23px "Segoe UI",Inter,Arial,sans-serif;fill:#111;text-anchor:middle}
+.s{font:400 17px "Segoe UI",Inter,Arial,sans-serif;fill:#4a4a4a;text-anchor:middle}
+.lane{font:800 19px "Segoe UI",Inter,Arial,sans-serif;letter-spacing:1.5px}
+.lab{font:700 15px "Segoe UI",Inter,Arial,sans-serif;text-anchor:middle}
+.h1{font:800 40px "Segoe UI",Inter,Arial,sans-serif;fill:#111}
+.h2{font:400 19px "Segoe UI",Inter,Arial,sans-serif;fill:#555;text-anchor:end}
+</style></defs>
+<rect width="1920" height="1080" fill="#fff"/>
+<text x="24" y="66" class="h1">Sara <tspan fill="#B7860B">Explorer</tspan> — how it works</text>
+<text x="1896" y="64" class="h2">plans are solved, checked and approved before any money moves</text>
+<line x1="24" y1="92" x2="1896" y2="92" stroke="#111" stroke-width="2"/>
+<line x1="24" y1="293" x2="1896" y2="293" stroke="#e6e6e6" stroke-width="1.5"/><rect x="24" y="128" width="6" height="148" rx="3" fill="#B7860B"/><text x="46" y="209.0" class="lane" fill="#B7860B">TRAVELLER</text><line x1="24" y1="475" x2="1896" y2="475" stroke="#e6e6e6" stroke-width="1.5"/><rect x="24" y="310" width="6" height="148" rx="3" fill="#1F5F5B"/><text x="46" y="379.0" class="lane" fill="#1F5F5B">WEB &amp;</text><text x="46" y="404.0" class="lane" fill="#1F5F5B">SECURITY</text><line x1="24" y1="657" x2="1896" y2="657" stroke="#e6e6e6" stroke-width="1.5"/><rect x="24" y="492" width="6" height="148" rx="3" fill="#1D4ED8"/><text x="46" y="573.0" class="lane" fill="#1D4ED8">AI CORE</text><line x1="24" y1="839" x2="1896" y2="839" stroke="#e6e6e6" stroke-width="1.5"/><rect x="24" y="674" width="6" height="148" rx="3" fill="#7C3AED"/><text x="46" y="743.0" class="lane" fill="#7C3AED">ADVICE &amp;</text><text x="46" y="768.0" class="lane" fill="#7C3AED">DISCOVERY</text><line x1="24" y1="1021" x2="1896" y2="1021" stroke="#e6e6e6" stroke-width="1.5"/><rect x="24" y="856" width="6" height="148" rx="3" fill="#15803D"/><text x="46" y="925.0" class="lane" fill="#15803D">DATA &amp;</text><text x="46" y="950.0" class="lane" fill="#15803D">SERVICES</text><rect x="249.0" y="156.0" width="262" height="92" rx="46" fill="#fff" stroke="#B7860B" stroke-width="3"/><text x="380" y="196.0" class="t">Choose or ask</text><text x="380" y="223.0" class="s">dropdowns · chat · voice</text><rect x="591.0" y="156.0" width="262" height="92" rx="46" fill="#fff" stroke="#B7860B" stroke-width="3"/><text x="722" y="196.0" class="t">Who's travelling</text><text x="722" y="223.0" class="s">couple · family · friends</text><rect x="933.0" y="156.0" width="262" height="92" rx="46" fill="#fff" stroke="#B7860B" stroke-width="3"/><text x="1064" y="196.0" class="t">Review the plan</text><text x="1064" y="223.0" class="s">solver pick · strategy · rides</text><rect x="1275.0" y="156.0" width="262" height="92" rx="46" fill="#fff" stroke="#B7860B" stroke-width="3"/><text x="1406" y="196.0" class="t">Approve &amp; pay</text><text x="1406" y="223.0" class="s">exact total · UPI per vendor</text><rect x="1617.0" y="156.0" width="262" height="92" rx="46" fill="#fff" stroke="#B7860B" stroke-width="3"/><text x="1748" y="196.0" class="t">Booked</text><text x="1748" y="223.0" class="s">references in My Trips</text><path d="M511.0,202.0 L587.0,202.0" fill="none" stroke="#1f1f1f" stroke-width="2.6"  marker-end="url(#ah)"/><path d="M853.0,202.0 L929.0,202.0" fill="none" stroke="#1f1f1f" stroke-width="2.6"  marker-end="url(#ah)"/><path d="M1195.0,202.0 L1271.0,202.0" fill="none" stroke="#1f1f1f" stroke-width="2.6"  marker-end="url(#ah)"/><path d="M1537.0,202.0 L1613.0,202.0" fill="none" stroke="#1f1f1f" stroke-width="2.6"  marker-end="url(#ah)"/><rect x="249.0" y="338.0" width="262" height="92" rx="12" fill="#fff" stroke="#1F5F5B" stroke-width="3"/><text x="380" y="378.0" class="t">Web app</text><text x="380" y="405.0" class="s">Plan · Explore · Rides · Chat</text><rect x="591.0" y="338.0" width="262" height="92" rx="12" fill="#fff" stroke="#1F5F5B" stroke-width="3"/><text x="722" y="378.0" class="t">Security gate</text><text x="722" y="405.0" class="s">Argon2id · sessions · limits</text><rect x="933.0" y="338.0" width="262" height="92" rx="12" fill="#fff" stroke="#1F5F5B" stroke-width="3"/><text x="1064" y="378.0" class="t">Live results</text><text x="1064" y="405.0" class="s">cards streamed to the screen</text><rect x="1275.0" y="338.0" width="262" height="92" rx="12" fill="#fff" stroke="#1F5F5B" stroke-width="3"/><text x="1406" y="378.0" class="t">Consent gate</text><text x="1406" y="405.0" class="s">server prices · 15-min hold</text><rect x="1617.0" y="338.0" width="262" height="92" rx="12" fill="#fff" stroke="#1F5F5B" stroke-width="3"/><text x="1748" y="378.0" class="t">Vendor portal</text><text x="1748" y="405.0" class="s">confirms money received</text><path d="M511.0,384.0 L587.0,384.0" fill="none" stroke="#1f1f1f" stroke-width="2.6"  marker-end="url(#ah)"/><path d="M1537.0,384.0 L1613.0,384.0" fill="none" stroke="#1f1f1f" stroke-width="2.6"  marker-end="url(#ah)"/><path d="M380,248.0 L380,334.0" fill="none" stroke="#1f1f1f" stroke-width="2.6"  marker-end="url(#ah)"/><path d="M1064,338.0 L1064,252.0" fill="none" stroke="#1f1f1f" stroke-width="2.6"  marker-end="url(#ah)"/><path d="M1406,248.0 L1406,334.0" fill="none" stroke="#1f1f1f" stroke-width="2.6"  marker-end="url(#ah)"/><path d="M1748,338.0 L1748,252.0" fill="none" stroke="#1f1f1f" stroke-width="2.6"  marker-end="url(#ah)"/><polygon points="380,504.0 516,566.0 380,628.0 244,566.0" fill="#fff" stroke="#1D4ED8" stroke-width="3"/><text x="380" y="560.0" class="t">Router</text><text x="380" y="587.0" class="s">screens or Ask Sara</text><rect x="591.0" y="520.0" width="262" height="92" rx="12" fill="#fff" stroke="#1D4ED8" stroke-width="3"/><text x="722" y="560.0" class="t">Ask Sara agent</text><text x="722" y="587.0" class="s">gpt-oss-120b · LangGraph</text><rect x="933.0" y="520.0" width="262" height="92" rx="12" fill="#fff" stroke="#1D4ED8" stroke-width="3"/><text x="1064" y="560.0" class="t">Constraint solver</text><text x="1064" y="587.0" class="s">checks every combination</text><rect x="1275.0" y="520.0" width="262" height="92" rx="12" fill="#fff" stroke="#1D4ED8" stroke-width="3"/><text x="1406" y="560.0" class="t">Group personaliser</text><text x="1406" y="587.0" class="s">hotels · transport · places</text><rect x="1617.0" y="520.0" width="262" height="92" rx="12" fill="#fff" stroke="#1D4ED8" stroke-width="3"/><text x="1748" y="560.0" class="t">Grounding guard</text><text x="1748" y="587.0" class="s">no invented prices</text><path d="M722,430.0 L722,475.0 L380,475.0 L380,500.0" fill="none" stroke="#1f1f1f" stroke-width="2.6"  marker-end="url(#ah)"/><path d="M516,566.0 L587.0,566.0" fill="none" stroke="#1f1f1f" stroke-width="2.6"  marker-end="url(#ah)"/><path d="M853.0,566.0 L929.0,566.0" fill="none" stroke="#1f1f1f" stroke-width="2.6"  marker-end="url(#ah)"/><path d="M1195.0,566.0 L1271.0,566.0" fill="none" stroke="#1f1f1f" stroke-width="2.6"  marker-end="url(#ah)"/><path d="M1537.0,566.0 L1613.0,566.0" fill="none" stroke="#1f1f1f" stroke-width="2.6"  marker-end="url(#ah)"/><path d="M1748,520.0 L1748,485.0 L1104,485.0 L1104,434.0" fill="none" stroke="#1D4ED8" stroke-width="2.6"  marker-end="url(#ahb)"/><rect x="1544.2" y="470.0" width="145.6" height="30" rx="15" fill="#fff" stroke="#1D4ED8" stroke-width="2"/><text x="1617.0" y="491.0" class="lab" fill="#1D4ED8">checked reply</text><rect x="249.0" y="702.0" width="262" height="92" rx="12" fill="#fff" stroke="#7C3AED" stroke-width="3"/><text x="380" y="742.0" class="t">Strategist</text><text x="380" y="769.0" class="s">timing · seasons · risks</text><rect x="591.0" y="702.0" width="262" height="92" rx="12" fill="#fff" stroke="#7C3AED" stroke-width="3"/><text x="722" y="742.0" class="t">Local rides</text><text x="722" y="769.0" class="s">bus · metro · Rapido · Ola · Uber</text><rect x="933.0" y="702.0" width="262" height="92" rx="12" fill="#fff" stroke="#7C3AED" stroke-width="3"/><text x="1064" y="742.0" class="t">Plan verifier</text><text x="1064" y="769.0" class="s">12 constraint checks</text><rect x="1275.0" y="702.0" width="262" height="92" rx="12" fill="#fff" stroke="#7C3AED" stroke-width="3"/><text x="1406" y="742.0" class="t">Explore &amp; maps</text><text x="1406" y="769.0" class="s">photos · sights · restaurants</text><rect x="1617.0" y="702.0" width="262" height="92" rx="12" fill="#fff" stroke="#7C3AED" stroke-width="3"/><text x="1748" y="742.0" class="t">Travel guide</text><text x="1748" y="769.0" class="s">permits · rules · sources</text><path d="M380,702.0 V657.0 H1748 V702.0" fill="none" stroke="#7C3AED" stroke-width="2.4" stroke-dasharray="8 7"/><line x1="722" y1="657.0" x2="722" y2="702.0" stroke="#7C3AED" stroke-width="2.4" stroke-dasharray="8 7"/><line x1="1064" y1="657.0" x2="1064" y2="702.0" stroke="#7C3AED" stroke-width="2.4" stroke-dasharray="8 7"/><line x1="1406" y1="657.0" x2="1406" y2="702.0" stroke="#7C3AED" stroke-width="2.4" stroke-dasharray="8 7"/><path d="M782,657.0 L782,616.0" fill="none" stroke="#1f1f1f" stroke-width="2.6" stroke-dasharray="8 7" marker-end="url(#ahg)"/><rect x="732.2" y="642.0" width="99.6" height="30" rx="15" fill="#fff" stroke="#7C3AED" stroke-width="2"/><text x="782" y="663.0" class="lab" fill="#7C3AED">12 tools</text><path d="M249.0,898.0 A131.0,14 0 0 1 511.0,898.0 V962.0 A131.0,14 0 0 1 249.0,962.0 Z" fill="#fff" stroke="#15803D" stroke-width="3"/><path d="M249.0,898.0 A131.0,14 0 0 0 511.0,898.0" fill="none" stroke="#15803D" stroke-width="3"/><text x="380" y="930.0" class="t">PostgreSQL</text><text x="380" y="957.0" class="s">users · trips · payments</text><path d="M591.0,898.0 A131.0,14 0 0 1 853.0,898.0 V962.0 A131.0,14 0 0 1 591.0,962.0 Z" fill="#fff" stroke="#15803D" stroke-width="3"/><path d="M591.0,898.0 A131.0,14 0 0 0 853.0,898.0" fill="none" stroke="#15803D" stroke-width="3"/><text x="722" y="930.0" class="t">Redis</text><text x="722" y="957.0" class="s">rate-limit counters</text><path d="M933.0,898.0 A131.0,14 0 0 1 1195.0,898.0 V962.0 A131.0,14 0 0 1 933.0,962.0 Z" fill="#fff" stroke="#15803D" stroke-width="3"/><path d="M933.0,898.0 A131.0,14 0 0 0 1195.0,898.0" fill="none" stroke="#15803D" stroke-width="3"/><text x="1064" y="930.0" class="t">Travel inventory</text><text x="1064" y="957.0" class="s">flights · trains · hotels</text><path d="M1275.0,898.0 A131.0,14 0 0 1 1537.0,898.0 V962.0 A131.0,14 0 0 1 1275.0,962.0 Z" fill="#fff" stroke="#15803D" stroke-width="3"/><path d="M1275.0,898.0 A131.0,14 0 0 0 1537.0,898.0" fill="none" stroke="#15803D" stroke-width="3"/><text x="1406" y="930.0" class="t">Knowledge base</text><text x="1406" y="957.0" class="s">26 destinations · travel rules</text><path d="M1617.0,898.0 A131.0,14 0 0 1 1879.0,898.0 V962.0 A131.0,14 0 0 1 1617.0,962.0 Z" fill="#fff" stroke="#15803D" stroke-width="3"/><path d="M1617.0,898.0 A131.0,14 0 0 0 1879.0,898.0" fill="none" stroke="#15803D" stroke-width="3"/><text x="1748" y="930.0" class="t">Free web services</text><text x="1748" y="957.0" class="s">Open-Meteo · Wikipedia · OSM</text><path d="M380,884.0 V839.0 H1748 V884.0" fill="none" stroke="#15803D" stroke-width="2.4" stroke-dasharray="8 7"/><line x1="722" y1="839.0" x2="722" y2="884.0" stroke="#15803D" stroke-width="2.4" stroke-dasharray="8 7"/><line x1="1064" y1="839.0" x2="1064" y2="884.0" stroke="#15803D" stroke-width="2.4" stroke-dasharray="8 7"/><line x1="1406" y1="839.0" x2="1406" y2="884.0" stroke="#15803D" stroke-width="2.4" stroke-dasharray="8 7"/><rect x="1166.8" y="824.0" width="136.39999999999998" height="30" rx="15" fill="#fff" stroke="#15803D" stroke-width="2"/><text x="1235.0" y="845.0" class="lab" fill="#15803D">read · write</text>
+</svg></body></html>

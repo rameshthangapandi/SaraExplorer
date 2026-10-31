@@ -6,6 +6,7 @@ import { useState, type ReactNode } from "react";
 import type { Card } from "../../lib/api";
 import { cx, day, duration, inr, time } from "../../lib/format";
 import ConsentCard from "./ConsentCard";
+import { RideResults } from "../../pages/Rides";
 
 type Send = (text: string) => void;
 
@@ -321,6 +322,7 @@ function AutoPlan({ card, onSend }: { card: Card; onSend: Send }) {
         </div>
         <button onClick={() => onSend(`Book this plan: ${card.option_ids.join(", ")}`)} className="btn-dark px-4 py-2">Book this plan</button>
       </div>
+      {card.why?.length > 0 && <p className="mt-2 text-xs text-emerald-800">Why it suits you: {card.why.join("; ")}.</p>}
       <p className="mt-2 text-[11px] text-ink-400">Checked {card.candidates_checked} combinations against all your conditions.</p>
     </Shell>
   );
@@ -329,6 +331,7 @@ function AutoPlan({ card, onSend }: { card: Card; onSend: Send }) {
 export default function CardRenderer({ card, onSend }: { card: Card; onSend: Send }) {
   switch (card.type) {
     case "autoplan": return <AutoPlan card={card} onSend={onSend} />;
+    case "rides": return <Shell icon={<MapPin size={16} />} title="Local rides compared" badge="Estimates"><RideResults data={card} /></Shell>;
     case "flights": return <Flights card={card} onSend={onSend} />;
     case "trains": return <Trains card={card} onSend={onSend} />;
     case "hotels": return <Hotels card={card} onSend={onSend} />;

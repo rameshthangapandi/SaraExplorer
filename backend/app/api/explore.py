@@ -87,6 +87,7 @@ class AutoPlanQ(BaseModel):
     hotel_min_stars: int | None = Field(default=None, ge=1, le=5)
     round_trip: bool = True
     objective: str = Field(default="balanced", pattern="^(cheapest|balanced|comfort)$")
+    traveller_type: str | None = Field(default=None, pattern="^(solo|couple|family|friends|seniors|business)$")
 
 
 @router.post("/plan/auto")
@@ -102,10 +103,13 @@ async def auto_plan(q: AutoPlanQ, user: User = Depends(get_current_user)):
 
 @router.get("/explore/destinations")
 async def explore_destinations(month: int | None = Query(default=None, ge=1, le=12), interest: str | None = None,
+                               trip_type: str | None = Query(default=None, pattern="^(solo|couple|family|friends|seniors|business)$"),
                                user: User = Depends(get_current_user)):
+    from app.planner.groups import destination_fit
     m = month or date.today().month
     picks = [d for d in DESTINATIONS.values()
-             if not interest or interest.lower() in " ".join(d["tags"] + [d["terrain"]])]
+             if (not interest or interest.lower() in " ".join(d["tags"] + [d["terrain"]]))
+             and destination_fit(d, trip_type) >= 0]
     sem = asyncio.Semaphore(6)
 
     async def photo(d):
@@ -115,9 +119,10 @@ async def explore_destinations(month: int | None = Query(default=None, ge=1, le=
 
     images = await asyncio.gather(*(photo(d) for d in picks))
     out = [{"slug": d["slug"], "name": d["name"], "state": d["state"], "tags": d["tags"], "image": img,
-            "rating": d["ratings"][m - 1], "peak": m in d["peak"], "permit": bool(d["permit"])}
+            "rating": d["ratings"][m - 1], "peak": m in d["peak"], "permit": bool(d["permit"]),
+            "fit": destination_fit(d, trip_type)}
            for d, img in zip(picks, images)]
-    out.sort(key=lambda x: (-x["rating"], x["peak"], x["name"]))
+    out.sort(key=lambda x: (-(x["rating"] + 0.3 * x["fit"]), x["peak"], x["name"]))
     return {"month": MONTHS[m - 1], "destinations": out}
 
 
@@ -152,6 +157,46 @@ async def explore_nearby(lat: float = Query(ge=6, le=37.5), lon: float = Query(g
         items = await places.osm_nearby(lat, lon, kind)
     return {"kind": kind, "items": items[:24],
             "source": "Wikipedia" if kind == "attractions" else "OpenStreetMap contributors"}
+
+
+# ---------------------------------------------------------------- Local rides
+
+class RideQ(BaseModel):
+    from_place: str | None = Field(default=None, max_length=120)
+    to_place: str | None = Field(default=None, max_length=120)
+    from_lat: float | None = Field(default=None, ge=6, le=37.5)
+    from_lon: float | None = Field(default=None, ge=68, le=98)
+    to_lat: float | None = Field(default=None, ge=6, le=37.5)
+    to_lon: float | None = Field(default=None, ge=68, le=98)
+    hour: int = Field(default=10, ge=0, le=23)
+    people: int = Field(default=1, ge=1, le=12)
+    bags: int = Field(default=0, ge=0, le=10)
+    priority: str = Field(default="value", pattern="^(value|cheapest|fastest|comfort)$")
+    traveller_type: str | None = Field(default=None, pattern="^(solo|couple|family|friends|seniors|business)$")
+
+
+async def _point(name, lat, lon, label):
+    if lat is not None and lon is not None:
+        return {"name": name or label, "lat": lat, "lon": lon}
+    if not name:
+        raise HTTPException(422, f"Enter the {label.lower()} place.")
+    p = await places.geocode(name)
+    if not p:
+        raise HTTPException(422, f"Could not find “{name}”. Try a fuller name, e.g. “Jaipur airport”.")
+    return p
+
+
+@router.post("/local/compare")
+async def local_compare(q: RideQ, user: User = Depends(get_current_user)):
+    """Compare bus, metro, Rapido, Ola and Uber options for a local ride and recommend one."""
+    await enforce(f"rides:{user.id}", 30, 60)
+    from app.providers.local_transport import compare
+    a = await _point(q.from_place, q.from_lat, q.from_lon, "Pickup")
+    b = await _point(q.to_place, q.to_lat, q.to_lon, "Drop")
+    res = compare((a["lat"], a["lon"]), (b["lat"], b["lon"]), q.hour, q.people, q.bags, q.priority, q.traveller_type)
+    if res["distance_km"] < 0.3:
+        raise HTTPException(422, "Pickup and drop are the same place.")
+    return {"from": a, "to": b, **res}
 
 
 # ---------------------------------------------------------------- Travel guide

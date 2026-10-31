@@ -6,7 +6,7 @@ from app.providers.sandbox import PEAK_WINDOWS
 from app.strategist.base import REGISTRY, Suggestion, TripContext
 
 # Importing the modules registers the strategies.
-from app.strategist.strategies import experience, money, risk, timing  # noqa: F401
+from app.strategist.strategies import experience, group, money, risk, timing  # noqa: F401
 
 log = logging.getLogger(__name__)
 
@@ -38,17 +38,20 @@ def best_time(dest: dict) -> dict:
     }
 
 
-def where_to_go(month: int, interest: str | None = None, limit: int = 6) -> list[dict]:
+def where_to_go(month: int, interest: str | None = None, limit: int = 6, traveller_type: str | None = None) -> list[dict]:
+    from app.planner.groups import destination_fit
     ranked = []
     for d in DESTINATIONS.values():
         if interest and interest.lower() not in " ".join(d["tags"] + [d["terrain"]]):
             continue
         rating = d["ratings"][month - 1]
-        if rating < 4:
+        fit = destination_fit(d, traveller_type)
+        if rating < 4 or fit < 0:
             continue
         crowd_penalty = 0.5 if month in d["peak"] else 0
         ranked.append({"slug": d["slug"], "name": d["name"], "state": d["state"], "rating": rating,
-                       "peak": month in d["peak"], "tags": d["tags"], "score": rating - crowd_penalty})
+                       "peak": month in d["peak"], "tags": d["tags"], "fit": fit,
+                       "score": rating - crowd_penalty + 0.3 * fit})
     ranked.sort(key=lambda x: x["score"], reverse=True)
     return ranked[:limit]
 

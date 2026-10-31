@@ -57,6 +57,7 @@ def _adults(v) -> int:
         return 1
 
 
+GROUP_KEYS = ("solo", "couple", "family", "friends", "seniors", "business")
 KNOWN_PLACES = ", ".join(sorted({d["name"] for d in DESTINATIONS.values()}))
 
 
@@ -141,7 +142,7 @@ async def best_time_to_visit(ctx: ToolContext, destination: str) -> ToolResult:
 
 async def strategist_advice(ctx: ToolContext, destination: str, origin: str | None = None,
                             travel_date: str | None = None, month: str | None = None, nights: int = 3,
-                            adults: int = 1) -> ToolResult:
+                            adults: int = 1, traveller_type: str | None = None) -> ToolResult:
     dest = find_destination(destination)
     if not dest:
         return _err(f"Unknown destination. Known destinations: {KNOWN_PLACES}")
@@ -150,17 +151,19 @@ async def strategist_advice(ctx: ToolContext, destination: str, origin: str | No
     if m is None:
         return _err("month must be a month name or number")
     tc = TripContext(destination=dest, month=m, origin=origin, travel_date=travel,
-                     nights=max(1, min(int(nights or 3), 30)), adults=_adults(adults))
+                     nights=max(1, min(int(nights or 3), 30)), adults=_adults(adults),
+                     traveller_type=traveller_type if traveller_type in GROUP_KEYS else None)
     suggestions = [s.to_dict() for s in advise(tc)]
     card = {"type": "strategy", "title": f"Sara's strategy for {dest['name']}", "suggestions": suggestions}
     return ToolResult(json.dumps({"suggestions": [{k: s[k] for k in ("title", "detail", "saving_inr")} for s in suggestions]}), card)
 
 
-async def where_to_go_in(ctx: ToolContext, month: str, interest: str | None = None) -> ToolResult:
+async def where_to_go_in(ctx: ToolContext, month: str, interest: str | None = None,
+                         traveller_type: str | None = None) -> ToolResult:
     m = parse_month(month)
     if m is None:
         return _err("month must be a month name or number")
-    picks = where_to_go(m, interest)
+    picks = where_to_go(m, interest, traveller_type=traveller_type if traveller_type in GROUP_KEYS else None)
     avoid = avoid_in(m)
     card = {"type": "where", "title": f"Where to go in {MONTHS[m - 1]}", "month": MONTHS[m - 1], "picks": picks, "avoid": avoid}
     return ToolResult(json.dumps({"picks": [{"name": p["name"], "rating": p["rating"], "peak": p["peak"]} for p in picks],
@@ -192,7 +195,7 @@ async def run_auto_plan(user_id: str, req: TripRequest) -> dict:
     result = solve(req)
     out = {"status": result.status, "reasons": result.reasons, "total": result.total,
            "min_possible_total": result.min_possible_total, "candidates_checked": result.candidates_checked, "plan": None,
-           "alternatives": result.alternatives}
+           "alternatives": result.alternatives, "why": result.why}
     if result.status == "ok":
         async with SessionLocal() as db:
             stored_out = (await store_options(db, user_id, result.out["kind"], [result.out]))[0]
@@ -217,7 +220,8 @@ def _leg_brief(o: dict | None) -> dict | None:
 
 async def auto_plan(ctx: ToolContext, origin: str, destination: str, depart: str, nights: int = 3, adults: int = 2,
                     mode: str = "any", budget_total: int | None = None, hotel_max_per_night: int | None = None,
-                    hotel_min_stars: int | None = None, round_trip: bool = True, objective: str = "balanced") -> ToolResult:
+                    hotel_min_stars: int | None = None, round_trip: bool = True, objective: str = "balanced",
+                    traveller_type: str | None = None) -> ToolResult:
     req = TripRequest(origin=origin, destination=destination, depart=_date(depart, "depart"),
                       nights=max(1, min(int(nights or 3), 14)), adults=_adults(adults),
                       mode=mode if mode in ("any", "flight", "train") else "any",
@@ -225,7 +229,8 @@ async def auto_plan(ctx: ToolContext, origin: str, destination: str, depart: str
                       hotel_max_per_night=int(hotel_max_per_night) if hotel_max_per_night else None,
                       hotel_min_stars=int(hotel_min_stars) if hotel_min_stars else None,
                       round_trip=True if round_trip is None else bool(round_trip),
-                      objective=objective if objective in ("cheapest", "balanced", "comfort") else "balanced")
+                      objective=objective if objective in ("cheapest", "balanced", "comfort") else "balanced",
+                      traveller_type=traveller_type if traveller_type in GROUP_KEYS else None)
     res = await run_auto_plan(ctx.user_id, req)
     if res["status"] != "ok":
         return ToolResult(json.dumps({k: res[k] for k in ("status", "reasons", "min_possible_total", "alternatives")}
@@ -237,7 +242,7 @@ async def auto_plan(ctx: ToolContext, origin: str, destination: str, depart: str
     p = res["plan"]
     ids = [p["out"]["id"]] + ([p["back"]["id"]] if p["back"] else []) + [p["stay"]["id"]]
     card = {"type": "autoplan", "status": "ok", "total": res["total"], "budget_total": req.budget_total,
-            "option_ids": ids, "plan": p, "candidates_checked": res["candidates_checked"]}
+            "option_ids": ids, "plan": p, "candidates_checked": res["candidates_checked"], "why": res["why"]}
     brief = {"status": "ok", "total_inr": res["total"], "option_ids": ids, "travellers": req.adults,
              "budget_inr": req.budget_total,
              "remaining_budget_inr": (req.budget_total - res["total"]) if req.budget_total else None,
@@ -247,7 +252,26 @@ async def auto_plan(ctx: ToolContext, origin: str, destination: str, depart: str
                       "nights": p["stay"]["nights"], "rooms": p["stay"]["rooms"],
                       "price_per_night_per_room_inr": p["stay"]["price_per_night"], "total_inr": p["stay"]["price_total"],
                       "check_in": p["stay"]["check_in"], "check_out": p["stay"]["check_out"]},
-             "candidates_checked": res["candidates_checked"]}
+             "candidates_checked": res["candidates_checked"], "why_it_suits_the_group": res["why"]}
+    return ToolResult(json.dumps(brief), card)
+
+
+async def compare_local_transport(ctx: ToolContext, from_place: str, to_place: str, hour: int | None = None,
+                                  people: int | None = 1, bags: int | None = 0, priority: str | None = "value",
+                                  traveller_type: str | None = None) -> ToolResult:
+    from app.providers import places
+    from app.providers.local_transport import compare
+    a, b = await places.geocode(from_place), await places.geocode(to_place)
+    if not a or not b:
+        return _err(f"Could not find {'the pickup' if not a else 'the drop'} place. Ask for a fuller name.")
+    res = compare((a["lat"], a["lon"]), (b["lat"], b["lon"]), int(hour if hour is not None else 10),
+                  max(1, min(int(people or 1), 12)), max(0, min(int(bags or 0), 10)),
+                  priority if priority in ("value", "cheapest", "fastest", "comfort") else "value",
+                  traveller_type if traveller_type in GROUP_KEYS else None)
+    card = {"type": "rides", "from": a, "to": b, **res}
+    brief = {"distance_km": res["distance_km"], "recommended": res["reason"],
+             "options": [{k: o[k] for k in ("provider", "product", "fare_min", "fare_max", "per_person", "vehicles", "total_min")}
+                         for o in res["options"][:8]]}
     return ToolResult(json.dumps(brief), card)
 
 
@@ -274,6 +298,8 @@ I = {"type": "integer"}
 # Optional parameters may be sent as null by the model; strict schema validation must accept that.
 OI = {"type": ["integer", "null"]}
 OS = {"type": ["string", "null"]}
+TT = {"type": ["string", "null"], "enum": ["solo", "couple", "family", "friends", "seniors", "business", None],
+      "description": "who is travelling; changes hotels, transport and suggestions"}
 
 TOOLS = [
     _fn("auto_plan", "Build the best complete trip (onward transport + stay + return) that satisfies ALL the traveller's "
@@ -283,8 +309,14 @@ TOOLS = [
          "mode": {"type": ["string", "null"], "enum": ["any", "flight", "train", None]},
          "budget_total": {**OI, "description": "whole trip, all travellers, INR"},
          "hotel_max_per_night": OI, "hotel_min_stars": OI, "round_trip": {"type": ["boolean", "null"]},
-         "objective": {"type": ["string", "null"], "enum": ["cheapest", "balanced", "comfort", None]}},
+         "objective": {"type": ["string", "null"], "enum": ["cheapest", "balanced", "comfort", None]},
+         "traveller_type": TT},
         ["origin", "destination", "depart"]),
+    _fn("compare_local_transport", "Compare local rides between two places in a city (city bus, metro, Rapido, Ola, Uber: "
+        "bike, auto, cab, sedan, SUV) by estimated fare, per-person cost and time, and recommend one for the group.",
+        {"from_place": S, "to_place": S, "hour": {**OI, "description": "0-23"}, "people": OI, "bags": OI,
+         "priority": {"type": ["string", "null"], "enum": ["value", "cheapest", "fastest", "comfort", None]}, "traveller_type": TT},
+        ["from_place", "to_place"]),
     _fn("search_flights", "Search flights between Indian cities for a date. Returns option IDs with prices.",
         {"origin": S, "destination": S, "date": {**S, "description": "YYYY-MM-DD"}, "adults": OI},
         ["origin", "destination", "date"]),
@@ -301,9 +333,9 @@ TOOLS = [
     _fn("strategist_advice", "Run Sara's Strategist: booking timing, cheapest departure time, nearby airports, closed days, "
         "weather, shoulder season, festivals, fog/monsoon buffers and permits.",
         {"destination": S, "origin": S, "travel_date": {**OS, "description": "YYYY-MM-DD, optional"},
-         "month": {**OS, "description": "month name if no exact date"}, "nights": OI, "adults": OI}, ["destination"]),
+         "month": {**OS, "description": "month name if no exact date"}, "nights": OI, "adults": OI, "traveller_type": TT}, ["destination"]),
     _fn("where_to_go_in", "Recommend destinations for a month, optionally filtered by interest (beach, mountains, heritage, ...).",
-        {"month": S, "interest": OS}, ["month"]),
+        {"month": S, "interest": OS, "traveller_type": TT}, ["month"]),
     _fn("search_travel_knowledge", "Search Sara's travel guide: permits, train rules, Tatkal, monument rules, safety, app help.",
         {"query": S}, ["query"]),
     _fn("propose_booking", "Create a consent request for the chosen option IDs. The user must approve and pay in the "
@@ -314,6 +346,7 @@ TOOLS = [
 
 IMPLS = {
     "auto_plan": auto_plan,
+    "compare_local_transport": compare_local_transport,
     "search_flights": search_flights, "search_trains": search_trains, "search_hotels": search_hotels,
     "get_weather": get_weather, "best_time_to_visit": best_time_to_visit, "strategist_advice": strategist_advice,
     "where_to_go_in": where_to_go_in, "search_travel_knowledge": search_travel_knowledge,
@@ -322,6 +355,7 @@ IMPLS = {
 
 STATUS = {
     "auto_plan": "Solving for the best trip within your constraints…",
+    "compare_local_transport": "Comparing bus, metro, Rapido, Ola and Uber…",
     "search_flights": "Checking flights…", "search_trains": "Checking trains and waitlists…",
     "search_hotels": "Comparing stays…", "get_weather": "Looking at the weather…",
     "best_time_to_visit": "Checking the best time to go…", "strategist_advice": "Running the Strategist…",

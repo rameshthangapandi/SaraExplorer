@@ -5,6 +5,7 @@ import { MonthStrip } from "../components/cards/Cards";
 import MapView, { type Pin } from "../components/MapView";
 import { api, type Card } from "../lib/api";
 import { cx, day } from "../lib/format";
+import { GROUPS } from "../lib/groups";
 
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 const INTERESTS = ["", "beach", "mountains", "heritage", "spiritual", "adventure", "honeymoon", "food", "nature", "offbeat"];
@@ -24,13 +25,14 @@ function Photo({ src, alt, className }: { src?: string | null; alt: string; clas
 export function ExploreList() {
   const [month, setMonth] = useState(new Date().getMonth() + 1);
   const [interest, setInterest] = useState("");
+  const [group, setGroup] = useState("");
   const [data, setData] = useState<{ month: string; destinations: Card[] } | null>(null);
 
   useEffect(() => {
     setData(null);
-    api<{ month: string; destinations: Card[] }>(`/api/explore/destinations?month=${month}${interest ? `&interest=${interest}` : ""}`)
+    api<{ month: string; destinations: Card[] }>(`/api/explore/destinations?month=${month}${interest ? `&interest=${interest}` : ""}${group ? `&trip_type=${group}` : ""}`)
       .then(setData).catch(() => setData({ month: MONTHS[month - 1], destinations: [] }));
-  }, [month, interest]);
+  }, [month, interest, group]);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
@@ -43,6 +45,12 @@ export function ExploreList() {
           <span className="label">Travel month</span>
           <select className="input" value={month} onChange={(e) => setMonth(+e.target.value)}>
             {MONTHS.map((m, i) => <option key={m} value={i + 1}>{m}</option>)}
+          </select>
+        </label>
+        <label className="min-w-[160px] flex-1">
+          <span className="label">Who's travelling</span>
+          <select className="input" value={group} onChange={(e) => setGroup(e.target.value)}>
+            {GROUPS.map((g) => <option key={g.id} value={g.id}>{g.label}</option>)}
           </select>
         </label>
         <label className="min-w-[160px] flex-1">
@@ -71,6 +79,7 @@ export function ExploreList() {
                     {d.rating >= 5 ? "Ideal" : d.rating === 4 ? "Good" : d.rating === 3 ? "Okay" : "Not ideal"} in {data.month.slice(0, 3)}
                   </span>
                   {d.peak && <span className="rounded-full bg-ink-950/80 px-2.5 py-1 text-[11px] font-bold text-cream">Peak season</span>}
+                  {group && d.fit >= 4 && <span className="rounded-full bg-white px-2.5 py-1 text-[11px] font-bold text-ink-900">Great for {GROUPS.find((g) => g.id === group)?.short.toLowerCase()}</span>}
                 </div>
               </div>
               <div className="flex items-center justify-between p-4">
@@ -165,6 +174,8 @@ export function Destination() {
           </div>
           <div className="space-y-4">
             <Link to={`/app?to=${d.slug}`} className="btn-primary w-full py-3">Plan a trip to {d.name} <ArrowRight size={16} /></Link>
+            <Link to={`/app/rides?from=${encodeURIComponent((d.airports[0]?.name ?? d.name) + (d.airports[0] ? " airport" : ""))}&to=${encodeURIComponent(d.name)}`}
+              className="btn-outline w-full py-3">Getting around: compare local rides <ArrowRight size={16} /></Link>
             <div className="card space-y-3 p-4 text-sm">
               <div><div className="label">Best value months</div>{d.best_time.best_value_months.join(", ") || "—"}</div>
               <div><div className="label">Getting there</div>{[...d.airports.map((a: Card) => `✈ ${a.code}`), ...d.stations.map((s: Card) => `🚆 ${s.name}`)].join(" · ") || "By road"}</div>

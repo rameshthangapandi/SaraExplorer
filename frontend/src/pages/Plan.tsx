@@ -5,6 +5,7 @@ import { MonthStrip, Suggestions } from "../components/cards/Cards";
 import ConsentCard from "../components/cards/ConsentCard";
 import { api, type Card } from "../lib/api";
 import { addDays, cx, day, duration, inr, isoDay, time } from "../lib/format";
+import { GROUPS } from "../lib/groups";
 
 type Meta = { origins: string[]; destinations: { slug: string; name: string; state: string }[] };
 type Section = { loading: boolean; error?: string; options: Card[] };
@@ -132,7 +133,7 @@ export default function Plan() {
   const [meta, setMeta] = useState<Meta | null>(null);
   const [form, setForm] = useState({
     origin: "Delhi", destination: params.get("to") ?? "goa", depart: addDays(today, 21), nights: 3, adults: 2,
-    mode: "both", budget: "", roundTrip: true, total: "", objective: "balanced",
+    mode: "both", budget: "", roundTrip: true, total: "", objective: "balanced", group: params.get("group") ?? "",
   });
   const [searched, setSearched] = useState<typeof form | null>(null);
   const [out, setOut] = useState<Section>(empty);
@@ -183,7 +184,7 @@ export default function Plan() {
       body: { city: destName, check_in: f.depart, check_out: ret, guests: f.adults, max_price_per_night: f.budget ? +f.budget : null },
     }).then((c) => setStay({ loading: false, options: c.options })).catch((err) => setStay({ loading: false, options: [], error: err.message }));
     api<{ suggestions: Card[] }>("/api/strategist/advice", {
-      method: "POST", body: { destination: f.destination, origin: f.origin, travel_date: f.depart, nights: f.nights, adults: f.adults },
+      method: "POST", body: { destination: f.destination, origin: f.origin, travel_date: f.depart, nights: f.nights, adults: f.adults, traveller_type: f.group || null },
     }).then((r) => setAdvice(r.suggestions)).catch(() => setAdvice([]));
     api<Card>(`/api/strategist/best-time/${f.destination}`).then(setBestTime).catch(() => undefined);
   };
@@ -198,12 +199,14 @@ export default function Plan() {
         body: {
           origin: form.origin, destination: form.destination, depart: form.depart, nights: form.nights, adults: form.adults,
           mode: form.mode === "both" ? "any" : form.mode, round_trip: form.roundTrip, objective: form.objective,
+          traveller_type: form.group || null,
           budget_total: form.total ? +form.total : null, hotel_max_per_night: form.budget ? +form.budget : null,
         },
       });
       if (res.status === "ok") {
         setPicked({ out: res.plan.out, back: res.plan.back ?? undefined, stay: res.plan.stay });
-        setAutoNote({ ok: true, text: `Sara checked ${res.candidates_checked} combinations and picked the best one that meets all your conditions.` });
+        const why = res.why?.length ? ` Why it suits you: ${res.why.join("; ")}.` : "";
+        setAutoNote({ ok: true, text: `Sara checked ${res.candidates_checked} combinations and picked the best one that meets all your conditions.${why}` });
       } else {
         setAutoNote({ ok: false, text: res.reasons.join(" ") });
       }
@@ -272,6 +275,11 @@ export default function Plan() {
             {Array.from({ length: 9 }, (_, i) => i + 1).map((n) => <option key={n} value={n}>{n} adult{n > 1 ? "s" : ""}</option>)}
           </select>
         </Field>
+        <Field label="Who's travelling" icon={<Users size={13} />}>
+          <select className="input" value={form.group} onChange={(e) => setForm({ ...form, group: e.target.value })}>
+            {GROUPS.map((g) => <option key={g.id} value={g.id}>{g.label}</option>)}
+          </select>
+        </Field>
         <Field label="Travel by" icon={<TrainFront size={13} />}>
           <select className="input" value={form.mode} onChange={(e) => setForm({ ...form, mode: e.target.value })}>
             <option value="both">Flight or train</option>
@@ -300,7 +308,7 @@ export default function Plan() {
             <option value="comfort">Most comfortable</option>
           </select>
         </Field>
-        <div className="flex flex-col justify-end gap-2 sm:col-span-2">
+        <div className="flex flex-col justify-end gap-2 sm:col-span-2 lg:col-span-1">
           <label className="flex items-center gap-2 text-sm text-ink-600">
             <input type="checkbox" className="size-4 accent-ink-950" checked={form.roundTrip} onChange={(e) => setForm({ ...form, roundTrip: e.target.checked })} />
             Include return journey

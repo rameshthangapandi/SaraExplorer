@@ -3,6 +3,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import { MonthStrip, Suggestions } from "../components/cards/Cards";
 import { api, type Card } from "../lib/api";
 import { cx, day, isoDay } from "../lib/format";
+import { GROUPS } from "../lib/groups";
 
 type Dest = { slug: string; name: string; state: string; tags: string[] };
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -26,7 +27,7 @@ export default function Strategist() {
   const [month, setMonth] = useState(new Date().getMonth() + 1);
   const [interest, setInterest] = useState("");
   const [where, setWhere] = useState<Card | null>(null);
-  const [form, setForm] = useState({ destination: "goa", origin: "Delhi", travel_date: "", nights: 3, adults: 2 });
+  const [form, setForm] = useState({ destination: "goa", origin: "Delhi", travel_date: "", nights: 3, adults: 2, traveller_type: "" });
   const [advice, setAdvice] = useState<Card[] | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -38,8 +39,8 @@ export default function Strategist() {
     api<Card>(`/api/strategist/best-time/${slug}`).then(setBest).catch(() => undefined);
   }, [slug]);
   useEffect(() => {
-    api<Card>(`/api/strategist/where?month=${month}${interest ? `&interest=${interest}` : ""}`).then(setWhere).catch(() => undefined);
-  }, [month, interest]);
+    api<Card>(`/api/strategist/where?month=${month}${interest ? `&interest=${interest}` : ""}${form.traveller_type ? `&traveller_type=${form.traveller_type}` : ""}`).then(setWhere).catch(() => undefined);
+  }, [month, interest, form.traveller_type]);
 
   const runAdvice = async (e: FormEvent) => {
     e.preventDefault();
@@ -48,7 +49,7 @@ export default function Strategist() {
     try {
       const res = await api<{ suggestions: Card[] }>("/api/strategist/advice", {
         method: "POST",
-        body: { ...form, origin: form.origin || null, travel_date: form.travel_date || null },
+        body: { ...form, origin: form.origin || null, travel_date: form.travel_date || null, traveller_type: form.traveller_type || null },
       });
       setAdvice(res.suggestions);
     } catch (err) {
@@ -72,6 +73,12 @@ export default function Strategist() {
             <label className="label" htmlFor="s-dest">Destination</label>
             <select id="s-dest" className="input" value={form.destination} onChange={(e) => setForm({ ...form, destination: e.target.value })}>
               {dests.map((d) => <option key={d.slug} value={d.slug}>{d.name}</option>)}
+            </select>
+          </div>
+          <div>
+            <label className="label" htmlFor="s-group">Who's travelling</label>
+            <select id="s-group" className="input" value={form.traveller_type} onChange={(e) => setForm({ ...form, traveller_type: e.target.value })}>
+              {GROUPS.map((g) => <option key={g.id} value={g.id}>{g.label}</option>)}
             </select>
           </div>
           <div>

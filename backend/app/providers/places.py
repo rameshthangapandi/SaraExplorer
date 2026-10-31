@@ -144,6 +144,46 @@ async def wiki_nearby(lat: float, lon: float, radius: int = 10000, limit: int = 
 NOMINATIM_QUERY = {"restaurants": "restaurant", "cafes": "cafe", "stays": "hotel"}
 
 
+async def geocode(text: str) -> dict | None:
+    """Place name -> {name, lat, lon} using known places first, then OpenStreetMap Nominatim (India only)."""
+    global _last_nominatim
+    from app.data.destinations import find_destination
+    from app.data.geo import AIRPORTS, STATIONS
+    t = text.strip()
+    if t.upper() in AIRPORTS:
+        a = AIRPORTS[t.upper()]
+        return {"name": f"{a['name']} airport, {a['city']}", "lat": a["lat"], "lon": a["lon"]}
+    if t.upper() in STATIONS:
+        st = STATIONS[t.upper()]
+        return {"name": f"{st['name']} station", "lat": st["lat"], "lon": st["lon"]}
+    key = f"geo:{t.lower()}"
+    cached = _get_cached(key)
+    if cached is not None:
+        return cached or None
+    async with _nominatim_lock:
+        wait = 1.1 - (time.time() - _last_nominatim)
+        if wait > 0:
+            await asyncio.sleep(wait)
+        try:
+            async with httpx.AsyncClient(timeout=12, headers={"User-Agent": UA}) as c:
+                r = await c.get("https://nominatim.openstreetmap.org/search",
+                                params={"q": t, "format": "jsonv2", "limit": 1, "countrycodes": "in"})
+                r.raise_for_status()
+                rows = r.json()
+        except Exception as exc:
+            log.info("geocode failed: %s", exc)
+            rows = []
+        finally:
+            _last_nominatim = time.time()
+    if rows:
+        out = {"name": rows[0].get("display_name", t).split(",")[0], "lat": float(rows[0]["lat"]), "lon": float(rows[0]["lon"])}
+    else:
+        d = find_destination(t)
+        out = {"name": d["name"], "lat": d["lat"], "lon": d["lon"]} if d else {}
+    _put(key, out)
+    return out or None
+
+
 async def osm_nearby(lat: float, lon: float, kind: str, km: float = 3.0) -> list[dict]:
     global _last_nominatim
     q = NOMINATIM_QUERY[kind]

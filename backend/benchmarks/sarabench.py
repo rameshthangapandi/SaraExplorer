@@ -326,6 +326,34 @@ def sample(queries, k, seed):
     return sorted(pick, key=lambda q: q["id"])
 
 
+def run_groups(queries):
+    """Personalisation effect: same requests solved without and with each traveller-group profile."""
+    from dataclasses import replace
+    from app.planner.groups import GROUPS, hotel_bonus, transport_penalty
+    feas = [q for q in queries if q["feasible"]]
+    out = {}
+    for kind in GROUPS:
+        stats = {"generic": {"feature": 0, "unsuitable": 0, "valid": 0, "cost": 0},
+                 "personalised": {"feature": 0, "unsuitable": 0, "valid": 0, "cost": 0}}
+        for q in feas:
+            base = to_req(q)
+            for label, req in (("generic", base), ("personalised", replace(base, traveller_type=kind))):
+                res = solve(req, TODAY)
+                if res.status != "ok":
+                    continue
+                plan = {"out": res.out, "back": res.back, "stay": res.stay}
+                st = stats[label]
+                st["valid"] += all(check(base, plan).values())
+                st["feature"] += bool(hotel_bonus(res.stay, kind)[1])
+                st["unsuitable"] += any(transport_penalty(l, kind)[1] for l in (res.out, res.back) if l)
+                st["cost"] += res.total
+        n = len(feas)
+        out[kind] = {lbl: {"feature_pct": round(100 * v["feature"] / n, 1), "unsuitable_pct": round(100 * v["unsuitable"] / n, 1),
+                           "valid_pct": round(100 * v["valid"] / n, 1), "avg_cost": round(v["cost"] / n)} for lbl, v in stats.items()}
+    (RESULTS / "groups.json").write_text(json.dumps({"n": len(feas), "groups": out}, indent=1))
+    print(json.dumps(out, indent=1))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--systems", default="solver")
@@ -349,6 +377,9 @@ def main():
             rows = asyncio.run(run_llm_only(sample(queries, a.llm_n, 7)))
         elif name == "agent":
             rows = asyncio.run(run_agent(sample(queries, a.agent_n, 11)))
+        elif name == "groups":
+            run_groups(queries)
+            continue
         else:
             raise SystemExit(f"unknown system {name}")
         if not rows:

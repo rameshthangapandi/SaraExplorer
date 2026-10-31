@@ -250,7 +250,8 @@ for line in collected.splitlines():
 labels = {"test_auth.py": "Accounts, sessions & tokens", "test_booking.py": "Consent & payment integrity",
           "test_upi.py": "Vendor payments & access control", "test_solver.py": "Constraint solver",
           "test_strategist.py": "Strategist, data & knowledge",
-          "test_grounding.py": "Price-grounding guard"}
+          "test_grounding.py": "Price-grounding guard",
+          "test_groups_rides.py": "Traveller groups & local rides"}
 sec = [(labels.get(f, f), n) for f, n in per_file.items()]
 total = sum(n for _, n in sec)
 fig, ax = plt.subplots(figsize=(8.5, 3.8))
@@ -292,3 +293,50 @@ if v1 and v2 and v3:
     ax.set_ylabel("Replies with every ₹ amount grounded (%)")
     ax.set_title("Eliminating invented prices in Sara's replies")
     save(fig, "fig13_grounding")
+
+# 14. Traveller-group personalisation ---------------------------------------------------------------
+gp = load("groups")
+if gp:
+    names = {"solo": "Solo", "couple": "Couple", "family": "Family", "friends": "Friends", "seniors": "Seniors", "business": "Business"}
+    keys = list(gp["groups"])
+    x = np.arange(len(keys))
+    fig, axes = plt.subplots(1, 2, figsize=(12, 4.3))
+    for ax, metric, title, better in ((axes[0], "feature_pct", "Stay has the group's preferred features", "higher is better"),
+                                      (axes[1], "unsuitable_pct", "A journey leg does not suit the group", "lower is better")):
+        g_ = [gp["groups"][k]["generic"][metric] for k in keys]
+        p_ = [gp["groups"][k]["personalised"][metric] for k in keys]
+        ax.bar(x - 0.2, g_, 0.38, color=LIGHT, edgecolor=INK, linewidth=0.5, label="Without group profile")
+        ax.bar(x + 0.2, p_, 0.38, color=MUSTARD, edgecolor=INK, linewidth=0.5, label="With group profile")
+        for i, (a_, b_) in enumerate(zip(g_, p_)):
+            ax.text(i + 0.2, b_ + 1.5, f"{b_:.0f}", ha="center", fontsize=8.5, fontweight="bold")
+        ax.set_xticks(x, [names[k] for k in keys])
+        ax.set_ylim(0, 112)
+        ax.set_ylabel("% of plans")
+        ax.set_title(title + "\n(" + better + ")", fontsize=11)
+    axes[0].legend(frameon=False, loc="upper left", fontsize=9)
+    axes[0].set_ylim(0, 125)
+    fig.suptitle(f"Personalisation by traveller group on {gp['n']} feasible requests (all plans still meet every hard constraint)", fontsize=12, fontweight="bold", y=1.06)
+    fig.subplots_adjust(wspace=0.25)
+    save(fig, "fig14_group_personalisation")
+
+# 15. Local ride comparison --------------------------------------------------------------------------
+from app.providers.local_transport import compare  # noqa: E402
+A_, B_ = (26.8242, 75.8122), (26.9239, 75.8267)  # Jaipur airport -> Hawa Mahal
+fig, ax = plt.subplots(figsize=(11, 4.6))
+parties = [1, 2, 4]
+colors_p = [LIGHT, "#F3C94E", MUSTARD]
+products = ["City bus", "Metro", "Rapido Bike", "Uber Moto", "Rapido Auto", "Ola Auto", "Rapido Cab Economy", "Ola Mini", "Uber Go", "Uber Premier", "Uber XL"]
+data = {}
+for n in parties:
+    r = compare(A_, B_, hour=14, people=n, bags=0)
+    data[n] = {f"{o['provider']} {o['product']}".replace("City bus Ordinary / AC bus", "City bus").replace("Metro Metro rail", "Metro"): o["per_person"] for o in r["options"]}
+x = np.arange(len(products))
+for i, n in enumerate(parties):
+    vals = [data[n].get(p, np.nan) for p in products]
+    ax.bar(x + (i - 1) * 0.27, vals, 0.27, color=colors_p[i], edgecolor=INK, linewidth=0.5, label=f"{n} traveller{'s' if n > 1 else ''}")
+ax.set_xticks(x, [p.replace(" ", "\n", 1) for p in products], fontsize=9)
+ax.set_ylabel("Estimated fare per person (₹)")
+ax.set_title("Local rides compared: Jaipur airport to Hawa Mahal (about 15 km, 2 PM)")
+ax.set_ylim(0, max(v for d_ in data.values() for v in d_.values()) * 1.25)
+ax.legend(frameon=False, ncol=3, loc="upper left")
+save(fig, "fig15_local_rides")
